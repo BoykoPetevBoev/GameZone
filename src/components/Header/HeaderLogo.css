@@ -1,0 +1,22 @@
+.headerLogo {
+    text-align: center;
+    display: inline-block;
+    transform: skew(20deg);
+    min-width: 153px;
+    background-color: black;
+    /* text-shadow: 0 0 3px var(--special-color); */
+    /* transition: .2s ease; */
+    /* animation-delay: 1s; */
+    /* margin-top: 0px; */
+    width: 50%;
+    height: 100%;
+    box-shadow: 0px 2px 15px 1px black;
+}
+
+.headerLogo h2 {
+    width: 100%;
+    transform: skew(-20deg);
+    color: var(--special-color);
+    font-size: 20px;
+    margin: 0px;
+}

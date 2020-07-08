@@ -1,0 +1,43 @@
+.skewDiv {
+    text-align: center;
+    display: inline-block;
+    transform: skew(20deg);
+    height: 100%;
+    width: 3%;
+    min-width: 15px;
+    background-color: black;
+    text-shadow: 0 0 3px var(--special-color);
+    transition: .2s ease;
+    animation-delay: 1s;
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+.skewDiv:hover {
+    background-color: rgb(3, 16, 26);
+}
+
+.headerBtn {
+    transform: skew(-20deg);
+    
+    color: var(--special-color-green);
+    font-size: 17px;
+    width: 10px;
+    height: 100%;
+    float: left;
+    transition: .2s ease;
+    text-shadow: 1px 1px 2px black;
+}
+
+.headerBtn:hover {
+    text-decoration: none;
+    color: var(--special-color-red);
+    text-shadow: 0 10px 100px var(--special-color-red);
+    border-bottom: solid 2px var(--special-color-red);
+}
+
+.headerBtn:active {
+    text-shadow: none;
+    color: var(--secondary-color);
+    border-bottom: solid 1px var(--secondary-color);
+}
