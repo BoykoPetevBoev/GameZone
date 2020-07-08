@@ -1,0 +1,53 @@
+.menuDiv {
+    width: 100%;
+    height: 60px;
+    margin-bottom: 50px;
+    margin-top: 50px;
+    background-color: black;
+}
+
+.menuDiv:hover {
+    height: 58px;
+    border-top: solid 2px var(--special-color-red);
+}
+
+.menuList {
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    padding-left: 20%;
+    padding-right: 20%;
+}
+
+.menuList ul {
+    margin-block-start: 0em;
+    padding-inline-start: 0px;
+    height: 100%;
+    margin-bottom: 0px;
+}
+
+.menuList ul li {
+    list-style: none;
+    width: 20%;
+    float: left;
+    height: 100%;
+}
+
+.menuList ul li a {
+    width: 100%;
+    height: 100%;
+    line-height: 40px;
+    padding: 7px 10px 0px 10px;
+    font-size: 15px;
+    color: #fff;
+    text-transform: uppercase;
+    color: var(--primary-color);
+    text-align: center;
+    background-color: black;
+}
+
+.menuList ul li a:hover {
+    text-decoration: none;
+    border-bottom: solid 6px var(--special-color-red);
+    color: var(--special-color-red);
+}
