@@ -6,11 +6,10 @@ import HeaderLogo from './HeaderLogo'
 export default class Header extends Component {
     render() {
         return (
-
             <nav className="header">
 
                 <div>
-                    <HeaderButtons name='Home' path='/' />
+                    <HeaderButtons name='Home' path='/home' />
                 </div>
 
                 <div>

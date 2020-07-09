@@ -11,7 +11,7 @@ function App() {
   return (
     <Router>
       <Header />
-      <Navigation />
+      {/* <Navigation /> */}
       <br/>
       <Route path='/login' component={Login} />
       <Route path='/register' component={Register} />
