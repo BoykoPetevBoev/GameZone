@@ -7,11 +7,9 @@
   background: #3ac6ea;
   background: linear-gradient(90deg, rgba(16, 43, 62, 1) 0%, #3ac6ea 50%, rgba(16, 43, 62, 1) 100%);
 }
-/* div{
-  border: solid 1px red
-} */
 .header>div {
   text-align: center;
+  vertical-align: top;
   display: inline-block;
   height: 30px;
   width: 30%;

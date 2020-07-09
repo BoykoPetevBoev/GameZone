@@ -1,158 +1,147 @@
 import React, { Component } from 'react';
+import './Register.css'
 
 class Register extends Component {
     constructor(props) {
         super(props);
 
-        this.onChangeFirstName = this.onChangeFirstName.bind(this);
-        this.onchangeLastName = this.onchangeLastName.bind(this);
-        this.onChangeEmail = this.onChangeEmail.bind(this);
-        this.onChangePhoneNumber = this.onChangePhoneNumber.bind(this);
-        this.onChangePassword = this.onChangePassword.bind(this);
-        this.onChangeRePassword = this.onChangeRePassword.bind(this);
-        this.onSubmit = this.onSubmit.bind(this);
-
         this.state = {
             firstName: '',
             lastName: '',
             email: '',
-            phoneNumber: '',
+            phone: '',
             password: '',
-            rePassword: ''
+            rePassword: '',
+            isTrue: false,
+            loginEmail: 'Invalid email!',
+            loginPassword: 'Invalid password!',
+            registerFirstName: false,
+            registerLasttName: 'Your last name must be between 2 and 50 characters!',
+            registerEmail: 'Enter a valid email address!',
+            registerPhone: 'Enter a valid phone number!',
+            registerPassword: 'Password must be between 3 and 15 caracter long!',
+            registerRePassword: 'Password and Repeat password must be the same!'
         }
     }
-    onChangeFirstName(e) {
-        checkForEmpty(e.target)
-        this.setState({
-            firstName: e.target.value
-        });
-    }
-    onchangeLastName(e) {
-        checkForEmpty(e.target)
-        this.setState({
-            lastName: e.target.value
-        });
-    }
-    onChangeEmail(e) {
-        checkForEmpty(e.target)
-        this.setState({
-            email: e.target.value
-        });
-    }
-    onChangePhoneNumber(e) {
-        checkForEmpty(e.target)
-        this.setState({
-            phoneNumber: e.target.value
-        });
-    }
-    onChangePassword(e) {
-        checkForEmpty(e.target)
-        this.setState({
-            password: e.target.value
-        });
-    }
-    onChangeRePassword(e) {
-        checkForEmpty(e.target)
-        this.setState({
-            rePassword: e.target.value
-        });
-    }
-    onSubmit(e) {
+    //Your first name must be between 2 and 50 characters!
+    onSubmit = (e) => {
+
         e.preventDefault();
         console.log(this.state);
+    }
+    onChange = (e) => {
+        this.setState({
+            [e.target.name]: e.target.value
+        });
+        if (e.target.value == '') {
+            this.changeIsTrue(true)
+            this.setState({
+                registerFirstName: 'Your first name must be between 2 and 50 characters!'
+            })
+        }
+        else {
+            this.changeIsTrue(false)
+            this.setState({
+                registerFirstName: false
+            })
+        }
+    }
+    changeIsTrue = (value) => {
+        this.setState({
+            isTrue: value
+        })
     }
 
     render() {
         return (
-            <div className="form">
-                <div className="tab-content">
+            <div className="registerBackground">
+                <div className="form">
+                    <div className="tab-content">
 
-                    <ul className="tab-group">
-                        <li className="tab active"><a href="/register">Register</a></li>
-                        <li className="tab"><a href="/login">Login</a></li>
-                    </ul>
+                        {/* <ul className="tab-group">
+                            <li className="tab active"><a href="/register">Register</a></li>
+                            <li className="tab"><a href="/login">Login</a></li>
+                        </ul> */}
 
-                    <div id="signup">
-                        <h1>Sign Up for Free</h1>
+                        <div id="signup">
+                            <h1>Sign Up for Free</h1>
 
-                        <form onSubmit={this.onSubmit}>
+                            <form onSubmit={this.onSubmit}>
 
-                            <div className="field-wrap">
-                                <input
-                                    name="firstName"
-                                    id="registerFirstName"
-                                    className="registerRequired"
-                                    type="text"
-                                    placeholder="First Name"
-                                    value={this.state.firstName}
-                                    onChange={this.onChangeFirstName}
-                                />
-                            </div>
+                                <div className="field-wrap">
+                                    <input
+                                        name="firstName"
+                                        className={this.state.isTrue ? 'errorBox' : 'registerRequired'}
+                                        type="text"
+                                        placeholder="First Name"
+                                        value={this.state.firstName}
+                                        onChange={this.onChange}
+                                    />
+                                    {this.state.registerFirstName
+                                        ? <div>{this.state.registerFirstName}</div>
+                                        : null}
+                                </div>
 
-                            <div className="field-wrap">
-                                <input
-                                    name="lastName"
-                                    id="registerLasttName"
-                                    className="registerRequired"
-                                    type="text"
-                                    placeholder="Last Name"
-                                    value={this.state.lastName}
-                                    onChange={this.onchangeLastName}
-                                />
-                            </div>
+                                <div className="field-wrap">
+                                    <input
+                                        name="lastName"
+                                        className="registerRequired"
+                                        type="text"
+                                        placeholder="Last Name"
+                                        value={this.state.lastName}
+                                        onChange={this.onChange}
+                                    />
+                                </div>
 
-                            <div className="field-wrap">
-                                <input
-                                    name="email"
-                                    id="registerEmail"
-                                    className="registerRequired"
-                                    type="text"
-                                    placeholder="Email Address"
-                                    value={this.state.email}
-                                    onChange={this.onChangeEmail}
-                                />
-                            </div>
+                                <div className="field-wrap">
+                                    <input
+                                        name="email"
+                                        className="registerRequired"
+                                        type="text"
+                                        placeholder="Email"
+                                        value={this.state.email}
+                                        onChange={this.onChange}
+                                    />
+                                </div>
 
-                            <div className="field-wrap">
-                                <input
-                                    name="phone"
-                                    id="registerPhone"
-                                    className="registerRequired"
-                                    type="text"
-                                    placeholder="Phone Number"
-                                    value={this.state.phoneNumber}
-                                    onChange={this.onChangePhoneNumber}
-                                />
-                            </div>
+                                <div className="field-wrap">
+                                    <input
+                                        name="phone"
+                                        className="registerRequired"
+                                        type="text"
+                                        placeholder="Phone Number"
+                                        value={this.state.phoneNumber}
+                                        onChange={this.onChange}
+                                    />
+                                </div>
 
-                            <div className="field-wrap">
-                                <input
-                                    id="registerPassword"
-                                    className="registerRequired"
-                                    type="password"
-                                    name="password"
-                                    placeholder="Password"
-                                    value={this.state.password}
-                                    onChange={this.onChangePassword}
-                                />
-                            </div>
+                                <div className="field-wrap">
+                                    <input
+                                        className="registerRequired"
+                                        type="password"
+                                        name="password"
+                                        placeholder="Password"
+                                        value={this.state.password}
+                                        onChange={this.onChange}
+                                    />
+                                </div>
 
-                            <div className="field-wrap">
-                                <input
-                                    id="registerRePassword"
-                                    className="registerRequired"
-                                    type="password"
-                                    name="rePassword"
-                                    placeholder="Confirm Password"
-                                    value={this.state.rePassword}
-                                    onChange={this.onChangeRePassword}
-                                />
-                            </div>
+                                <div className="field-wrap">
+                                    <input
+                                        className="registerRequired"
+                                        type="password"
+                                        name="rePassword"
+                                        placeholder="Confirm Password"
+                                        value={this.state.rePassword}
+                                        onChange={this.onChange}
+                                    />
+                                </div>
 
-                            <button type="submit" className="button button-block">GET STARTED</button>
+                                <button type="submit" className="button button-block">GET STARTED</button>
 
-                        </form>
+                            </form>
 
+                        </div>
                     </div>
                 </div>
             </div>
