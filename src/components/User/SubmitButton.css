@@ -1,0 +1,10 @@
+.submit-button {
+    border: none;
+    height: 50px;
+    width: 100%;
+    background-color: var(--special-color);
+    color: var(--secondary-color);
+    font-size: 20px;
+    transition: .5s ease;
+    margin-top: 30px;
+}
