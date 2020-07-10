@@ -19,12 +19,13 @@ const UserSchema = new Schema({
         required: true,
         type: String
     },
-    phoneNumber: {
+    phone: {
         required: true,
         type: Number
     },
     address: {
-        type: String
+        type: String,
+        default: ''
     },
     shoppingCart: [{
         type: Schema.Types.ObjectId,

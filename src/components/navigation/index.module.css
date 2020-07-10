@@ -1,27 +1,27 @@
 @media (min-width: 780px) {
-    .menuList {
+    .menu-list {
         width: 100%;
         height: 60px;
         margin-bottom: 5px;
         background-color: black;
         text-align: center;
     }
-    .menuList:hover {
+    .menu-list:hover {
         height: 58px;
         border-bottom: solid 2px var(--special-color-red);
     }
-    .menuList ul {
+    .menu-list ul {
         margin: 0px;
         padding: 0px;
         height: 100%;
     }
-    .menuList ul li {
+    .menu-list ul li {
         list-style: none;
         height: 100%;
         margin: 0 2% 0 2%;
         display: inline-block;
     }
-    .menuList ul li a {
+    .menu-list ul li a {
         min-width: 100px;
         line-height: 40px;
         font-size: 15px;
@@ -32,7 +32,7 @@
         background-color: black;
         padding: 7px 10px 0px 10px;
     }
-    .menuList ul li a:hover {
+    .menu-list ul li a:hover {
         text-decoration: none;
         border-bottom: solid 4px var(--special-color-red);
         color: var(--special-color-red);
@@ -40,27 +40,26 @@
 }
 
 @media screen and (max-width: 780px) {
-    .menuList {
+    .menu-list {
         width: 100%;
         /* height: auto; */
         margin-bottom: 5px;
         background-color: black;
         text-align: center;
     }
-    .menuList ul {
+    .menu-list ul {
         margin: 0px;
         padding: 0px;
         width: 100%;
     }
-    .menuList ul li {
+    .menu-list ul li {
         list-style: none;
         margin: 0;
         width: 100%;
         text-align: center;
         width: 100%;
     }
-    .menuList ul li a {
-        /* min-width: 100px; */
+    .menu-list ul li a {
         line-height: 40px;
         font-size: 15px;
         text-transform: uppercase;
@@ -72,7 +71,7 @@
         width: 100%;
         border-bottom: solid 1px var(--special-color);
     }
-    .menuList ul li a:hover {
+    .menu-list ul li a:hover {
         text-decoration: none;
         border-bottom: solid 1px var(--special-color-red);
         color: var(--special-color-red);

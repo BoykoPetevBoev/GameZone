@@ -1,4 +1,4 @@
-.skewDiv {
+.skew {
     text-align: center;
     display: inline-block;
     transform: skew(20deg);
@@ -12,12 +12,11 @@
     margin-left: 10%;
     margin-right: 10%;
 }
-
-.skewDiv:hover {
+.skew:hover {
     background-color: rgb(3, 16, 26);
 }
 
-.headerBtn {
+.button {
     transform: skew(-20deg);
     
     color: var(--special-color-green);
@@ -29,14 +28,14 @@
     text-shadow: 1px 1px 2px black;
 }
 
-.headerBtn:hover {
+.button:hover {
     text-decoration: none;
     color: var(--special-color-red);
     text-shadow: 0 10px 100px var(--special-color-red);
     border-bottom: solid 2px var(--special-color-red);
 }
 
-.headerBtn:active {
+.button:active {
     text-shadow: none;
     color: var(--secondary-color);
     border-bottom: solid 1px var(--secondary-color);

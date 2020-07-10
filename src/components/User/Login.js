@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import './Form.css';
-import FormHolder from './FormHolder';
-import SubmitButton from './SubmitButton'
+import FormHolder from './form-holder';
+import SubmitButton from './submit-button'
+import './form.css';
 
 class Login extends Component {
     constructor(props) {

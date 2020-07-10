@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import FormHolder from './FormHolder';
-import SubmitButton from './SubmitButton';
-import './Form.css';
+import FormHolder from './form-holder';
+import SubmitButton from './submit-button';
+import './form.css';
 
 class Register extends Component {
     constructor(props) {
@@ -80,14 +80,13 @@ class Register extends Component {
     onSubmit = (e) => {
         e.preventDefault();
         const isValid = this.validateForm();
-
-        console.log('I am sending request');
-        const user = this.state
-        axios.post('http://localhost:5000/register', user)
-            .then(res => {
-                console.log(res);
-            })
-
+        if (isValid) {
+            const user = this.state
+            axios.post('http://localhost:5000/register', user)
+                .then(res => {
+                    console.log(res);
+                })
+        }
     }
     render() {
         return (
@@ -168,8 +167,8 @@ class Register extends Component {
                             value={this.state.rePassword}
                             onChange={this.onChange} />
                     </div>
-                    <button type="submit" className="submit-button" >Get Started</button>
-                    {/* <SubmitButton value='GET STARTED' /> */}
+                    {/* <button type="submit" className="submit-button" >Get Started</button> */}
+                    <SubmitButton value='GET STARTED' />
 
                 </form>
             </FormHolder>
