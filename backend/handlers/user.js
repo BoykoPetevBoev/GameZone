@@ -32,13 +32,15 @@ function hashPassword(password){
     return hashPassword;
 }
 async function userRegister(req, res, next) {
-    const { firstName, lastName, email, phone, password } = req.body.user;
-    const hashPassword = hashPassword(password);
+    const { firstName, lastName, email, phone, password } = req.body;
+    const hashedPassword = hashPassword(password);
 
-    const user = new User({ firstName, lastName, email, phone, password: hashPassword });
-    // const userData = await user.save();
-    console.log(user);
+    const user = new User({ firstName, lastName, email, phone, password: hashedPassword });
+    await user.save();
     
+    console.log('User saved successfully');
+    res.writeHead(200, {'Content-Type': 'text/plain'});
+    res.end();
     // const token = authHandler.generateToken(userData._id, userData.email);
 
     // res.cookie('token', token);

@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import './FormHolder.css'
+import styles from './form-holder.module.css'
 
 class FormHolder extends Component {
     render() {
         return (
-            <div className={this.props.className} >
-                <div className="form-holder">
+            <div className={styles[this.props.className]} >
+                <div className={styles['form-holder']}>
                     <h1>{this.props.title}</h1>
                     <div>
                     {this.props.children}
