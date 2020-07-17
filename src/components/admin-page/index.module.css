@@ -1,0 +1,21 @@
+.menu {
+    height: 100%;
+    width: 300px;
+    background-color: var(--secondary-color);
+    padding: 0px;
+    margin-top: 0px;
+    list-style-type: none;
+    
+}
+
+
+.btn {
+    /* height: 20px; */
+    width: 90%;
+    color: var(--special-color);
+    background-color: var(--secondary-color);
+}
+.btn:hover {
+    color: var(--secondary-color);
+    background-color: var(--special-color);
+}
