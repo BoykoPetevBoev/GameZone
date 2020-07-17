@@ -40,7 +40,7 @@ li a {
     color: var(--secondary-color);
 }
 
-.form a:hover, .form button:hover {
+/* .form a:hover, .form button:hover {
     border: none;
     box-shadow: 0 0 15px 2px var(--special-color);
     background-color: var(--secondary-color);
@@ -52,7 +52,7 @@ li a {
     background-color: var(--secondary-color);
     color: var(--secondary-color);
     box-shadow: none;
-}
+} */
 
 .field-wrap input {
     background-color: var(--secondary-color);
@@ -83,7 +83,7 @@ li a {
 
 .errorBox {
     border: none;
-    box-shadow: 0px 0px 10px 5px var(--special-color-red);
+    box-shadow: 0px 0px 5px 4px var(--special-color-red);
     color: var(--special-color-red);
 }
 
