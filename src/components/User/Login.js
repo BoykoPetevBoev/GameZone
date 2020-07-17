@@ -12,16 +12,21 @@ class Login extends Component {
             err: null
         }
     }
+    onChange = (e) => {
+        this.setState({
+            [e.target.name]: e.target.value
+        });
+    }
     onSubmit = (e) => {
         e.preventDefault();
         const { email, password } = this.state;
         if (email === '' || password === '') {
             this.setState({
                 err: 'Invalid email or password!'
-            })
+            });
 
         } else {
-            console.log('dsds: ', this.state);
+            console.log('login: ', this.state);
         }
     }
     render() {
@@ -35,7 +40,9 @@ class Login extends Component {
                         <input
                             className={this.state.err ? "errorBox" : "loginRequired"}
                             type="text" name="email"
-                            placeholder="Email" />
+                            placeholder="Email" 
+                            value={this.state.firstName}
+                            onChange={this.onChange} />
                     </div>
                     <p>
                         
@@ -44,9 +51,10 @@ class Login extends Component {
                         <input
                             className={this.state.err ? "errorBox" : "loginRequired"}
                             type="password" name="password"
-                            placeholder="Password" />
+                            placeholder="Password" 
+                            value={this.state.firstName}
+                            onChange={this.onChange} />
                     </div>
-
 
                     <SubmitButton value='LOGIN' />
 

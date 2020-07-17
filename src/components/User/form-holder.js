@@ -8,7 +8,7 @@ class FormHolder extends Component {
                 <div className={styles['form-holder']}>
                     <h1>{this.props.title}</h1>
                     <div>
-                    {this.props.children}
+                        {this.props.children}
                     </div>
                 </div>
             </div>

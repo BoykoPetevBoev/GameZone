@@ -1,7 +1,7 @@
 const User = require('../models/User');
 const bcrypt = require('bcrypt');
-// const hashHandler = require('../utils/hashHandler');
-// const authHandler = require('../utils/authHandler');
+const hashHandler = require('../utils/hashHandler');
+const authHandler = require('../utils/authHandler');
 
 // async function userLogin(req, res, next) {
 //     const { email, password } = req.body;
@@ -41,9 +41,9 @@ async function userRegister(req, res, next) {
     console.log('User saved successfully');
     res.writeHead(200, {'Content-Type': 'text/plain'});
     res.end();
-    // const token = authHandler.generateToken(userData._id, userData.email);
+    const token = authHandler.generateToken(userData._id, userData.email);
 
-    // res.cookie('token', token);
+    res.cookie('token', token);
     // res.redirect('/');
 }
 // function userLogout(req, res, next) {

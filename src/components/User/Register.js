@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import axios from 'axios';
+// import axios from './node_modules/axios';
 import FormHolder from './form-holder';
 import SubmitButton from './submit-button';
 import './form.css';
@@ -56,7 +56,7 @@ class Register extends Component {
             });
             result = false;
         }
-        if (phone === '') {
+        if (phone === '' || isNaN(Number(phone))) {
             this.setState({
                 errPhone: 'Enter a valid phone number!'
             })
@@ -82,10 +82,7 @@ class Register extends Component {
         const isValid = this.validateForm();
         if (isValid) {
             const user = this.state
-            axios.post('http://localhost:5000/register', user)
-                .then(res => {
-                    console.log(res);
-                })
+            console.log(user);
         }
     }
     render() {

@@ -10,6 +10,7 @@ function Header() {
 
             <div className={styles.container}>
                 <HeaderButtons name='Home' path='/home' />
+                <HeaderButtons name='Admin' path='/Admin' />
             </div>
 
             <div className={styles.container}>
