@@ -9,8 +9,8 @@ function Header() {
         <nav className={styles.header}>
 
             <div className={styles.container}>
-                <HeaderButtons name='Home' path='/home' />
-                <HeaderButtons name='Admin' path='/Admin' />
+                <HeaderButtons name='Home' path='/' />
+                <HeaderButtons name='Admin' path='/admin' />
             </div>
 
             <div className={styles.container}>
@@ -20,9 +20,9 @@ function Header() {
             </div>
 
             <div className={styles.container}>
-                <HeaderButtons name='Logout' path='/Logout' />
-                <HeaderButtons name='Login' path='/Login' />
-                <HeaderButtons name='Register' path='/Register' />
+                <HeaderButtons name='Logout' path='/logout' />
+                <HeaderButtons name='Login' path='/login' />
+                <HeaderButtons name='Register' path='/register' />
             </div>
 
         </nav>
