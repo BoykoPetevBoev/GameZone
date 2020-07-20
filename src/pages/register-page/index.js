@@ -1,10 +1,12 @@
-import React, { Component } from 'react';
-// import axios from './node_modules/axios';
-import FormHolder from './form-holder';
-import SubmitButton from './submit-button';
-import './form.css';
 
-class Register extends Component {
+import React, { Component } from 'react';
+import styles from './index.module.css';
+import Header from '../../components/header';
+import FormHolder from '../../components/user-form-holder';
+import SubmitButton from '../../components/user-submit-button';
+import Input from '../../components/user-input';
+
+class RegisterPage extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -87,89 +89,64 @@ class Register extends Component {
     }
     render() {
         return (
+            <div className={styles.background}>
+                <Header />
 
-            <FormHolder className='register' title='Sign Up for Free'>
-
-                <form onSubmit={this.onSubmit}>
-
-                    <div className="field-wrap">
-                        <p>
-                            {this.state.errFirstName}
-                        </p>
-                        <input
+                <FormHolder className='register' title='Sign Up for Free'>
+                    <form onSubmit={this.onSubmit}>
+                        <Input
                             name="firstName"
-                            className={this.state.errFirstName ? 'errorBox' : 'registerRequired'}
+                            err={this.state.errFirstName}
                             type="text"
                             placeholder='First Name'
                             value={this.state.firstName}
-                            onChange={this.onChange} />
-                    </div>
-                    <div className="field-wrap">
-                        <p>
-                            {this.state.errLastName}
-                        </p>
-                        <input
+                            onChange={this.onChange}
+                        />
+                        <Input
                             name="lastName"
-                            className={this.state.errLastName ? 'errorBox' : 'registerRequired'}
+                            err={this.state.errLastName}
                             type="text"
                             placeholder='Last Name'
                             value={this.state.lastName}
-                            onChange={this.onChange} />
-                    </div>
-                    <div className="field-wrap">
-                        <p>
-                            {this.state.errEmail}
-                        </p>
-                        <input
+                            onChange={this.onChange}
+                        />
+                        <Input
                             name="email"
-                            className={this.state.errEmail ? 'errorBox' : 'registerRequired'}
+                            err={this.state.errEmail}
                             type="text"
                             placeholder="Email"
                             value={this.state.email}
-                            onChange={this.onChange} />
-                    </div>
-                    <div className="field-wrap">
-                        <p>
-                            {this.state.errPhone}
-                        </p>
-                        <input
+                            onChange={this.onChange}
+                        />
+                        <Input
                             name="phone"
-                            className={this.state.errPhone ? 'errorBox' : 'registerRequired'}
+                            err={this.state.errPhone}
                             type="text"
                             placeholder="Phone Number"
                             value={this.state.phoneNumber}
-                            onChange={this.onChange} />
-                    </div>
-                    <div className="field-wrap">
-                        <p>
-                            {this.state.errPassword}
-                        </p>
-                        <input
-                            className={this.state.errPassword ? 'errorBox' : 'registerRequired'}
+                            onChange={this.onChange}
+                        />
+                        <Input
+                            err={this.state.errPassword}
                             type="password"
                             name="password"
                             placeholder="Password"
                             value={this.state.password}
-                            onChange={this.onChange} />
-                    </div>
-                    <div className="field-wrap">
-                        <p>
-                            {this.state.errRePassword}
-                        </p>
-                        <input
-                            className={this.state.errRePassword ? 'errorBox' : 'registerRequired'}
+                            onChange={this.onChange}
+                        />
+                        <Input
+                            err={this.state.errRePassword}
                             type="password"
                             name="rePassword"
                             placeholder="Confirm Password"
                             value={this.state.rePassword}
-                            onChange={this.onChange} />
-                    </div>
-                    {/* <button type="submit" className="submit-button" >Get Started</button> */}
-                    <SubmitButton value='GET STARTED' />
-
-                </form>
-            </FormHolder>
+                            onChange={this.onChange}
+                        />
+                        <SubmitButton value='GET STARTED' />
+                    </form>
+                </FormHolder>
+            </div>
         );
     };
 };
-export default Register;
+export default RegisterPage;
