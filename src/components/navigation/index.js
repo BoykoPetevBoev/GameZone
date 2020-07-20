@@ -1,5 +1,6 @@
 import React from 'react';
 import styles from './index.module.css';
+import { Link } from 'react-router-dom';
 
 function Navigation() {
 
@@ -7,19 +8,19 @@ function Navigation() {
         <div className={styles['menu-list']}>
             <ul>
                 <li>
-                    <a href="/mouse">MOUSE</a>
+                    <Link to="/mouse">MOUSE</Link>
                 </li>
                 <li>
-                    <a href="/keyboard">KEYBOARDS</a>
+                    <Link to="/keyboard">KEYBOARDS</Link>
                 </li>
                 <li>
-                    <a href="/headset">HEADSETS</a>
+                    <Link to="/headset">HEADSETS</Link>
                 </li>
                 <li>
-                    <a href="/mousepad">MOUSEPADS</a>
+                    <Link to="/mousepad">MOUSEPADS</Link>
                 </li>
                 <li>
-                    <a href="/accessoaries">ACCESSORIES</a>
+                    <Link to="/accessoaries">ACCESSORIES</Link>
                 </li>
             </ul>
         </div>
