@@ -78,13 +78,22 @@ class RegisterPage extends Component {
         }
         return result;
     }
+    registerHandler = async () => {
+        const user = this.state
+        const url = 'http://localhost:5000/register';
+        const response = await fetch(url, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(user)
+        });
+        console.log(response);
+    }
 
     onSubmit = (e) => {
         e.preventDefault();
         const isValid = this.validateForm();
         if (isValid) {
-            const user = this.state
-            console.log(user);
+            this.registerHandler();
         }
     }
     render() {

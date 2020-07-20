@@ -4,7 +4,6 @@ import HeaderButtons from '../header-button';
 import styles from './index.module.css';
 
 function Header() {
-
     return (
         <nav className={styles.header}>
 
@@ -27,7 +26,6 @@ function Header() {
 
         </nav>
     )
-
 }
 export default Header
 
