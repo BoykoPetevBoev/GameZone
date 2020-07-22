@@ -20,7 +20,7 @@ const UserSchema = new Schema({
         type: String
     },
     phone: {
-        required: true,
+        default: null,
         type: Number
     },
     address: {

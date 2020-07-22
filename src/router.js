@@ -5,7 +5,7 @@ import HomePage from './pages/home-page';
 import RegisterPage from './pages/register-page';
 import LoginPage from './pages/login-page';
 import AdminPage from './pages/admin-page';
-import AddProductPage from './pages/product-form-page';
+import ProductFormPage from './pages/product-form-page';
 
 function App() {
   return (
@@ -15,7 +15,7 @@ function App() {
         <Route path='/login' component={LoginPage} />
         <Route path='/register' component={RegisterPage} />
         <Route path='/admin' component={AdminPage} />
-        {/* <Route path='/admin/form' component={AddProductPage} /> */}
+        <Route path='/admin/form' component={ProductFormPage} />
       </Switch>
     </BrowserRouter>
   );
