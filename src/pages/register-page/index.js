@@ -13,13 +13,11 @@ class RegisterPage extends Component {
             firstName: '',
             lastName: '',
             email: '',
-            phone: '',
             password: '',
             rePassword: '',
             errFirstName: null,
             errLastName: null,
             errEmail: null,
-            errPhone: null,
             errPassword: null,
             errRePassword: null
         }
@@ -34,11 +32,10 @@ class RegisterPage extends Component {
             errFirstName: null,
             errLastName: null,
             errEmail: null,
-            errPhone: null,
             errPassword: null,
             errRePassword: null
         })
-        const { firstName, lastName, email, phone, password, rePassword } = this.state;
+        const { firstName, lastName, email, password, rePassword } = this.state;
         let result = true;
         if (firstName === '' || firstName.length < 2 || firstName.length > 50) {
             this.setState({
@@ -52,16 +49,10 @@ class RegisterPage extends Component {
             });
             result = false;
         }
-        if (email === '' || !email.includes('@')) {
+        if (email === '' || !email.match(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g)) {
             this.setState({
                 errEmail: 'Enter a valid email address!'
             });
-            result = false;
-        }
-        if (phone === '' || isNaN(Number(phone))) {
-            this.setState({
-                errPhone: 'Enter a valid phone number!'
-            })
             result = false;
         }
         if (password === '' || password.length < 3 || password.length > 50) {
@@ -86,6 +77,7 @@ class RegisterPage extends Component {
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(user)
         });
+        this.props.history.push('/');
         console.log(response);
     }
 
@@ -125,14 +117,6 @@ class RegisterPage extends Component {
                             type="text"
                             placeholder="Email"
                             value={this.state.email}
-                            onChange={this.onChange}
-                        />
-                        <Input
-                            name="phone"
-                            err={this.state.errPhone}
-                            type="text"
-                            placeholder="Phone Number"
-                            value={this.state.phoneNumber}
                             onChange={this.onChange}
                         />
                         <Input
