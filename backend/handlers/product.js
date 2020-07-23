@@ -18,7 +18,12 @@ async function addProduct(req, res, next) {
     res.writeHead(200, { 'Content-Type': 'text/plain' });
     res.end();
 }
+async function getProducts(req, res, next) {
+    const data = await Product.find().lean();
+    res.send(data)
+}
 
 module.exports = {
+    getProducts,
     addProduct
 }

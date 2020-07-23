@@ -96,9 +96,9 @@ class ProductForm extends Component {
             body: JSON.stringify(product)
         });
         console.log(response);
+        this.props.history.push('/');
     }
     onSubmit = (e) => {
-        console.log(this.state)
         e.preventDefault();
         const isValid = this.validateForm();
         if (isValid) {
