@@ -14,8 +14,8 @@ function App() {
         <Route path='/' exact component={HomePage} />
         <Route path='/login' component={LoginPage} />
         <Route path='/register' component={RegisterPage} />
-        <Route path='/admin' component={AdminPage} />
         <Route path='/admin/form' component={ProductFormPage} />
+        <Route path='/admin' component={AdminPage} />
       </Switch>
     </BrowserRouter>
   );
