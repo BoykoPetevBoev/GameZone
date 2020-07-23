@@ -87,12 +87,22 @@ class ProductForm extends Component {
         }
         return result;
     }
+    formHandler = async () => {
+        const product = this.state;
+        const url = 'http://localhost:5000/add-product';
+        const response = await fetch(url, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(product)
+        });
+        console.log(response);
+    }
     onSubmit = (e) => {
         console.log(this.state)
         e.preventDefault();
         const isValid = this.validateForm();
         if (isValid) {
-            console.log(this.state);
+            this.formHandler();
         }
     }
     render() {
