@@ -70,7 +70,7 @@ class RegisterPage extends Component {
         return result;
     }
     registerHandler = async () => {
-        const user = this.state
+        const user = this.state;
         const url = 'http://localhost:5000/register';
         const response = await fetch(url, {
             method: 'POST',
