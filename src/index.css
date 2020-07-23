@@ -33,16 +33,6 @@ code {
 .pageWidth {
   width: 70%;
 }
-.btn {
-  color: var(--special-color-green);
-  background-color: var(--secondary-color);
-  border: solid 1px var(--primary-color);
-}
-.btn:hover {
-  color: var(--special-color-green);
-  text-shadow: 0 0 5px var(--special-color-green);
-  box-shadow: inset 0 0 10px var(--special-color-green);
-}
 .mainContainer {
   background-color: var(--secondary-color);
   border: solid 2px var(--special-color);
