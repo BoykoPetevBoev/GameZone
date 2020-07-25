@@ -2,7 +2,6 @@
     .menu-list {
         width: 100%;
         height: 40px;
-        margin-bottom: 5px;
         background-color: black;
         text-align: center;
     }
@@ -11,7 +10,7 @@
         padding: 0px;
         height: 100%;
     }
-    .menu-list ul li a {
+    .link {
         transform: skew(-20deg);
         display: inline-block;
         width: 100%;
@@ -21,16 +20,19 @@
         text-transform: uppercase;
         color: black;
         text-shadow: 1px 1px 5px 3px black;
-        color: var(--primary-color);
+        color: var(--special-color);
         text-align: center;
         background-color: rgba(76, 175, 80, 0);
     }
-    .menu-list ul li a:hover {
+    .link:hover {
         color: black;
     }
-    .menu-list ul li a:active {
-        text-shadow: 0 0 2px  black;
-        color: var(--primary-color);
+    .link:active {
+        /* transform: skew(-40deg); */
+        /* text-shadow: 0 0 2px  black; */
+        color: black;
+        /* background-color: black; */
+
     }
 }
 
@@ -55,7 +57,7 @@
         text-align: center;
         width: 100%;
     }
-    .menu-list ul li a {
+    .link {
         line-height: 40px;
         font-size: 15px;
         text-transform: uppercase;
@@ -66,10 +68,10 @@
         width: 100%;
         border-bottom: solid 1px var(--special-color);
     }
-    .menu-list ul li a:hover {
+    .link:hover {
         color: black;
     }
-    .menu-list ul li a:active {
+    .link:active {
         text-shadow: 0 0 2px  black;
         color: var(--primary-color);
     }
@@ -90,7 +92,7 @@
     transition: color 500ms ease-in-out;
 }
 
-.special-effects:after {
+.special-effects:after{
     content: '';
     position: absolute;
     display: block;
@@ -100,7 +102,7 @@
     transform: translateX(-50%);
     width: 0;
     height: 100%;
-    background: var(--primary-color);
+    background: var(--special-color);
     z-index: -1;
     -webkit-transition: width 400ms ease-in-out;
     transition: width 400ms ease-in-out;

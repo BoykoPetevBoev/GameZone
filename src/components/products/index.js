@@ -29,22 +29,24 @@ class Product extends Component {
             return (
                 <div key={product._id} className={styles.product}>
 
-                        <div className={styles.image}>
-                            <img src={product.firstImage} alt="No Image" />
-                        </div>
+                    <div className={styles.category}>
+                        <p>{product.category}</p>
+                    </div>
 
-                        <div className={styles.title}>
-                            <p>{product.category} - {product.brand} {product.model}</p>
-                        </div>
-                        <div className={styles.price}>
-                            <h3>${product.price}</h3>
-                        </div>
+                    <div className={styles.image}>
+                        <img src={product.firstImage} alt="No Image" />
+                    </div>
 
-                        <div className={styles.buttons}>
-                            <Link className={styles.btnBuy} to="/">Add to cart</Link>
+                    <div className={styles.title}>
+                        <p> <b>{product.brand} {product.model}</b></p>
+                    </div>
+                    <div className={styles.price}>
+                        <p>${product.price}</p>
+                    </div>
 
-                            <Link className={styles.btnSave} to="/">More</Link>
-                        </div>
+                    <div className={styles.buttons}>
+                        <Link className={styles.btnSave} to="/">More</Link>
+                    </div>
                 </div>
             )
         })
