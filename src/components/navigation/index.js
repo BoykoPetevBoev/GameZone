@@ -3,25 +3,35 @@ import styles from './index.module.css';
 import { Link } from 'react-router-dom';
 
 function Navigation() {
-    
+
 
     return (
         <div className={styles['menu-list']}>
             <ul>
                 <li className={styles['special-effects']} >
-                    <Link  to="/">MOUSE</Link>
+                    <Link className={styles.link} to="/">
+                        <b>MOUSE</b>
+                    </Link>
                 </li>
                 <li className={styles['special-effects']}>
-                    <Link to="/">KEYBOARDS</Link>
+                    <Link className={styles.link}  to="/">
+                        <b>KEYBOARDS</b>
+                    </Link>
                 </li>
                 <li className={styles['special-effects']}>
-                    <Link to="/">HEADSETS</Link>
+                    <Link className={styles.link}  to="/">
+                        <b>HEADSETS</b>
+                    </Link>
                 </li>
                 <li className={styles['special-effects']}>
-                    <Link to="/">MOUSEPADS</Link>
+                    <Link className={styles.link}  to="/">
+                        <b>MOUSEPADS</b>
+                    </Link>
                 </li>
                 <li className={styles['special-effects']}>
-                    <Link to="/">ACCESSORIES</Link>
+                    <Link className={styles.link}  to="/">
+                        <b>ACCESSORIES</b>
+                    </Link>
                 </li>
             </ul>
         </div>

@@ -13,7 +13,7 @@
     margin-right: 10%;
 }
 .skew:hover {
-    background-color: rgb(3, 16, 26);
+    background-color: var(--primary-color);
 }
 
 .button {
@@ -30,9 +30,9 @@
 
 .button:hover {
     text-decoration: none;
-    color: var(--special-color-red);
-    text-shadow: 0 10px 100px var(--special-color-red);
-    border-bottom: solid 2px var(--special-color-red);
+    color: var(--special-color);
+    /* text-shadow: 0 10px 100px var(--special-color-red); */
+    /* border-bottom: solid 2px var(--special-color-red); */
 }
 
 .button:active {
