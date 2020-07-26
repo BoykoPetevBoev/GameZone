@@ -14,7 +14,7 @@ function Header() {
 
             <div className={styles.container}>
                 <div className={styles['header-logo']}>
-                    <h2>GAME ZONE</h2>
+                    <p>GAME ZONE</p>
                 </div>
             </div>
 

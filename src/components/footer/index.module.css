@@ -1,21 +1,19 @@
 .footer {
     width: 100%;
     height: 400px;
-    background-color: var(--secondary-color);
-    color: var(--primary-color);
+    background-color: var(--primary-dark);
+    color: var(--primary-bright);
     text-align: center;
 }
 
 .footerContainer {
     width: 90%;
     height: 80%;
-    border-bottom: solid 3px var(--special-color-red);
-    /* text-align: center; */
+    border-bottom: solid 3px var(--special-first);
     margin: auto;
 }
 
 .footerInfo {
-    /* border: solid 1px var(--special-color-red); */
     height: 80%;
     width: 25%;
     padding: 3%;
@@ -23,15 +21,15 @@
     text-align: left;
     vertical-align: top;
 }
-.headerColor {
-    color: var(--special-color-red);
-    font-size: large;
-  }
 
-.footerInfo input {
-    background-color: var(--primary-color);
+.headerColor {
+    color: var(--special-first);
+    font-size: large;
+}
+
+/* .footerInfo input {
+    background-color: var(--primary-dark);
     border: none;
-    /* border: solid 1px var(--special-color-red); */
     border-radius: 5px;
     height: 35px;
     padding-left: 10px;
@@ -39,8 +37,8 @@
 }
 
 .footerInfo button {
-    background-color: var(--special-color-red);
-    color: var(--secondary-color);
+    background-color: var(--special-second);
+    color: var(--primary-dark);
     border: none;
     border-radius: 5px;
     width: 150px;
@@ -50,28 +48,26 @@
 }
 
 .footer button:hover, .socicons-list li a:hover {
-    background-color: var(--secondary-color);
-    color: var(--special-color-red);
-    /* border: solid 1px var(--special-color-red); */
-    box-shadow: 0 0 5px 5px var(--special-color-red);
+    background-color: var(--primary-dark);
+    color: var(--special-second);
+    box-shadow: 0 0 5px 5px var(--special-second);
 }
 
 .footer button:active {
     transition: .1s ease;
     outline: none;
-    border: solid 1px var(--primary-color);
-    color: var(--primary-color);
-}
+    border: solid 1px var(--primary-dark);
+    color: var(--primary-dark);
+} */
 
-.footerInfo h1 {
+/* .footerInfo h1 {
     margin-bottom: 40px;
-    color: var(--secondary-color);
-    text-shadow: 1px 1px var(--special-color-red);
+    color: var(--special-first);
+    text-shadow: 1px 1px var(--special-first);
     font-size: 40px;
-}
+} */
 
-.footerLinks {
-    /* border: solid 1px var(--special-color-red); */
+/* .footerLinks {
     width: 100%;
     height: 20%;
 }
@@ -84,8 +80,9 @@
     height: 100%;
     width: 100%;
     margin: unset;
-}
+} */
 
+/* 
 .socicons-list li a {
     padding: 6px;
     height: 40px;
@@ -99,4 +96,4 @@
     margin: 10px;
     background-color: var(--special-color-red);
     transition: .5s ease;
-}
+} */
