@@ -6,7 +6,9 @@ function HeaderButtons({ name, path }) {
     return (
         <div className={styles.skew}>
             <Link className={styles.button} to={path}>
-                {name}
+        
+                    {name}
+     
             </Link>
         </div>
     );

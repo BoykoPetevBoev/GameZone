@@ -3,36 +3,34 @@
     display: inline-block;
     transform: skew(20deg);
     height: 100%;
-    width: 3%;
+    width: 1%;
     min-width: 15px;
-    background-color: black;
-    text-shadow: 0 0 3px var(--special-color);
+    background-color: var(--primary-dark);
+    /* text-shadow: 0 0 4px 1px var(--primary-bright); */
     transition: .2s ease;
     animation-delay: 1s;
     margin-left: 10%;
     margin-right: 10%;
 }
+
 .skew:hover {
-    background-color: var(--primary-color);
+    background-color: var(--primary-dark);
 }
 
 .button {
     transform: skew(-20deg);
-    
-    color: var(--special-color-green);
+    color: var(--primary-bright);
     font-size: 17px;
     width: 10px;
     height: 100%;
     float: left;
     transition: .2s ease;
-    text-shadow: 1px 1px 2px black;
+    text-shadow: 0 0 1px 1px var(--primary-dark);
 }
 
 .button:hover {
     text-decoration: none;
-    color: var(--special-color);
-    /* text-shadow: 0 10px 100px var(--special-color-red); */
-    /* border-bottom: solid 2px var(--special-color-red); */
+    color: var(--primary-bright);
 }
 
 .button:active {
