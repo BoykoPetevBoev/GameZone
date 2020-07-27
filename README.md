@@ -20,6 +20,6 @@
       http://localhost:3000/
 
 
-![Sitemap]()
+![Sitemap](https://github.com/BoykoPetevBoev/React-JS-June-2020-Exam/blob/master/README/SitemapReact.jpg)
 
-![Game Zone]()
+![Game Zone](https://github.com/BoykoPetevBoev/React-JS-June-2020-Exam/blob/master/README/GameZone.png)
