@@ -19,7 +19,7 @@ class Product extends Component {
         const data = await promise.json();
         console.log(data);
         this.setState({
-            data
+            data: data.reverse()
         });
     }
     renderProducts() {
