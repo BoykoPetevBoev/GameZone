@@ -19,7 +19,7 @@ function Footer() {
                 </div>
                 <div className={styles.footerInfo}>
                     <p className={styles.headerColor}>Contact Us</p>
-                    <p>Phone: 0876 543 210</p>
+                    <p>Phone: 0876 000 000</p>
                     <p>Email: boykopetevboev@gmail.com</p>
                 </div>
 
