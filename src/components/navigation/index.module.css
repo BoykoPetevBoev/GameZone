@@ -13,6 +13,7 @@
         height: 100%;
     }
     .link {
+        transition: 1s ease;
         transform: skew(-20deg);
         display: inline-block;
         width: 100%;
@@ -104,4 +105,11 @@
 
 .special-effects:hover:after {
     width: 110%;
+}
+
+.link:active, .special-effects:active {
+
+
+    color: var(--primary-bright);
+    background: linear-gradient( 90deg, var(--special-first) 0%,black 45%, black 55%, var(--special-first) 100%)
 }

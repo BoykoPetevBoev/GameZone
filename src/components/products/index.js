@@ -45,7 +45,7 @@ class Product extends Component {
                     </div>
 
                     <div className={styles.buttons}>
-                        <Link className={styles.btnSave} to="/">More</Link>
+                        <Link className={styles.btnSave} to="/">LEARN MORE</Link>
                     </div>
                 </div>
             )
