@@ -8,7 +8,8 @@ class Product extends Component {
         super(props)
 
         this.state = {
-            data: []
+            data: [],
+            filter: this.props.filter
         }
     }
     componentDidMount() {
@@ -17,15 +18,25 @@ class Product extends Component {
     async getProducts() {
         const promise = await fetch('http://localhost:5000/get-products');
         const data = await promise.json();
+        const { filter } = this.state;
+        let result = [];
+        if(filter) {
+            result = data.filter(obj => obj.category === filter )
+        } 
+        else {
+            result = data.slice(0)
+        } 
         
         this.setState({
-            data: data.reverse()
+            data: result.reverse()
         });
     }
     renderProducts() {
+        console.log(this.state)
         const { data } = this.state;
 
         return data.map((product) => {
+            const path = `/${product.category}/${product._id}`
             return (
                 <div key={product._id} className={styles.product}>
 
@@ -45,7 +56,7 @@ class Product extends Component {
                     </div>
 
                     <div className={styles.buttons}>
-                        <Link className={styles.btnSave} to="/">LEARN MORE</Link>
+                        <Link className={styles.btnSave} to={path}>LEARN MORE</Link>
                     </div>
                 </div>
             )

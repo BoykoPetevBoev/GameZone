@@ -84,7 +84,7 @@
 .category {
     margin: auto;
     background-color: var(--special-color);
-    background: linear-gradient(90deg, black  50%, rgba(58, 198, 234, 1) 100%);
+    background: linear-gradient(90deg, black  30%, white 70%);
     text-transform: uppercase;
 }
 .category p {
