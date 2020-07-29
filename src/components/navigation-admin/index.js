@@ -12,6 +12,12 @@ function Navigation() {
                 <li>
                     <Link className={styles.link} to='/admin/form'>Add Product</Link>
                 </li>
+                <li>
+                    <Link className={styles.link} to='/admin/users'>Users Table</Link>
+                </li>
+                <li>
+                    <Link className={styles.link} to='/admin/products'>Products Table</Link>
+                </li>
             </ul>
         </div>
     )
