@@ -6,13 +6,13 @@ import Footer from '../../components/footer';
 import Products from '../../components/products';
 import Banner from '../../components/banner';
 
-function HomePage() {
+function HomePage({ filter }) {
     return (
         <div>
             <Header />
             <Menu />
             <Banner />
-            <Products />
+            <Products filter={filter} />
             <Footer />
         </div>
     )

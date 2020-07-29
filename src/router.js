@@ -13,13 +13,36 @@ function App() {
   return (
     <BrowserRouter>
       <Switch>
-        <Route path='/' exact component={HomePage} />
+        <Route path='/' exact>
+          <HomePage />
+        </Route>
         <Route path='/login' component={LoginPage} />
         <Route path='/register' component={RegisterPage} />
         <Route path='/admin' component={AdminPage} />
         <Route path='/admin/form' component={ProductFormPage} />
         <Route path='/admin/users' component={UsersTable} />
         <Route path='/admin/products' component={ProductTable} />
+
+        <Route path='/mouse' >
+          <HomePage filter='mouse' />
+        </Route>
+
+        <Route path='/keyboards' >
+          <HomePage filter='keyboard' />
+        </Route>
+
+        <Route path='/headsets' >
+          <HomePage filter='headset' />
+        </Route> 
+
+        <Route path='/mousepads' >
+          <HomePage filter='mousepad' />
+        </Route>
+
+        <Route path='/accessories' >
+          <HomePage filter='accessory' />
+        </Route>
+
       </Switch>
     </BrowserRouter>
   );
