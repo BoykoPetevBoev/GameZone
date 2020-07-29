@@ -17,7 +17,7 @@ class Product extends Component {
     async getProducts() {
         const promise = await fetch('http://localhost:5000/get-products');
         const data = await promise.json();
-        console.log(data);
+        
         this.setState({
             data: data.reverse()
         });

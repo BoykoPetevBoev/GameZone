@@ -47,10 +47,15 @@ async function userRegister(req, res, next) {
 //     res.clearCookie('token');
 //     res.redirect('/');
 // }
+async function getUsers (req, res, next) {
+    const data = await User.find().lean();
+    res.send(data)
+}
 
 
 module.exports = {
     userRegister,
+    getUsers
     // userLogin,
     // userLogout
 }
