@@ -32,7 +32,6 @@ class Product extends Component {
         });
     }
     renderProducts() {
-        console.log(this.state)
         const { data } = this.state;
 
         return data.map((product) => {

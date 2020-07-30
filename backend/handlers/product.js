@@ -22,8 +22,15 @@ async function getProducts(req, res, next) {
     const data = await Product.find().lean();
     res.send(data)
 }
+async function getProduct(req, res, next) {
+    console.log(req.body);
+    const { id } = req.body;
+    const product = await Product.findById(id).lean();
+    res.send(product)
+}
 
 module.exports = {
     getProducts,
-    addProduct
+    addProduct,
+    getProduct
 }
