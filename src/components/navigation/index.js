@@ -16,28 +16,28 @@ function Navigation() {
                     </Link>
                 </li>
                 <li className={styles['special-effects']}>
-                    <Link className={styles.link} to="/keyboards">
+                    <Link className={styles.link} to="/keyboard">
                         {/* <b> */}
                             KEYBOARDS
                             {/* </b> */}
                     </Link>
                 </li>
                 <li className={styles['special-effects']}>
-                    <Link className={styles.link} to="/headsets">
+                    <Link className={styles.link} to="/headset">
                         {/* <b> */}
                             HEADSETS
                             {/* </b> */}
                     </Link>
                 </li>
                 <li className={styles['special-effects']}>
-                    <Link className={styles.link} to="/mousepads">
+                    <Link className={styles.link} to="/mousepad">
                         {/* <b> */}
                             MOUSEPADS
                             {/* </b> */}
                     </Link>
                 </li>
                 <li className={styles['special-effects']}>
-                    <Link className={styles.link} to="/accessories">
+                    <Link className={styles.link} to="/accessory">
                         {/* <b> */}
                             ACCESSORIES
                             {/* </b> */}
