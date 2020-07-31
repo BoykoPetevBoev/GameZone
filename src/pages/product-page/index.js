@@ -48,7 +48,7 @@ class ProductPage extends Component {
                         <Link className={styles['add-to-cart']} to="/">ADD TO CART</Link>
                     </div>
                 </div>
-                <Footer />
+                {/* <Footer /> */}
             </div>
         );
     }
