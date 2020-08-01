@@ -1,4 +1,5 @@
 import React, { useState, useContext } from 'react';
+import { useHistory } from 'react-router-dom'
 import UserContext from '../../Context';
 import styles from './index.module.css';
 import Header from '../../components/header';
@@ -6,7 +7,7 @@ import FormHolder from '../../components/user-form-holder';
 import SubmitButton from '../../components/user-submit-button';
 import Input from '../../components/user-input';
 
-function RegisterPage(props) {
+function RegisterPage() {
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
     const [email, setEmail] = useState('');
@@ -18,6 +19,7 @@ function RegisterPage(props) {
     const [errPassword, setErrPassword] = useState(null);
     const [errRePassword, setErrRePassword] = useState(null);
     const context = useContext(UserContext);
+    const history = useHistory();
 
     const validateForm = () => {
         setErrFirstName(null);
@@ -35,7 +37,7 @@ function RegisterPage(props) {
             setErrLastName('Your last name must be between 2 and 50 characters!');
             result = false;
         }
-        if (email === '' || !email.match(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g)) {
+        if (email === '' || !email.match(/^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/g)) {
             setErrEmail('Enter a valid email address!');
             result = false;
         }
@@ -77,7 +79,7 @@ function RegisterPage(props) {
                     id: data._id
                 }
                 context.login(user);
-                props.history.push('/');
+                history.push('/');
             })
             .catch(err => console.error(err))
     }

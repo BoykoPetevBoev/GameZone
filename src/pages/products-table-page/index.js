@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import styles from './index.module.css';
+// import styles from './index.module.css';
 import Table from '../../components/admin-table';
 
 class Products extends Component {
@@ -19,7 +19,7 @@ class Products extends Component {
     }
     render() {
         const { products } = this.state
-        if(products.length == 0){
+        if(products.length === 0){
             return (
                 <div></div>
             )

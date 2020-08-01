@@ -1,4 +1,5 @@
 import React, { useState, useContext } from 'react';
+import { useHistory } from 'react-router-dom'
 import styles from './index.module.css';
 import Header from '../../components/header';
 import FormHolder from '../../components/user-form-holder';
@@ -7,11 +8,12 @@ import Input from '../../components/user-input';
 import UserContext from '../../Context';
 
 
-function LoginPage(props) {
+function LoginPage() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [err, setErr] = useState(null);
     const context = useContext(UserContext);
+    const history = useHistory();
 
     const onSubmit = (e) => {
         e.preventDefault();
@@ -48,7 +50,7 @@ function LoginPage(props) {
                     id: data._id
                 }
                 context.login(user);
-                props.history.push('/');
+                history.push('/');
             })
             .catch(error => console.log(error))
     }
