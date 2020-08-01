@@ -16,7 +16,7 @@ class Banner extends Component {
                 </div>
 
                 <div className={styles.element}>
-                    <img className={styles['banner-img']} src="https://static-geektopia.com/storage/geek/products/roccat/vulcan/gallery-vulcan-120-04-v1-wdzp0-1-80-000-830x490.jpg" />
+                    <img className={styles['banner-img']} src="https://static-geektopia.com/storage/geek/products/roccat/vulcan/gallery-vulcan-120-04-v1-wdzp0-1-80-000-830x490.jpg" alt='' />
                 </div>
 
             </div>

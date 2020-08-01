@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import styles from './index.module.css'
 import Header from '../../components/header';
 import Menu from '../../components/navigation';
-import Footer from '../../components/footer';
-import Products from '../../components/products';
 import { Link } from 'react-router-dom';
 
 class ProductPage extends Component {
@@ -35,10 +33,10 @@ class ProductPage extends Component {
                 <div className={styles.container}>
                     <div className={styles['pic-holder']}>
                         <div className={styles['image-holder']}>
-                            <img src={product.firstImage} />
+                            <img src={product.firstImage} alt=''/>
                         </div>
                         <div className={styles['image-holder']}>
-                            <img src={product.secondImage} />
+                            <img src={product.secondImage} alt=''/>
                         </div>
                     </div>
                     <div className={styles['info-holder']}>
@@ -48,7 +46,6 @@ class ProductPage extends Component {
                         <Link className={styles['add-to-cart']} to="/">ADD TO CART</Link>
                     </div>
                 </div>
-                {/* <Footer /> */}
             </div>
         );
     }

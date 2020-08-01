@@ -1,4 +1,4 @@
-import React, { Component, useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import UserContext from './Context';
 
 function getCookie(name) {
@@ -11,8 +11,7 @@ function Authorization(props) {
     const [loggedIn, setLoggedIn] = useState(false);
 
     useEffect(() => {
-        const token = getCookie('token');
-
+        const token = getCookie('GameZoneToken');
         if (!token) {
             logout();
             return
@@ -24,14 +23,12 @@ function Authorization(props) {
                 'Content-Type': 'application/json',
                 'Authorization': token
             }
-        })
-            .then(promise => {
-                return promise.json();
-            })
-            .then(res => {
+        }).then(promise => {
+            return promise.json();
+        }).then(res => {
                 res.status
                     ? login({
-                        username: res.user.username,
+                        email: res.user.email,
                         id: res.user._id
                     })
                     : logout()
@@ -44,7 +41,7 @@ function Authorization(props) {
         setLoggedIn(true);
     }
     const logout = () => {
-        document.cookie = 'token' + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+        document.cookie = 'GameZoneToken=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
         setLoggedIn(false);
         setUser(null);
     }

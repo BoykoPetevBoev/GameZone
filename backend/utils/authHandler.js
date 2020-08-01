@@ -8,6 +8,11 @@ function setToken(user) {
     return token;
 }
 
+async function verifyToken(token) {
+        const status = jwt.verify(token, privateKey);
+        return status;
+}
+
 
 // function userAutorization(req, res, next) {
 //     const token = req.cookies.token;
@@ -50,5 +55,6 @@ function setToken(user) {
 // }
 
 module.exports = {
-    setToken
+    setToken,
+    verifyToken
 }

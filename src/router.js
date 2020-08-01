@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { BrowserRouter as Switch, Route, BrowserRouter } from "react-router-dom";
 
 import HomePage from './pages/home-page';
@@ -9,16 +9,27 @@ import ProductFormPage from './pages/product-form-page';
 import UsersTable from './pages/users-table-page';
 import ProductTable from './pages/products-table-page';
 import ProductPage from './pages/product-page';
+import UserContext from './Context';
 
 function App() {
+  const { loggedIn } = useContext(UserContext)
+
   return (
     <BrowserRouter>
       <Switch>
+
         <Route exact path='/'>
           <HomePage />
         </Route>
-        <Route exact path='/login' component={LoginPage} />
-        <Route exact path='/register' component={RegisterPage} />
+
+        <Route exact path='/login'>
+          {loggedIn ? <HomePage /> : <LoginPage />}
+        </Route>
+
+        <Route exact path='/register'>
+          {loggedIn ? <HomePage /> : <RegisterPage />}
+        </Route>
+        
         <Route exact path='/admin' component={AdminPage} />
         <Route exact path='/admin/form' component={ProductFormPage} />
         <Route exact path='/admin/users' component={UsersTable} />

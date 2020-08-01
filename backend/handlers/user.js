@@ -35,10 +35,22 @@ async function userRegister(req, res, next) {
         return res.header('Authorization', token).send(user);
     }
 }
-// function userLogout(req, res, next) {
-//     res.clearCookie('token');
-//     res.redirect('/');
-// }
+
+async function verifyLogin(req, res, next) {
+    const token = req.headers.authorization || '';
+    const tokenStatus = await authHandler.verifyToken(token);
+    if (tokenStatus) {
+        const user = await User.findById(tokenStatus.id)
+        return res.send({
+            status: true,
+            user
+        });
+    }
+    else {
+        return res.send(false);
+    }
+}
+
 async function getUsers(req, res, next) {
     const data = await User.find().lean();
     res.send(data)
@@ -48,7 +60,6 @@ async function getUsers(req, res, next) {
 module.exports = {
     userRegister,
     getUsers,
-    userLogin
-    // userLogin,
-    // userLogout
+    userLogin,
+    verifyLogin
 }

@@ -44,7 +44,7 @@ class Product extends Component {
                     </div>
 
                     <div className={styles.image}>
-                        <img src={product.firstImage} alt="No Image" />
+                        <img src={product.firstImage} alt="NoImage" />
                     </div>
 
                     <div className={styles.title}>
