@@ -8,10 +8,13 @@ function Header() {
     const context = useContext(UserContext);
     const history = useHistory();
     const { loggedIn } = context;
+
     const logout = () => {
         context.logout();
         history.push('/');
+        console.log('I have finished!');
     }
+
     return (
         <nav className={styles.header}>
 
@@ -27,6 +30,7 @@ function Header() {
             </div>
 
             <div className={styles.container}>
+                {loggedIn ? <HeaderButtons name='Profile' path='/' /> : null}
                 {loggedIn ? <HeaderButtons name='Logout' path='/' onClick={logout} /> : null}
                 {loggedIn ? null : <HeaderButtons name='Login' path='/login' /> }
                 {loggedIn ? null : <HeaderButtons name='Register' path='/register' />}

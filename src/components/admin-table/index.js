@@ -1,11 +1,11 @@
-import React  from 'react';
+import React from 'react';
 import styles from './index.module.css';
 
 function Table({ data }) {
-    console.log(data);
+
     const renderUser = () => {
         return data.map(line => {
-            console.log(line);
+
             const keys = Object.keys(line);
             return (
                 <div className={styles.user}>
@@ -14,7 +14,7 @@ function Table({ data }) {
                         {keys.map(key => {
                             return (
                                 <div className={styles.line}>
-                                    <p> {key} :</p> 
+                                    <p> {key} :</p>
                                     <p> {line[`${key}`]} </p>
                                 </div>
                             )

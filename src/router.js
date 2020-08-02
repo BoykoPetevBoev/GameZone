@@ -2,12 +2,12 @@ import React, { useContext } from 'react';
 import { BrowserRouter as Switch, Route, BrowserRouter } from "react-router-dom";
 
 import HomePage from './pages/home-page';
-import RegisterPage from './pages/register-page';
-import LoginPage from './pages/login-page';
+import RegisterPage from './pages/user-register-page';
+import LoginPage from './pages/user-login-page';
 import AdminPage from './pages/admin-page';
-import ProductFormPage from './pages/product-form-page';
-import UsersTable from './pages/users-table-page';
-import ProductTable from './pages/products-table-page';
+import ProductFormPage from './pages/admin-product-form';
+import UsersTable from './pages/admin-users-table';
+import ProductTable from './pages/admin-products-table';
 import ProductPage from './pages/product-page';
 import UserContext from './Context';
 

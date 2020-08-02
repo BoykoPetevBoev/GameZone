@@ -15,7 +15,7 @@ function LoginPage() {
     const context = useContext(UserContext);
     const history = useHistory();
 
-    const onSubmit = (e) => {
+    const onSubmit = async (e) => {
         e.preventDefault();
 
         if (email === '' || password === '') {
@@ -23,65 +23,69 @@ function LoginPage() {
             return;
         }
 
-        fetch('http://localhost:5000/login', {
+        const promise = await fetch('http://localhost:5000/login', {
             method: 'POST',
             body: JSON.stringify({
-                email,
-                password
+                email, password
             }),
             headers: {
                 'Content-Type': 'application/json'
             }
         })
-            .then(promise => {
-                if (promise.ok) {
-                    const token = promise.headers.get('Authorization');
-                    document.cookie = `GameZoneToken=${token}`;
-                    return promise.json();
-                }
-                else {
-                    setErr('Invalid email or password!');
-                    return;
-                }
-            })
-            .then(data => {
-                const user = {
-                    email: data.email,
-                    id: data._id
-                }
-                context.login(user);
-                history.push('/');
-            })
-            .catch(error => console.log(error))
-    }
+        const data = await promise.json();
 
-    return (
-        <div className={styles.background}>
-            <Header />
-            <FormHolder className='login' title="Welcome Back!">
-                <form onSubmit={onSubmit}>
-                    <Input
-                        name='email'
-                        err={err}
-                        type='text'
-                        placeholder='Email'
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                    />
-                    <Input
-                        name='password'
-                        err={err ? true : false}
-                        type='password'
-                        placeholder='Password'
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                    />
-                    <SubmitButton value='LOGIN' />
-                </form>
-            </FormHolder>
-        </div>
-    )
+        if (promise.ok) {
+            const token = promise.headers.get('Authorization');
+            document.cookie = `GameZoneToken=${token}`;
+        }
+        else {
+            setErr('Invalid email or password!');
+            return;
+        }
+
+        console.log(data);
+        const user = {
+            email: data.email,
+            id: data._id
+        }
+        context.login(user);
+        history.push('/');
 }
+
+return (
+    <div className={styles.background}>
+        <Header />
+        <FormHolder className='login' title="Welcome Back!">
+            <form onSubmit={onSubmit}>
+                <Input
+                    name='email'
+                    err={err}
+                    type='text'
+                    placeholder='Email'
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                />
+                <Input
+                    name='password'
+                    err={err ? true : false}
+                    type='password'
+                    placeholder='Password'
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                />
+                <SubmitButton value='LOGIN' />
+            </form>
+        </FormHolder>
+    </div>
+)
+}
+
+export default LoginPage;
+
+
+
+
+
 
 
 // class LoginPage extends Component {
@@ -140,4 +144,3 @@ function LoginPage() {
 //     };
 // };
 
-export default LoginPage;

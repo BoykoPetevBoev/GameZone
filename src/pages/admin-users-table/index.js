@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 // import styles from './index.module.css';
 import Table from '../../components/admin-table';
+import AdminNavigation from '../../components/admin-navigation';
+
 
 class Users extends Component {
     constructor(props) {
@@ -20,13 +22,18 @@ class Users extends Component {
     }
     render() {
         const { users } = this.state
-        if(users.length === 0){
+        if (users.length === 0) {
             return (
-                <div></div>
+                <div>
+                    <AdminNavigation />
+                </div>
             )
         }
         return (
-            <Table data={users} />
+            <div>
+                <AdminNavigation />
+                <Table data={users} />
+            </div>
         );
     }
 }

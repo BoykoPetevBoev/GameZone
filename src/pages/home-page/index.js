@@ -10,7 +10,7 @@ function HomePage({ filter }) {
     return (
         <div>
             <Header />
-            <Menu />
+            <Menu filter={filter} />
             <Banner />
             <Products filter={filter} />
             <Footer />
