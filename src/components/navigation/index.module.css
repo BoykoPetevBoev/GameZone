@@ -109,3 +109,11 @@
 .link:active, .special-effects:active {
     color: var(--primary-bright);
 }
+.active {
+    background-color: var(--special-first);
+    color: black;
+}
+.active a {
+    background-color: var(--special-first);
+    color: black;
+}

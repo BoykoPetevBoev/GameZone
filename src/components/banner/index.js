@@ -12,7 +12,7 @@ class Banner extends Component {
                     <p>The Roccat Vulcan 120 AIMO is one of the best gaming keyboard we’ve ever used. </p>
                     <p>It’s a joy to game and type on, and it has a stunning design that proves that proves that</p>
                     <p>gaming peripherals can be stylish as well. ...</p>
-                    <Link to="/" className={styles.btn}>LEARN MORE</Link>
+                    <Link to="/keyboard/5f1f3395ced3453bf8ee3a8e" className={styles.btn}>LEARN MORE</Link>
                 </div>
 
                 <div className={styles.element}>

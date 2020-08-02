@@ -1,7 +1,9 @@
 .conteiner {
-    width: 300px;
-    background-color: black;
-    position: fixed;
+    width: 15%;
+    background-color: var(--primary-dark);
+    display: inline-block;
+    min-height: 100%;
+    vertical-align: top;
 }
 
 .conteiner ul {
@@ -11,19 +13,19 @@
 
 .conteiner ul li {
     width: 100%;
-    background-color: var(--secondary-color);
+    background-color: gainsboro;
     margin-bottom: 2px;
     text-align: center;
 }
 
 .conteiner ul li:hover {
-    border-bottom: solid 2px var(--special-color);
+    background-color: var(--special-first);
 }
 
 .link {
     display: block;
     width: 100%;
     height: 100%;
-    color: var(--special-color);
+    color: black;
     padding: 20px 0;
 }

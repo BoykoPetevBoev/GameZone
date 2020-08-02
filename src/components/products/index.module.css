@@ -22,10 +22,11 @@
     text-align: center;
     transition: 1s ease;
     margin-bottom: 20px;
+    border-bottom: solid 2px var(--primary-bright);
 }
 
 .product:hover {
-    border: solid 2px  var(--primary-bright);
+    border: solid 2px  var(--special-second);
 }
 
 .image {
@@ -70,7 +71,7 @@
     background-color: var(--special-color);
     background: rgb(58, 198, 234);
     background: linear-gradient(90deg, black 20%, rgba(58, 198, 234, 1) 50%, black 80%);
-    /* border: solid 2px black; */
+    
     /* margin-bottom: 50px; */
 }
 
@@ -78,7 +79,7 @@
     background: none;
     background-color: var(--special-second);
     background: linear-gradient(90deg, black 20%, var(--special-second) 50%, black 80%);
-    /* color: var(--primary-bright); */
+    color: var(--primary-bright);
 }
 
 .category {

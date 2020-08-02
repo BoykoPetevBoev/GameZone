@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 // import styles from './index.module.css';
 import Table from '../../components/admin-table';
+import AdminNavigation from '../../components/admin-navigation';
 
 class Products extends Component {
     constructor(props) {
@@ -19,13 +20,18 @@ class Products extends Component {
     }
     render() {
         const { products } = this.state
-        if(products.length === 0){
+        if (products.length === 0) {
             return (
-                <div></div>
+                <div>
+                    <AdminNavigation />
+                </div>
             )
         }
         return (
-            <Table data={products} />
+            <div>
+                <AdminNavigation />
+                <Table data={products} />
+            </div>
         );
     }
 }
