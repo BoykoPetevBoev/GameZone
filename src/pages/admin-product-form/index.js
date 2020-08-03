@@ -1,8 +1,11 @@
-import React, { Component,  useState, useContext } from 'react';
+import React, { Component, useState, useContext } from 'react';
 import styles from './index.module.css';
 import Navigation from '../../components/admin-navigation';
 import SubmitBitton from '../../components/user-submit-button';
 import Input from '../../components/user-input';
+import ImageHolder from '../../components/product-images';
+import ProductImages from '../../components/product-images';
+import ProductInfo from '../../components/product-info';
 
 function Product() {
     const [category, setCategory] = useState('');
@@ -10,7 +13,9 @@ function Product() {
     const [model, setModel] = useState('');
     const [price, setPrice] = useState('');
     const [description, setDescription] = useState('');
+    const [image, setImage] = useState('');
     const [images, setImages] = useState([]);
+    const [characteristic, setCharacteristic] = useState('');
     const [characteristics, setCharacteristics] = useState([]);
 
     const [categoryError, setCategoryError] = useState(null);
@@ -21,43 +26,114 @@ function Product() {
     const [imagesError, setImagesError] = useState(null);
     const [characteristicsError, setCharacteristicsError] = useState(null);
 
+    const addNewImage = () => {
+        if (!image) {
+            return;
+        }
+        const array = [...images, image];
+        setImages(array);
+        setImage('');
+        console.log(images);
+    }
+    const addNewCharacteristic = () => {
+        console.log(characteristics);
+        if (!characteristic || !characteristic.includes('-')) {
+            return;
+        }
+
+        const array = [...characteristics, characteristic.split('-')];
+        setCharacteristics(array);
+        setCharacteristic('');
+    }
+
     return (
         <div>
             <Navigation />
             <div className={styles.container}>
+                <div>
 
-                <div className={styles['pic-holder']}>
-                    <div className={styles['image-holder']}>
-                        {/* <img src={product.firstImage} alt='' /> */}
+                    <div>
+
+                        <select name="category" value={category}>
+                            <option value=''>Choose a category</option>
+                            <option value="mouse">Mouse</option>
+                            <option value="keyboard">Keyboard</option>
+                            <option value="headset">Headset</option>
+                            <option value="mousepad">Mousepad</option>
+                            <option value="accessoaries">Accessoaries</option>
+                        </select>
+
+                        <input
+                            name='brand'
+                            className={styles['product-name']}
+                            type='text'
+                            placeholder='Brand...'
+                            value={brand}
+                            onChange={(e) => setBrand(e.target.value)}
+                        >
+                        </input>
+                        <input
+                            name='model'
+                            className={styles['product-name']}
+                            type='text'
+                            placeholder='Model...'
+                            value={model}
+                            onChange={(e) => setModel(e.target.value)}
+                        >
+                        </input>
+                        <input
+                            name='price'
+                            className={styles['product-name']}
+                            type='text'
+                            placeholder='Price...'
+                            value={price}
+                            onChange={(e) => setPrice(e.target.value)}
+                        >
+                        </input>
                     </div>
+
+                    <div>
+                        <input
+                            name='image'
+                            className={styles['product-img-input']}
+                            type='text'
+                            placeholder='Image URL...'
+                            value={image}
+                            onChange={(e) => setImage(e.target.value)}
+                        ></input>
+                        <button onClick={addNewImage} className={styles['product-img-button']}>ADD</button>
+                    </div>
+
+                    <div>
+                        <input
+                            name='characteristic'
+                            className={styles['product-img-input']}
+                            type='text'
+                            placeholder='characteristic...'
+                            value={characteristic}
+                            onChange={(e) => setCharacteristic(e.target.value)}
+                        ></input>
+                        <button onClick={addNewCharacteristic} className={styles['product-img-button']}>ADD</button>
+                    </div>
+
+                    <textarea
+                        placeholder="Description..."
+                        name="description"
+                        onChange={(e) => setDescription(e.target.value)}
+                        value={description}
+                        className={styles.textarea}
+                    ></textarea>
+
+
                 </div>
 
-                <div className={styles['info-holder']}>
-                    <input
-                        name='brand'
-                        className={styles['product-name']}
-                        type='text'
-                        placeholder='Brand'
-                        value={brand}
-                        onChange={(e) => setBrand(e.target.value)}
-                    >
-                    </input>
-                    <input
-                        name='model'
-                        className={styles['product-name']}
-                        type='text'
-                        placeholder='Model'
-                        value={model}
-                        onChange={(e) => setModel(e.target.value)}
-                    >
-                    </input>
-
-                    {/* <p className={styles['product-name']}>{product.brand} {product.model}</p>
-                    <p>{product.details}</p>
-                    <p className={styles['product-price']}>${product.price}</p>
-                    <Link className={styles['add-to-cart']} to="/">ADD TO CART</Link> */}
-                </div>
-
+                <ProductImages images={images} />
+                <ProductInfo
+                    brand={brand}
+                    model={model}
+                    description={description}
+                    price={price}
+                />
             </div>
         </div>
     )
