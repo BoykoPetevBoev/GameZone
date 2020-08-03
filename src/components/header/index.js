@@ -12,7 +12,6 @@ function Header() {
     const logout = () => {
         context.logout();
         history.push('/');
-        console.log('I have finished!');
     }
 
     return (
