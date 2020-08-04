@@ -8,4 +8,32 @@
     height: 100%;
     margin: 0;
 }
+.form {
+    margin-bottom: 10px;
+    height: 100px;
+}
+.form-elements {
+    display: inline-block;
+    width: 30%;
+    height: 100%;
+    vertical-align: top;
+}
 
+.form-elements textarea {
+    height: 90%;
+    width: 90%;
+    overflow: scroll;
+    resize: none;
+}   
+
+.submit-btn-holder {
+    margin-top: 5%;
+}
+.submit-btn-holder button {
+    width: 50%;
+    background-color: var(--special-second);
+    color: black;
+}
+.form input::placeholder, .form textarea::placeholder {
+    color: var(--special-second);
+}

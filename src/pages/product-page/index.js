@@ -28,12 +28,13 @@ function Product(props) {
             <Header />
             <Menu />
             <div className={styles.container}>
-                <ProductImages images={[product.firstImage, product.secondImage]} />
+                <ProductImages images={product.images ? product.images : [product.firstImage, product.secondImage]} />
                 <ProductInfo
                     brand={product.brand}
                     model={product.model}
-                    details={product.details}
+                    description={product.description}
                     price={product.price}
+                    characteristics={product.characteristics}
                 />
                 <Link className={styles['add-to-cart']} to="/">ADD TO CART</Link>
             </div>

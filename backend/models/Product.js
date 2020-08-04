@@ -18,18 +18,18 @@ const ProductSchema = new Schema({
         required: true,
         type: String
     },
-    firstImage: {
+    images: [{
+        required: true,
+        type: String
+    }],
+    description: {
         required: true,
         type: String
     },
-    secondImage: {
+    characteristics: [{
         required: true,
-        type: String
-    },
-    details: {
-        required: true,
-        type: String
-    },
+        type: Array
+    }]
 });
 
 module.exports = mongoose.model('Product', ProductSchema)
