@@ -6,10 +6,16 @@ const ProductInfo = ({ brand, model, details, price, description, characteristic
     return (
         <div className={styles['info-holder']}>
             <p className={styles['product-name']}>{brand} {model}</p>
-            <p>{details}</p>
-            <p>{description}</p>
-            <Table characteristics={characteristics} />
             <p className={styles['product-price']}>${price}</p>
+            <div>
+                <h4>DESCRIPTION</h4>
+                <p>{details}</p>
+                <p>{description}</p>
+            </div>
+            <div>
+                <h4>SPECIFICATIONS</h4>
+                <Table characteristics={characteristics} />
+            </div>
         </div>
     );
 };

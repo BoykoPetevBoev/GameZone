@@ -10,7 +10,7 @@
     background-color: var(--primary-bright);
 }
 
-.container::-webkit-scrollbar, .container::-webkit-scrollbar {
+.container::-webkit-scrollbar {
     display: none;
 }
 
