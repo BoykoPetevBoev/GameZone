@@ -1,16 +1,19 @@
 const Product = require('../models/Product');
 
 async function addProduct(req, res, next) {
-    const { category, brand, model, firstImage, secondImage, details } = req.body;
+    console.log(req.body);
+
+    const { category, brand, model, images, description, characteristics } = req.body;
     const price = Number(req.body.price).toFixed(2);
+
     const product = new Product({
         category,
         brand,
         model,
         price,
-        firstImage,
-        secondImage,
-        details
+        images,
+        description,
+        characteristics
     })
     await product.save();
 

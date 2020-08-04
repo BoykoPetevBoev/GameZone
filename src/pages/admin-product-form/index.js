@@ -3,28 +3,20 @@ import styles from './index.module.css';
 import Navigation from '../../components/admin-navigation';
 import SubmitBitton from '../../components/user-submit-button';
 import Input from '../../components/user-input';
-import ImageHolder from '../../components/product-images';
 import ProductImages from '../../components/product-images';
 import ProductInfo from '../../components/product-info';
 
-function Product() {
+function Product(props) {
     const [category, setCategory] = useState('');
     const [brand, setBrand] = useState('');
     const [model, setModel] = useState('');
-    const [price, setPrice] = useState('');
+    const [price, setPrice] = useState(0);
     const [description, setDescription] = useState('');
     const [image, setImage] = useState('');
     const [images, setImages] = useState([]);
     const [characteristic, setCharacteristic] = useState('');
     const [characteristics, setCharacteristics] = useState([]);
-
-    const [categoryError, setCategoryError] = useState(null);
-    const [brandError, setBrandError] = useState(null);
-    const [modelError, setModelError] = useState(null);
-    const [priceError, setPriceError] = useState(null);
-    const [descriptionError, setDescriptionError] = useState(null);
-    const [imagesError, setImagesError] = useState(null);
-    const [characteristicsError, setCharacteristicsError] = useState(null);
+    const [error, setError] = useState(null);
 
     const addNewImage = () => {
         if (!image) {
@@ -33,98 +25,166 @@ function Product() {
         const array = [...images, image];
         setImages(array);
         setImage('');
-        console.log(images);
     }
+
     const addNewCharacteristic = () => {
-        console.log(characteristics);
         if (!characteristic || !characteristic.includes('-')) {
             return;
         }
-
         const array = [...characteristics, characteristic.split('-')];
         setCharacteristics(array);
         setCharacteristic('');
+    }
+
+    const validateForm = () => {
+        setError(null);
+        if (category === '') {
+            setError('Invalid category!');
+        }
+        else if (brand === '') {
+            setError('Brand name is required!');
+        }
+        else if (model === '') {
+            setError('Model name is required!');
+        }
+        else if (price === '' || isNaN(Number(price))) {
+            setError('Price must be a number!');
+        }
+        else if (images.length === 0) {
+            setError('There is no images!');
+        }
+        else if (description === '' || description.length < 10) {
+            setError('Description must be at least 10 characters long!');
+        }
+        else if (characteristics.length === 0) {
+            setError('There is no characteristics!')
+        }
+    }
+    const formHandler = async () => {
+        const product = {
+            category,
+            brand,
+            model,
+            price,
+            description,
+            images,
+            characteristics
+        }
+        const url = 'http://localhost:5000/add-product';
+        const response = await fetch(url, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(product)
+        });
+        console.log(response);
+        props.history.push('/');
+    }
+    const onSubmit = (e) => {
+        e.preventDefault();
+        validateForm();
+        if (!error) {
+            formHandler();
+        }
     }
 
     return (
         <div>
             <Navigation />
             <div className={styles.container}>
+                <form className={styles.form} onSubmit={onSubmit}>
+
+                    <div className={styles['form-elements']}>
+
+                        <div>
+                            <select name="category" onChange={(e) => setCategory(e.target.value)} value={category}>
+                                <option value=''>Choose a category</option>
+                                <option value="mouse">Mouse</option>
+                                <option value="keyboard">Keyboard</option>
+                                <option value="headset">Headset</option>
+                                <option value="mousepad">Mousepad</option>
+                                <option value="accessoaries">Accessoaries</option>
+                            </select>
+                        </div>
+                        <div>
+
+                            <input
+                                name='brand'
+                                className={styles['product-name']}
+                                type='text'
+                                placeholder='Brand...'
+                                value={brand}
+                                onChange={(e) => setBrand(e.target.value)}
+                            >
+                            </input>
+                        </div>
+                        <div>
+                            <input
+                                name='model'
+                                className={styles['product-name']}
+                                type='text'
+                                placeholder='Model...'
+                                value={model}
+                                onChange={(e) => setModel(e.target.value)}
+                            >
+                            </input>
+                        </div>
+                        <div>
+                            <input
+                                name='price'
+                                className={styles['product-name']}
+                                type='text'
+                                placeholder='Price...'
+                                value={price}
+                                onChange={(e) => setPrice(e.target.value)}
+                            >
+                            </input>
+                        </div>
+                    </div>
+
+                    <div className={styles['form-elements']}>
+
+                        <div>
+                            <input
+                                name='image'
+                                className={styles['product-img-input']}
+                                type='text'
+                                placeholder='Image URL...'
+                                value={image}
+                                onChange={(e) => setImage(e.target.value)}
+                            ></input>
+                            <button onClick={addNewImage} className={styles['product-img-button']}>ADD</button>
+                        </div>
+
+                        <div>
+                            <input
+                                name='characteristic'
+                                className={styles['product-img-input']}
+                                type='text'
+                                placeholder='Characteristic...'
+                                value={characteristic}
+                                onChange={(e) => setCharacteristic(e.target.value)}
+                            ></input>
+                            <button onClick={addNewCharacteristic} className={styles['product-img-button']}>ADD</button>
+                        </div>
+                        <div className={styles['submit-btn-holder']}>
+                            <button type='submit'>Submit</button>
+                        </div>
+                    </div>
+
+                    <div className={styles['form-elements']}>
+                        <textarea
+                            placeholder="Description..."
+                            name="description"
+                            onChange={(e) => setDescription(e.target.value)}
+                            value={description}
+                            className={styles.textarea}
+                        ></textarea>
+                    </div>
+                </form>
                 <div>
-
-                    <div>
-
-                        <select name="category" value={category}>
-                            <option value=''>Choose a category</option>
-                            <option value="mouse">Mouse</option>
-                            <option value="keyboard">Keyboard</option>
-                            <option value="headset">Headset</option>
-                            <option value="mousepad">Mousepad</option>
-                            <option value="accessoaries">Accessoaries</option>
-                        </select>
-
-                        <input
-                            name='brand'
-                            className={styles['product-name']}
-                            type='text'
-                            placeholder='Brand...'
-                            value={brand}
-                            onChange={(e) => setBrand(e.target.value)}
-                        >
-                        </input>
-                        <input
-                            name='model'
-                            className={styles['product-name']}
-                            type='text'
-                            placeholder='Model...'
-                            value={model}
-                            onChange={(e) => setModel(e.target.value)}
-                        >
-                        </input>
-                        <input
-                            name='price'
-                            className={styles['product-name']}
-                            type='text'
-                            placeholder='Price...'
-                            value={price}
-                            onChange={(e) => setPrice(e.target.value)}
-                        >
-                        </input>
-                    </div>
-
-                    <div>
-                        <input
-                            name='image'
-                            className={styles['product-img-input']}
-                            type='text'
-                            placeholder='Image URL...'
-                            value={image}
-                            onChange={(e) => setImage(e.target.value)}
-                        ></input>
-                        <button onClick={addNewImage} className={styles['product-img-button']}>ADD</button>
-                    </div>
-
-                    <div>
-                        <input
-                            name='characteristic'
-                            className={styles['product-img-input']}
-                            type='text'
-                            placeholder='characteristic...'
-                            value={characteristic}
-                            onChange={(e) => setCharacteristic(e.target.value)}
-                        ></input>
-                        <button onClick={addNewCharacteristic} className={styles['product-img-button']}>ADD</button>
-                    </div>
-
-                    <textarea
-                        placeholder="Description..."
-                        name="description"
-                        onChange={(e) => setDescription(e.target.value)}
-                        value={description}
-                        className={styles.textarea}
-                    ></textarea>
-
-
+                    {
+                        error ? <p>{error}</p> : null
+                    }
                 </div>
 
                 <ProductImages images={images} />
@@ -132,6 +192,7 @@ function Product() {
                     brand={brand}
                     model={model}
                     description={description}
+                    characteristics={characteristics}
                     price={price}
                 />
             </div>

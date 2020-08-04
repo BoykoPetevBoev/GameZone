@@ -13,7 +13,6 @@ import UserContext from './Context';
 
 function App() {
   const { loggedIn } = useContext(UserContext)
-  console.log('TEST');
   return (
     <BrowserRouter>
       <Switch>

@@ -6,9 +6,9 @@ function ImageHolder(props) {
     return (
         <div className={styles.container}>
             {
-                props.images.map(image => {
+                props.images.map((image, index) => {
                     return (
-                        <div className={styles['image-holder']}>
+                        <div key={index} className={styles['image-holder']}>
                             <img src={image} alt='' />
                         </div>
                     )
