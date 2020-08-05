@@ -24,10 +24,10 @@ function Product(props) {
     }
 
     return (
-        <div>
+        <div className={styles.container}>
             <Header />
             <Menu />
-            <div className={styles.container}>
+            <div className={styles['product-wraper']}>
                 <ProductImages images={product.images ? product.images : [product.firstImage, product.secondImage]} />
                 <ProductInfo
                     brand={product.brand}

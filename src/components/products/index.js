@@ -2,23 +2,32 @@ import React, { Component, useState, useEffect } from 'react';
 import styles from './index.module.css';
 import { Link } from 'react-router-dom';
 
-function Products(props) {
+function Products({ filter }) {
     const [products, setProducts] = useState([]);
-    const [filter, setFilter] = useState(props.filter);
+    const [categoty, setCategoty] = useState(filter);
 
     useEffect(() => {
         getProducts();
+        setCategoty(filter)
     }, []);
 
     const getProducts = async () => {
         const promise = await fetch('http://localhost:5000/get-products');
         const data = await promise.json();
- 
-        filter
-            ? setProducts(data.filter(obj => obj.category === filter))
-            : setProducts(data)
-    }
+        console.log(categoty)
 
+        if (categoty) {
+            const filtered = data.filter(obj => obj.category === categoty)
+            setProducts(filtered);
+        }
+        else {
+            setProducts(data)
+        }
+        // filter
+        //     ? setProducts(data.filter(obj => obj.category === filter))
+        //     : setProducts(data)
+    }
+    
     const renderProducts = () => {
         return products.map((product) => {
             const path = `/${product.category}/${product._id}`

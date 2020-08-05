@@ -5,7 +5,7 @@ import Header from '../../components/header';
 
 function AdminPage() {
     return (
-        <div className={styles.conteiner}>
+        <div className={styles.container}>
             <Header />
             <Navigation />
             <div className={styles.main}>
