@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { BrowserRouter as Switch, Route, BrowserRouter } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 import HomePage from './pages/home-page';
 import RegisterPage from './pages/user-register-page';
@@ -9,12 +9,15 @@ import ProductFormPage from './pages/admin-product-form';
 import UsersTable from './pages/admin-users-table';
 import ProductTable from './pages/admin-products-table';
 import ProductPage from './pages/product-page';
+import ErrorPage from './pages/error-page';
+
 import UserContext from './Context';
 
 function App() {
   const { loggedIn } = useContext(UserContext)
   return (
-    <BrowserRouter>
+
+    <Router>
       <Switch>
 
         <Route exact path='/'>
@@ -22,13 +25,13 @@ function App() {
         </Route>
 
         <Route exact path='/login'>
-          {loggedIn ? <HomePage /> : <LoginPage />}
+          {loggedIn ? <ErrorPage /> : <LoginPage />}
         </Route>
 
         <Route exact path='/register'>
-          {loggedIn ? <HomePage /> : <RegisterPage />}
+          {loggedIn ? <ErrorPage /> : <RegisterPage />}
         </Route>
-        
+
         <Route exact path='/admin' component={AdminPage} />
         <Route exact path='/admin/form' component={ProductFormPage} />
         <Route exact path='/admin/users' component={UsersTable} />
@@ -60,8 +63,9 @@ function App() {
         <Route exact path='/mousepad/:id' component={ProductPage} />
         <Route exact path='/accessory/:id' component={ProductPage} />
 
+        <Route component={ErrorPage} />
       </Switch>
-    </BrowserRouter>
+    </Router>
   );
 }
 
