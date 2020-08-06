@@ -32,7 +32,7 @@ function LoginPage() {
                 'Content-Type': 'application/json'
             }
         })
-        const data = await promise.json();
+        const user = await promise.json();
 
         if (promise.ok) {
             const token = promise.headers.get('Authorization');
@@ -43,11 +43,6 @@ function LoginPage() {
             return;
         }
 
-        console.log(data);
-        const user = {
-            email: data.email,
-            id: data._id
-        }
         context.login(user);
         history.push('/');
 }

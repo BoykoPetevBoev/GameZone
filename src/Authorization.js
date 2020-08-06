@@ -27,10 +27,7 @@ function Authorization(props) {
             return promise.json();
         }).then(res => {
                 res.status
-                    ? login({
-                        email: res.user.email,
-                        id: res.user._id
-                    })
+                    ? login(res.user)
                     : logout()
             })
             .catch(err => console.log(err))
