@@ -3,7 +3,7 @@
 }
 
 .user {
-    padding-bottom: 5%;
+    padding-bottom: 3%;
 }
 
 .welcome {
@@ -58,4 +58,13 @@
 
 .history {
     margin-left: 1%;
+}
+.tr th {
+    text-align: right;
+    padding: 0 10px;
+    font-weight: 500;
+}
+.tr td {
+    text-align: left;
+    padding: 0 10px;
 }
