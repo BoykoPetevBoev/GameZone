@@ -72,12 +72,7 @@ function RegisterPage() {
                 }
                 return promise.json();
             })
-            .then(data => {
-                console.log(data)
-                const user = {
-                    email: data.email,
-                    id: data._id
-                }
+            .then(user => {
                 context.login(user);
                 history.push('/');
             })

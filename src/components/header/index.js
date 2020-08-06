@@ -29,7 +29,7 @@ function Header() {
             </div>
 
             <div className={styles.container}>
-                {loggedIn ? <HeaderButtons name='Profile' path='/' /> : null}
+                {loggedIn ? <HeaderButtons name='Profile' path='/profile' /> : null}
                 {loggedIn ? <HeaderButtons name='Logout' path='/' onClick={logout} /> : null}
                 {loggedIn ? null : <HeaderButtons name='Login' path='/login' /> }
                 {loggedIn ? null : <HeaderButtons name='Register' path='/register' />}

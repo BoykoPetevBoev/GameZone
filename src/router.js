@@ -10,6 +10,7 @@ import UsersTable from './pages/admin-users-table';
 import ProductTable from './pages/admin-products-table';
 import ProductPage from './pages/product-page';
 import ErrorPage from './pages/error-page';
+import UserPage from './pages/user-profile-page';
 
 import UserContext from './Context';
 
@@ -32,11 +33,6 @@ function App() {
           {loggedIn ? <ErrorPage /> : <RegisterPage />}
         </Route>
 
-        <Route exact path='/admin' component={AdminPage} />
-        <Route exact path='/admin/form' component={ProductFormPage} />
-        <Route exact path='/admin/users' component={UsersTable} />
-        <Route exact path='/admin/products' component={ProductTable} />
-
         <Route exact path='/mouse'>
           <HomePage filter='mouse' />
         </Route>
@@ -56,6 +52,12 @@ function App() {
         <Route exact path='/accessory' >
           <HomePage filter='accessory' />
         </Route>
+
+        <Route exact path='/admin' component={AdminPage} />
+        <Route exact path='/admin/form' component={ProductFormPage} />
+        <Route exact path='/admin/users' component={UsersTable} />
+        <Route exact path='/admin/products' component={ProductTable} />
+        <Route exact path='/profile' component={UserPage} />
 
         <Route exact path='/mouse/:id' component={ProductPage} />
         <Route exact path='/keyboard/:id' component={ProductPage} />
