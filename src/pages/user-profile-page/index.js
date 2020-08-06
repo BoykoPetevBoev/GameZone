@@ -28,23 +28,23 @@ function UserPage(props) {
                     <p>Account</p>
                     <table className={styles.table}>
                         <tbody>
-                            <tr>
+                            <tr className={styles.tr}>
                                 <th>FIRST NAME:</th>
                                 <td>{context.user.firstName}</td>
                             </tr>
-                            <tr>
+                            <tr className={styles.tr}>
                                 <th>LAST NAME:</th>
                                 <td>{context.user.lastName}</td>
                             </tr>
-                            <tr>
+                            <tr className={styles.tr}>
                                 <th>EMAIL:</th>
                                 <td>{context.user.email}</td>
                             </tr>
-                            <tr>
+                            <tr className={styles.tr}>
                                 <th>PHONE:</th>
                                 <td>{context.user.phone}</td>
                             </tr>
-                            <tr>
+                            <tr className={styles.tr}>
                                 <th>ADDRESS:</th>
                                 <td>{context.user.address}</td>
                             </tr>
