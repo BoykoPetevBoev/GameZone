@@ -27,31 +27,31 @@ function Products({ filter }) {
         //     ? setProducts(data.filter(obj => obj.category === filter))
         //     : setProducts(data)
     }
-    
+
     const renderProducts = () => {
         return products.map((product) => {
             const path = `/${product.category}/${product._id}`
             return (
                 <div key={product._id} className={styles.product}>
 
-                    <div className={styles.category}>
-                        <p>{product.category}</p>
-                    </div>
+                    <Link className={styles.link} to={path}>
 
-                    <div className={styles.image}>
-                        <img src={product.images ? product.images[0] : product.firstImage} alt="NoImage" />
-                    </div>
+                        <div className={styles.category}>
+                            <p>{product.category}</p>
+                        </div>
 
-                    <div className={styles.title}>
-                        <p> <b>{product.brand} {product.model}</b></p>
-                    </div>
-                    <div className={styles.price}>
-                        <p>${product.price}</p>
-                    </div>
+                        <div className={styles.image}>
+                            <img src={product.images ? product.images[0] : product.firstImage} alt="NoImage" />
+                        </div>
 
-                    <div className={styles.buttons}>
-                        <Link className={styles.btnSave} to={path}>LEARN MORE</Link>
-                    </div>
+                        <div className={styles.title}>
+                            <p> <b>{product.brand} {product.model}</b></p>
+                        </div>
+                        <div className={styles.price}>
+                            <p>${product.price}</p>
+                        </div>
+
+                    </Link>
                 </div>
             )
         })
