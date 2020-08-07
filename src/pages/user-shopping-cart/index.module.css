@@ -1,0 +1,54 @@
+.container {
+    text-align: center;
+}
+
+.your-cart, .cart, .order {
+    background-color: white;
+    box-shadow: 0 0 5px black;
+    margin: auto;
+    width: 72%;
+}
+.cart {
+    display: inline-block;
+    width: 50%;
+    margin-right: 1%;
+}
+.order {
+    display: inline-block;
+    vertical-align: top;
+    height: 500px;
+    width: 20%;
+    background-color: black;
+    margin-left: 1%;
+}
+
+.your-cart {
+    height: 50px;
+    margin-top: 5%;
+    margin-bottom: 2%;
+}
+
+.your-cart p {
+    font-size: x-large;
+}
+
+.image-holder, .price-holder {
+    vertical-align: top;
+    display: inline-block;
+    height: 100px;
+    width: 100px;
+}
+.price-holder {
+    padding-top: 30px;
+    height: 70px;
+}
+
+.price {
+    width: 100px;
+    margin: 0;
+}
+
+.img {
+    max-width: 100px;
+    max-height: 100px;
+}

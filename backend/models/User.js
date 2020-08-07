@@ -30,7 +30,11 @@ const UserSchema = new Schema({
     shoppingCart: [{
         type: Schema.Types.ObjectId,
         ref: 'Product'
-    }]
+    }],
+    wishlist: [{
+        type: Schema.Types.ObjectId,
+        ref: 'Product'
+    }],
 })
 
 module.exports = mongoose.model('User', UserSchema);

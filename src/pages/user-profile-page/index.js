@@ -7,7 +7,16 @@ import UserContext from '../../Context';
 function UserPage(props) {
     const context = useContext(UserContext);
 
-    console.log(context.user);
+    console.log(context);
+
+    if(!context){
+        return (
+            <div>
+                LOADING...
+            </div>
+        )
+    }
+
 
     // address: ""
     // email: "boyko@boev.com"

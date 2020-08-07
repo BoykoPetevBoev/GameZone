@@ -29,8 +29,10 @@ function Header() {
             </div>
 
             <div className={styles.container}>
+                {loggedIn ? <HeaderButtons name='Cart' path='/shopping-cart' /> : null}
+                {loggedIn ? <HeaderButtons name='Wishlist' path='/wishlist' /> : null}
                 {loggedIn ? <HeaderButtons name='Profile' path='/profile' /> : null}
-                {loggedIn ? <HeaderButtons name='Logout' path='/' onClick={logout} /> : null}
+                {/* {loggedIn ? <HeaderButtons name='Logout' path='/' onClick={logout} /> : null} */}
                 {loggedIn ? null : <HeaderButtons name='Login' path='/login' /> }
                 {loggedIn ? null : <HeaderButtons name='Register' path='/register' />}
             </div>
