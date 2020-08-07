@@ -40,7 +40,7 @@ async function verifyLogin(req, res, next) {
     const token = req.headers.authorization || '';
     const tokenStatus = await authHandler.verifyToken(token);
     if (tokenStatus) {
-        const user = await User.findById(tokenStatus.id)
+        const user = await User.findById(tokenStatus.id).populate('shoppingCart')
         return res.send({
             status: true,
             user
@@ -56,10 +56,18 @@ async function getUsers(req, res, next) {
     res.send(data)
 }
 
+async function updateShoppingCart(req, res, next) {
+    const user = req.body;
+    await User.findByIdAndUpdate(user._id, { shoppingCart: user.shoppingCart });
+    res.status(200);
+    res.end();
+}
+
 
 module.exports = {
     userRegister,
     getUsers,
     userLogin,
-    verifyLogin
+    verifyLogin,
+    updateShoppingCart
 }

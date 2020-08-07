@@ -1,4 +1,5 @@
-import React, { Component, useState, useEffect } from 'react';
+import React, { Component, useState, useEffect, useContext } from 'react';
+import { Redirect } from 'react-router'
 import { Link } from 'react-router-dom';
 import styles from './index.module.css';
 
@@ -6,11 +7,13 @@ import Header from '../../components/header';
 import Menu from '../../components/navigation';
 import ProductImages from '../../components/product-images';
 import ProductInfo from '../../components/product-info';
+import UserContext from '../../Context';
 
 function Product(props) {
 
     const [product, setProduct] = useState({});
     const [id, setId] = useState(props.match.params.id);
+    const context = useContext(UserContext)
 
     useEffect(() => {
         getData();
@@ -21,6 +24,20 @@ function Product(props) {
         const data = await promise.json();
         const [productInfo] = data.filter(obj => obj._id === id);
         setProduct(productInfo);
+    }
+
+    const addToCart = () => {
+        if (!context.loggedIn) {
+            return props.history.push('/register');
+        }
+        context.user.shoppingCart.push(product._id);
+        fetch('http://localhost:5000/update-shopping-cart', {
+            method: 'PUT',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(context.user)
+        })
     }
 
     return (
@@ -36,7 +53,8 @@ function Product(props) {
                     price={product.price}
                     characteristics={product.characteristics}
                 />
-                <Link className={styles['add-to-cart']} to="/">ADD TO CART</Link>
+                <Link onClick={addToCart} className={styles['add-to-cart']} to="/">ADD TO CART</Link>
+                {/* <Link className={styles['favourite']} to="/">ADD TO FAVOURITE</Link> */}
             </div>
         </div>
     );

@@ -11,6 +11,7 @@ import ProductTable from './pages/admin-products-table';
 import ProductPage from './pages/product-page';
 import ErrorPage from './pages/error-page';
 import UserPage from './pages/user-profile-page';
+import ShoppingCart from './pages/user-shopping-cart';
 
 import UserContext from './Context';
 
@@ -58,6 +59,7 @@ function App() {
         <Route exact path='/admin/users' component={UsersTable} />
         <Route exact path='/admin/products' component={ProductTable} />
         <Route exact path='/profile' component={UserPage} />
+        <Route exact path='/shopping-cart' component={ShoppingCart} />
 
         <Route exact path='/mouse/:id' component={ProductPage} />
         <Route exact path='/keyboard/:id' component={ProductPage} />
