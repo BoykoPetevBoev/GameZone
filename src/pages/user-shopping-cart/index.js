@@ -1,6 +1,7 @@
 import React, { useContext, useState, useEffect } from 'react';
 import styles from './index.module.css';
 import Header from '../../components/header';
+import Footer from '../../components/footer';
 import UserContext from '../../Context';
 
 
@@ -11,12 +12,35 @@ function ShoppingCart(props) {
     useEffect(() => {
         setCart(context.user.shoppingCart)
     }, [])
-    console.log(context.user.shoppingCart)
+
+    const totalPrice = () => {
+        return cart.reduce((acc, cur) => {
+            return acc += Number(cur.price)
+        }, 0)
+    }
+
+    const removeItem = (e) => {
+        const id = e.target.value;
+        const arr = cart.slice(0);
+        const index = cart.findIndex(el => el._id === id);
+        arr.splice(index, 1);
+
+        setCart(arr);
+        context.user.shoppingCart = arr;
+
+        fetch('http://localhost:5000/update-shopping-cart', {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(context.user)
+        })
+    }
 
     const showItems = () => {
-        return cart.map(item => {
+        return cart.map((item, index) => {
             return (
-                <div className={styles.product}>
+                <div key={index} className={styles.product}>
 
                     <div className={styles['image-holder']}>
                         <img className={styles.img} src={item.firstImage} />
@@ -31,7 +55,7 @@ function ShoppingCart(props) {
                     </div>
 
                     <div className={styles['button-holder']}>
-                        <button>✕</button>
+                        <button className={styles.button} value={item._id} onClick={removeItem} >✕</button>
                     </div>
                 </div>
             )
@@ -45,15 +69,31 @@ function ShoppingCart(props) {
                 <p>YOUR CART ({cart.length})</p>
             </div>
             <div>
-
+        
                 <div className={styles.cart}>
                     {showItems()}
                 </div>
                 <div className={styles.order}>
+                    <p className={styles.heading}>SUMMARY</p>
+                    <div className={styles['order-info']}>
+
+                        <p>Subtotal:</p>
+                        <p>${totalPrice()}</p>
+
+                        <p>Shipping:</p>
+                        <p>FREE</p>
+                    </div>
+                    <div className={styles['total-price']}>
+                        <p>TOTAL: </p>
+                        <p>${totalPrice()}</p>
+                    </div>
+
+                    <button className={styles.checkout}>CHECKOUT</button>
 
                 </div>
             </div>
 
+            <Footer />
         </div>
     );
 }

@@ -5,7 +5,7 @@ const authHandler = require('../utils/authHandler');
 async function userLogin(req, res, next) {
     const { email, password } = req.body;
 
-    const user = await User.findOne({ email }).lean();
+    const user = await User.findOne({ email }).populate('shoppingCart').lean();
     if (!user) {
         res.status(401).send('Invalid email');
         return;
@@ -52,7 +52,7 @@ async function verifyLogin(req, res, next) {
 }
 
 async function getUsers(req, res, next) {
-    const data = await User.find().lean();
+    const data = await User.find().populate('shoppingCart').lean();
     res.send(data)
 }
 

@@ -22,11 +22,12 @@
     text-align: center;
     transition: 1s ease;
     margin-bottom: 50px;
-    border-bottom: solid 2px var(--primary-bright);
 }
 
 .product:hover {
     border: solid 2px var(--special-first);
+    box-shadow: 0 0 15px  var(--special-first);
+
 }
 
 
@@ -42,7 +43,7 @@
 }
 
 .title {
-    /* border-bottom: solid 2px black; */
+    border-bottom: solid 1px black;
     padding-top: 20px;
     height: 90px;
     font-size: 20px;
@@ -75,7 +76,7 @@
     color: black;
 }
 
-.link:hover {
+.link:hover{
     color: var(--special-first);
 }
 .link:active {
