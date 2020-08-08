@@ -53,7 +53,7 @@ function Product(props) {
                     price={product.price}
                     characteristics={product.characteristics}
                 />
-                <Link onClick={addToCart} className={styles['add-to-cart']} to="/">ADD TO CART</Link>
+                <button onClick={addToCart} className={styles['add-to-cart']} to="/">ADD TO CART</button>
                 {/* <Link className={styles['favourite']} to="/">ADD TO FAVOURITE</Link> */}
             </div>
         </div>
