@@ -17,16 +17,22 @@ function ShoppingCart(props) {
         return cart.map(item => {
             return (
                 <div className={styles.product}>
-                    <div >
-                        <p>{item.brand} {item.model}</p>
-                    </div>
+
                     <div className={styles['image-holder']}>
                         <img className={styles.img} src={item.firstImage} />
                     </div>
+
+                    <div className={styles['name-holder']}>
+                        <p>{item.brand} {item.model}</p>
+                    </div>
+
                     <div className={styles['price-holder']}>
                         <p className={styles.price}>${item.price}</p>
                     </div>
-                    <button>✕</button>
+
+                    <div className={styles['button-holder']}>
+                        <button>✕</button>
+                    </div>
                 </div>
             )
         })
@@ -39,7 +45,7 @@ function ShoppingCart(props) {
                 <p>YOUR CART ({cart.length})</p>
             </div>
             <div>
-                
+
                 <div className={styles.cart}>
                     {showItems()}
                 </div>
