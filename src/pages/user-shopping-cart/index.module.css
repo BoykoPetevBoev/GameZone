@@ -1,20 +1,20 @@
 .container {
     text-align: center;
-    height: 100px;
+    height: 100%;
+    background-color: var(--special-first);
+    background: rgb(255,255,255);
+    background: radial-gradient(circle, rgba(255,255,255,1) 0%, rgba(58,198,234,1) 50%, rgba(0,0,0,1) 100%);
 }
+
 .product {
-    border-bottom: solid 1px  var(--special-color);;
+    border-bottom: solid 1px rgb(212, 212, 212);
+    height: 100px;
 }
 
 .image-holder, .price-holder, .button-holder, .name-holder {
-    vertical-align: top;
     display: inline-block;
     width: 25%;
-}
-
-.price-holder {
-    padding-top: 30px;
-    height: 70px;
+    vertical-align: middle;
 }
 
 .your-cart, .cart, .order {
@@ -26,22 +26,28 @@
 
 .cart {
     display: inline-block;
-    width: 50%;
+    width: 46%;
     margin-right: 1%;
+    padding: 2%;
+    height: 400px;
+    margin-bottom: 2%;
+    overflow-y: auto;
 }
 
 .order {
     display: inline-block;
     vertical-align: top;
-    height: 500px;
     width: 20%;
+    height: 400px;
     background-color: black;
+    color: white;
     margin-left: 1%;
+    padding: 2% 0;
 }
 
 .your-cart {
     height: 50px;
-    margin-top: 5%;
+    margin-top: 2%;
     margin-bottom: 2%;
 }
 
@@ -51,10 +57,57 @@
 
 .price {
     width: 100px;
-    margin: 0;
+    margin: auto;
+    text-align: center;
 }
 
 .img {
+    vertical-align: middle;
     max-width: 100px;
     max-height: 100px;
+}
+
+.button {
+    background-color: unset;
+    border: none;
+    font-size: larger;
+}
+
+.button:hover {
+    color: var(--special-second);
+}
+
+.heading {
+    font-size: large;
+    border-bottom: solid 1px white;
+    margin: 20px;
+    padding-bottom: 20px;
+}
+
+.checkout {
+    /* margin: 20px; */
+    cursor: pointer;
+    width: 90%;
+    height: 30px;
+    background-color: var(--special-first);
+    border: none;
+    vertical-align: bottom;
+}
+
+.checkout:hover {
+    color: white;
+}
+
+.order-info p, .total-price p {
+    width: 50%;
+    display: inline-block;
+}
+.order-info {
+    margin: 20px;
+    border-bottom: solid 1px white;
+    padding-bottom: 20px;
+}
+.total-price {
+    font-size: large;
+    margin: 20px;
 }

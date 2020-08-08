@@ -33,8 +33,8 @@ function Products({ filter }) {
             const path = `/${product.category}/${product._id}`
             return (
                 <div key={product._id} className={styles.product}>
-
                     <Link className={styles.link} to={path}>
+
 
                         <div className={styles.category}>
                             <p>{product.category}</p>

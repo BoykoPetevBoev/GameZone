@@ -30,7 +30,7 @@ function Product(props) {
         if (!context.loggedIn) {
             return props.history.push('/register');
         }
-        context.user.shoppingCart.push(product._id);
+        context.user.shoppingCart.push(product);
         fetch('http://localhost:5000/update-shopping-cart', {
             method: 'PUT',
             headers: {
@@ -38,6 +38,7 @@ function Product(props) {
             },
             body: JSON.stringify(context.user)
         })
+        props.history.push('/shopping-cart')
     }
 
     return (
