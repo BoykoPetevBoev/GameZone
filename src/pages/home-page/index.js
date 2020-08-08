@@ -11,7 +11,7 @@ function HomePage({ filter }) {
     return (
         <div>
             <Header />
-            {/* <ShoppingInfo /> */}
+            <ShoppingInfo />
             <Menu />
             <Banner />
             <Products filter={filter} />
