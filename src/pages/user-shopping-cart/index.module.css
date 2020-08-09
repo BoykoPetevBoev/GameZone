@@ -13,17 +13,6 @@
     margin: 2% 0;
 }
 
-.product {
-    border-bottom: solid 1px rgb(212, 212, 212);
-    height: 100px;
-}
-
-.image-holder, .price-holder, .button-holder, .name-holder {
-    display: inline-block;
-    width: 25%;
-    vertical-align: middle;
-}
-
 .your-cart, .cart, .order {
     background-color: white;
     box-shadow: inset 0 0 5px black;
@@ -41,17 +30,6 @@
     overflow-y: auto;
 }
 
-.order {
-    display: inline-block;
-    vertical-align: top;
-    width: 30%;
-    height: 400px;
-    background-color: black;
-    color: white;
-    margin-left: 1%;
-    padding: 2% 0;
-}
-
 .your-cart {
     height: 50px;
     margin-top: 2%;
@@ -64,67 +42,6 @@
     display: inline-block;
     margin: auto;
     margin-top: 6px;
-}
-
-.price {
-    width: 100px;
-    margin: auto;
-    text-align: center;
-}
-
-.img {
-    vertical-align: middle;
-    max-width: 100px;
-    max-height: 100px;
-}
-
-.button {
-    background-color: unset;
-    border: none;
-    font-size: larger;
-}
-
-.button:hover {
-    color: var(--special-second);
-}
-
-.heading {
-    font-size: large;
-    border-bottom: solid 1px white;
-    margin: 20px;
-    padding-bottom: 20px;
-}
-
-.checkout {
-    /* margin: 20px; */
-    cursor: pointer;
-    width: 90%;
-    height: 50px;
-    font-size: larger;
-    background-color: var(--special-first);
-    border: none;
-    margin-top: 20px;
-    vertical-align: bottom;
-}
-
-.checkout:hover {
-    color: white;
-}
-
-.order-info p, .total-price p {
-    width: 50%;
-    display: inline-block;
-}
-
-.order-info {
-    margin: 20px;
-    border-bottom: solid 1px white;
-    padding-bottom: 20px;
-}
-
-.total-price {
-    font-size: large;
-    margin: 20px;
 }
 
 .logo {

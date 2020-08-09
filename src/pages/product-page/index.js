@@ -1,6 +1,5 @@
 import React, { Component, useState, useEffect, useContext } from 'react';
 import { Redirect } from 'react-router'
-import { Link } from 'react-router-dom';
 import styles from './index.module.css';
 
 import Header from '../../components/header';
@@ -10,6 +9,7 @@ import ProductInfo from '../../components/product-info';
 import UserContext from '../../Context';
 import ShoppingCart from '@material-ui/icons/ShoppingCart';
 import Favorite from '@material-ui/icons/Favorite';
+import ProductButton from '../../components/product-button';
 
 
 
@@ -74,12 +74,16 @@ function Product(props) {
                     characteristics={product.characteristics}
                 />
                 <div className={styles['button-wrapper']}>
-                    <button onClick={addToCart} className={styles.button}>
-                        <ShoppingCart /> ADD TO CART
-                    </button>
-                    <button onClick={addToWishlist} className={styles.button}>
-                        <Favorite />
-                    </button>
+                    
+                    <ProductButton
+                        onClick={addToCart}
+                        name='ADD TO CART'
+                    > <ShoppingCart /> </ProductButton>
+
+                    <ProductButton 
+                        onClick={addToWishlist}
+                    > <Favorite /> </ProductButton>
+
                 </div>
             </div>
         </div>

@@ -2,10 +2,9 @@
     text-align: center;
     width: 100%;
     color: white;
-    /* background: var(--special-first); */
-    /* background: linear-gradient(90deg, var(--primary-dark) 0%, var(--special-first) 50%, var(--primary-dark) 100%); */
     padding: 1%;
 }
+
 .user {
     margin: 10px;
     width: 80%;
@@ -13,14 +12,16 @@
     color: black;
     border: solid 1px black;
 }
+
 .line {
     height: 20px;
     overflow: hidden;
-    /* border-bottom: solid 1px var(--special-first); */
 }
-.line:nth-child(odd){
+
+.line:nth-child(odd) {
     background-color: whitesmoke;
 }
+
 .line p {
     outline: none;
     padding-left: 10px;
@@ -29,22 +30,11 @@
     margin: 0;
     width: 15%;
 }
+
 .line p:first-child {
     font-weight: bold;
 }
-.line p:nth-child(2) {
-    color: var(--special-second);
-}
-.button {
-    height: 30px;
-    width: 100px;
-    background-color: black;
-    color: white;
-    border: none;
-}
-.button:hover {
-    background-color: white;
-    color: black;
-    border: solid 1px black;
-}
 
+.line p:nth-child(2) {
+    color: gray;
+}

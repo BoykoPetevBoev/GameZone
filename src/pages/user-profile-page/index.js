@@ -8,25 +8,6 @@ import UserContext from '../../Context';
 function UserPage(props) {
     const context = useContext(UserContext);
 
-    console.log(context);
-
-    if(!context){
-        return (
-            <div>
-                LOADING...
-            </div>
-        )
-    }
-
-
-    // address: ""
-    // email: "boyko@boev.com"
-    // firstName: "Boyko"
-    // lastName: "Boev"
-    // password: "$2b$11$31KnE/aS5MtDewDn1PKnEOIytnk0L983RY7nit8Q5RnRzHMuI4CyG"
-    // phone: 87654321
-    // shoppingCart: []
-
     return (
         <div className={styles.container}>
             <Header />

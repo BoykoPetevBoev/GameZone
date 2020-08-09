@@ -1,6 +1,7 @@
 import React, { Component, useState, useEffect } from 'react';
 import styles from './index.module.css';
 import { Link } from 'react-router-dom';
+import ProductsTemplate from '../products-template';
 
 function Products({ filter }) {
     const [products, setProducts] = useState([]);
@@ -12,63 +13,47 @@ function Products({ filter }) {
 
     useEffect(() => {
         setCategoty(filter);
-        
     })
 
     const getProducts = async () => {
         const promise = await fetch('http://localhost:5000/get-products');
         const data = await promise.json();
-        console.log(categoty)
 
         if (categoty) {
             const filtered = data.filter(obj => obj.category === categoty)
             setProducts(filtered);
         }
         else {
-            setProducts(data)
+            setProducts(data);
         }
-        // filter
-        //     ? setProducts(data.filter(obj => obj.category === filter))
-        //     : setProducts(data)
+ 
     }
 
-    const renderProducts = () => {
-        return products.map((product) => {
+    const renderProducts = (product) => {
             const path = `/${product.category}/${product._id}`
+
             return (
                 <div key={product._id} className={styles.product}>
                     <Link className={styles.link} to={path}>
 
-
-                        <div className={styles.category}>
-                            <p>{product.category}</p>
-                        </div>
-
-                        <div className={styles.image}>
-                            <img src={product.images ? product.images[0] : product.firstImage} alt="NoImage" />
-                        </div>
-
-                        <div className={styles.title}>
-                            <p> <b>{product.brand} {product.model}</b></p>
-                        </div>
-                        <div className={styles.price}>
-                            <p>${product.price}</p>
-                        </div>
+                        <ProductsTemplate  {...product}  />
 
                     </Link>
                 </div>
             )
-        })
     }
 
     return (
         <div className={styles.container}>
-            {renderProducts()}
+            {products.map(product => renderProducts(product))}
         </div>
     );
 }
 
 export default Products;
+
+
+
 
 
 // class Product extends Component {
