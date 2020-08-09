@@ -62,6 +62,12 @@ async function updateShoppingCart(req, res, next) {
     res.status(200);
     res.end();
 }
+async function updateWishlist(req, res, next) {
+    const user = req.body;
+    await User.findByIdAndUpdate(user._id, { wishlist: user.wishlist });
+    res.status(200);
+    res.end();
+}
 
 
 module.exports = {
@@ -69,5 +75,6 @@ module.exports = {
     getUsers,
     userLogin,
     verifyLogin,
-    updateShoppingCart
+    updateShoppingCart,
+    updateWishlist
 }

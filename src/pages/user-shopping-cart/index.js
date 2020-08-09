@@ -3,7 +3,6 @@ import styles from './index.module.css';
 import Header from '../../components/header';
 import Footer from '../../components/footer';
 import UserContext from '../../Context';
-import ShoppingInfo from '../../components/shopping-info';
 
 
 function ShoppingCart(props) {
@@ -66,12 +65,14 @@ function ShoppingCart(props) {
     return (
         <div className={styles.container}>
             <Header />
-            <ShoppingInfo />
-            <div className={styles['your-cart']}>
-                <p>YOUR CART ({cart.length})</p>
-            </div>
-            <div>
-        
+
+            <p className={styles.logo}>GAME ZONE</p>
+            
+            <div className={styles.wraper}>
+                <div className={styles['your-cart']}>
+                    <p>YOUR CART ({cart.length})</p>
+                </div>
+
                 <div className={styles.cart}>
                     {showItems()}
                 </div>

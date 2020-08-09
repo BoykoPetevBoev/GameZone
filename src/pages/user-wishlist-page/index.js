@@ -2,7 +2,6 @@ import React, { useContext } from 'react';
 import styles from './index.module.css';
 import UserContext from '../../Context';
 import Header from '../../components/header';
-import ShoppingInfo from '../../components/shopping-info';
 
 
 function Wishlist(props) {
@@ -13,7 +12,6 @@ function Wishlist(props) {
     return (
         <div className={styles.container}>
             <Header />
-            <ShoppingInfo />
             
         </div>
     );
