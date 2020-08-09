@@ -3,6 +3,8 @@ import styles from './index.module.css';
 import Header from '../../components/header';
 import Footer from '../../components/footer';
 import UserContext from '../../Context';
+import CartProducts from '../../components/user-cart-products';
+import CartCheckout from '../../components/user-cart-checkout';
 
 
 function ShoppingCart(props) {
@@ -12,12 +14,6 @@ function ShoppingCart(props) {
     useEffect(() => {
         setCart(context.user.shoppingCart)
     }, [])
-
-    const totalPrice = () => {
-        return cart.reduce((acc, cur) => {
-            return acc += Number(cur.price)
-        }, 0)
-    }
 
     const removeItem = (e) => {
         const id = e.target.value;
@@ -38,37 +34,26 @@ function ShoppingCart(props) {
     }
 
     const showItems = () => {
-        return cart.map((item, index) => {
-            return (
-                <div key={index} className={styles.product}>
-
-                    <div className={styles['image-holder']}>
-                        <img className={styles.img} src={item.firstImage} />
-                    </div>
-
-                    <div className={styles['name-holder']}>
-                        <p>{item.brand} {item.model}</p>
-                    </div>
-
-                    <div className={styles['price-holder']}>
-                        <p className={styles.price}>${item.price}</p>
-                    </div>
-
-                    <div className={styles['button-holder']}>
-                        <button className={styles.button} value={item._id} onClick={removeItem} >✕</button>
-                    </div>
-                </div>
-            )
-        })
+        return (
+            cart.map((item, index) => {
+                return (
+                    <CartProducts
+                        item={item}
+                        index={index}
+                        onClick={removeItem}
+                    />
+                )
+            })
+        )
     }
 
     return (
         <div className={styles.container}>
             <Header />
-
             <p className={styles.logo}>GAME ZONE</p>
-            
+
             <div className={styles.wraper}>
+
                 <div className={styles['your-cart']}>
                     <p>YOUR CART ({cart.length})</p>
                 </div>
@@ -76,24 +61,9 @@ function ShoppingCart(props) {
                 <div className={styles.cart}>
                     {showItems()}
                 </div>
-                <div className={styles.order}>
-                    <p className={styles.heading}>SUMMARY</p>
-                    <div className={styles['order-info']}>
 
-                        <p>Subtotal:</p>
-                        <p>${totalPrice()}</p>
+                <CartCheckout cart={cart} />
 
-                        <p>Shipping:</p>
-                        <p>FREE</p>
-                    </div>
-                    <div className={styles['total-price']}>
-                        <p>TOTAL: </p>
-                        <p>${totalPrice()}</p>
-                    </div>
-
-                    <button className={styles.checkout}>CHECKOUT</button>
-
-                </div>
             </div>
 
             <Footer />

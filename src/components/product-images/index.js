@@ -1,18 +1,20 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styles from './index.module.css';
 
-function ImageHolder(props) {
+function ImageHolder({ images }) {
+
+    const renderImages = (image, index) => {
+        return (
+            <div key={index} className={styles['image-holder']}>
+                <img src={image} alt='' />
+            </div>
+        )
+    }
 
     return (
         <div className={styles.container}>
             {
-                props.images.map((image, index) => {
-                    return (
-                        <div key={index} className={styles['image-holder']}>
-                            <img src={image} alt='' />
-                        </div>
-                    )
-                })
+                images.map((image, index) => renderImages(image, index))
             }
         </div>
     );

@@ -11,11 +11,6 @@ function SubmitButton(props) {
 export default SubmitButton;
 
 
-
-
-
-
-
         // class SubmitButton extends Component {
         //     render() {
         //         return (

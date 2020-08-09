@@ -1,0 +1,38 @@
+.image {
+    margin-top: 20px;
+    height: 200px;
+}
+
+.image img {
+    max-width: 100%;
+    max-height: 200px;
+}
+
+.title {
+    border-bottom: solid 1px black;
+    padding-top: 20px;
+    height: 90px;
+    font-size: 20px;
+}
+
+.price {
+    color: var(--special-second);
+}
+
+.price p {
+    margin: 10px;
+    font-size: xx-large;
+}
+
+.category {
+    margin: auto;
+    background-color: var(--special-color);
+    background: linear-gradient(90deg, black 30%, white 70%);
+    text-transform: uppercase;
+}
+
+.category p {
+    margin: 0;
+    text-align: right;
+    padding-right: 5px;
+}

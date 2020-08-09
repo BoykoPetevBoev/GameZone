@@ -3,33 +3,37 @@ import styles from './index.module.css';
 
 function Table({ data }) {
 
-    const renderUser = () => {
-        return data.map(line => {
+    const renderUser = (line) => {
 
-            const keys = Object.keys(line);
-            return (
-                <div className={styles.user}>
-                    <div key={line._id}>
-
-                        {keys.map(key => {
-                            return (
-                                <div className={styles.line}>
-                                    <p> {key} :</p>
-                                    <p> {line[`${key}`]} </p>
-                                </div>
-                            )
-                        })}
-
-                        <button className={styles.button} >CHANGE</button>
-                    </div>
+        return (
+            <div className={styles.user}>
+                <div key={line._id}>
+                    {renderUserInfo(line)}
                 </div>
-            )
-        })
+            </div>
+        )
+    }
+
+    const renderUserInfo = (line) => {
+        const keys = Object.keys(line);
+
+        return (
+            keys.map(key => {
+                return (
+                    <div className={styles.line}>
+                        <p> {key} :</p>
+                        <p> {line[`${key}`]} </p>
+                    </div>
+                )
+            })
+        )
     }
 
     return (
         <div className={styles.table}>
-            {renderUser()}
+
+            {data.map(line => renderUser(line))}
+
         </div>
     );
 }
