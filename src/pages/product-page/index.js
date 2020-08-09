@@ -8,6 +8,10 @@ import Menu from '../../components/navigation';
 import ProductImages from '../../components/product-images';
 import ProductInfo from '../../components/product-info';
 import UserContext from '../../Context';
+import ShoppingCart from '@material-ui/icons/ShoppingCart';
+import Favorite from '@material-ui/icons/Favorite';
+
+
 
 function Product(props) {
 
@@ -28,17 +32,32 @@ function Product(props) {
 
     const addToCart = () => {
         if (!context.loggedIn) {
-            return props.history.push('/register');
+            return props.history.push('/login');
         }
         context.user.shoppingCart.push(product);
         fetch('http://localhost:5000/update-shopping-cart', {
             method: 'PUT',
             headers: {
-              'Content-Type': 'application/json'
+                'Content-Type': 'application/json'
             },
             body: JSON.stringify(context.user)
         })
-        props.history.push('/shopping-cart')
+        props.history.push('/');
+    }
+
+    const addToWishlist = () => {
+        if (!context.loggedIn) {
+            return props.history.push('/login');
+        }
+        context.user.wishlist.push(product);
+        fetch('http://localhost:5000/update-wishlist', {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(context.user)
+        })
+        props.history.push('/');
     }
 
     return (
@@ -54,8 +73,14 @@ function Product(props) {
                     price={product.price}
                     characteristics={product.characteristics}
                 />
-                <button onClick={addToCart} className={styles['add-to-cart']} to="/">ADD TO CART</button>
-                {/* <Link className={styles['favourite']} to="/">ADD TO FAVOURITE</Link> */}
+                <div className={styles['button-wrapper']}>
+                    <button onClick={addToCart} className={styles.button}>
+                        <ShoppingCart /> ADD TO CART
+                    </button>
+                    <button onClick={addToWishlist} className={styles.button}>
+                        <Favorite />
+                    </button>
+                </div>
             </div>
         </div>
     );

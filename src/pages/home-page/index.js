@@ -5,13 +5,11 @@ import Menu from '../../components/navigation';
 import Footer from '../../components/footer';
 import Products from '../../components/products';
 import Banner from '../../components/banner';
-import ShoppingInfo from '../../components/shopping-info';
 
 function HomePage({ filter }) {
     return (
         <div>
             <Header />
-            <ShoppingInfo />
             <Menu />
             <Banner />
             <Products filter={filter} />

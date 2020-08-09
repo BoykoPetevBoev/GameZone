@@ -8,8 +8,12 @@ function Products({ filter }) {
 
     useEffect(() => {
         getProducts();
-        setCategoty(filter)
     }, []);
+
+    useEffect(() => {
+        setCategoty(filter);
+        
+    })
 
     const getProducts = async () => {
         const promise = await fetch('http://localhost:5000/get-products');

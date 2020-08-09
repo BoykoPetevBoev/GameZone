@@ -3,7 +3,6 @@ import styles from './index.module.css'
 import Header from '../../components/header';
 import Footer from '../../components/footer';
 import UserContext from '../../Context';
-import ShoppingInfo from '../../components/shopping-info';
 
 
 function UserPage(props) {
@@ -31,7 +30,6 @@ function UserPage(props) {
     return (
         <div className={styles.container}>
             <Header />
-            <ShoppingInfo />
             <div className={styles.user}>
                 <div className={styles.welcome}>
                     <p>Welcome {context.user.firstName} {context.user.lastName}</p>
