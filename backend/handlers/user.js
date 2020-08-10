@@ -7,12 +7,12 @@ async function userLogin(req, res, next) {
 
     const user = await User.findOne({ email }).populate('shoppingCart').populate('wishlist').lean();
     if (!user) {
-        return res.status(401);
+        return res.status(401).send('Invalid email').end();
     }
 
     const match = await hashHandler.checkPassword(password, user.password);
     if (!match) {
-        return res.status(401);
+        return res.status(401).send('Invalid password').end();
     }
 
     const token = authHandler.setToken(user);

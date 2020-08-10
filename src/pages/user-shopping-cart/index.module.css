@@ -37,20 +37,14 @@
 }
 
 .your-cart p {
-    font-size: xx-large;
     display: inline-block;
     margin: auto;
     margin-top: 6px;
-}
-
-.logo {
-    float: left;
-    transform: rotate(-45deg);
-    /* vertical-align: middle; */
-    position: fixed;
-    font-size: xx-large;
-    margin: auto;
-    margin-top: 3%;
-    text-shadow: 0 0 10px black;
-    color: rgba(0, 225, 255, 0.20);
+    font: bold 30px arial, sans-serif;
+    background-color: rgba(0, 0, 0, 0.664);
+    color: transparent;
+    text-shadow: 2px 2px 3px var(--special-first);
+    -webkit-background-clip: text;
+       -moz-background-clip: text;
+            background-clip: text;
 }

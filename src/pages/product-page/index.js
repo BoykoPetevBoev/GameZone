@@ -30,6 +30,7 @@ function Product(props) {
         if (!context.loggedIn) {
             return props.history.push('/login');
         }
+        
         context.user.shoppingCart.push(product);
         updateShoppingCart(context.user);
         props.history.push('/');
@@ -39,10 +40,13 @@ function Product(props) {
         if (!context.loggedIn) {
             return props.history.push('/login');
         }
-
-        context.user.wishlist.push(product);
-        updateWishlist(context.user)
+        const found = user.wishlist.find(element => element._id === product._id);
+        if(!found){
+            context.user.wishlist.push(product);
+            updateWishlist(context.user);
+        }
         props.history.push('/');
+
     }
     return (
         <div className={styles.container}>
@@ -61,7 +65,6 @@ function Product(props) {
 
                     <ProductButton
                         onClick={addToCart}
-                        name='ADD TO CART'
                     > <ShoppingCart /> </ProductButton>
 
                     <ProductButton

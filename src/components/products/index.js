@@ -2,6 +2,9 @@ import React, { useState, useEffect } from 'react';
 import styles from './index.module.css';
 import { Link } from 'react-router-dom';
 import ProductsTemplate from '../products-template';
+import { getAllProducts } from '../../utils/requester';
+import ShoppingCart from '@material-ui/icons/ShoppingCart';
+import Favorite from '@material-ui/icons/Favorite';
 
 function Products({ filter }) {
     const [allProducts, setAllProducts] = useState([]);
@@ -11,20 +14,19 @@ function Products({ filter }) {
     useEffect(() => {
         getProducts();
     }, []);
-    
+
     useEffect(() => {
         setCategoty(filter);
         // filterProducts();    
     })
 
     const filterProducts = () => {
-            const filtered = allProducts.filter(obj => obj.category === category)
-            setProducts(filtered);
+        const filtered = allProducts.filter(obj => obj.category === category)
+        setProducts(filtered);
     }
 
     const getProducts = async () => {
-        const promise = await fetch('http://localhost:5000/get-products');
-        const data = await promise.json();
+        const data = await getAllProducts();
         setProducts(data);
     }
 
@@ -34,10 +36,14 @@ function Products({ filter }) {
         return (
             <div key={product._id} className={styles.product}>
                 <Link className={styles.link} to={path}>
-
                     <ProductsTemplate  {...product} />
-
                 </Link>
+                <button value={product._id} className={styles.add} >
+                    <ShoppingCart className={styles.ico} />
+                </button>
+                <button value={product._id} className={styles.wishlist}>
+                    <Favorite className={styles.ico} />
+                </button>
             </div>
         )
     }

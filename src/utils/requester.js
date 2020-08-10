@@ -107,6 +107,7 @@ async function updateWishlist(user) {
         return response;
     }
 }
+
 async function changeProduct() {
     // const data = await getAllProducts();
     // data.map(async (product) => {
