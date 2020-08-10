@@ -5,7 +5,7 @@ import Footer from '../../components/footer';
 import UserContext from '../../Context';
 import CartProducts from '../../components/user-cart-products';
 import CartCheckout from '../../components/user-cart-checkout';
-
+import { updateShoppingCart } from '../../utils/requester';
 
 function ShoppingCart(props) {
     const [cart, setCart] = useState([]);
@@ -24,24 +24,20 @@ function ShoppingCart(props) {
         setCart(arr);
         context.user.shoppingCart = arr;
 
-        fetch('http://localhost:5000/update-shopping-cart', {
-            method: 'PUT',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(context.user)
-        })
+        updateShoppingCart(context.user);
+
     }
 
     const showItems = () => {
         return (
             cart.map((item, index) => {
                 return (
-                    <CartProducts
-                        item={item}
-                        index={index}
-                        onClick={removeItem}
-                    />
+                    <div key={index}>
+                        <CartProducts
+                            item={item}
+                            onClick={removeItem}
+                        />
+                    </div>
                 )
             })
         )

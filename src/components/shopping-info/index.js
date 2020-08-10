@@ -6,7 +6,7 @@ import Badge from '@material-ui/core/Badge';
 import UserContext from '../../Context';
 import { Link } from 'react-router-dom';
 
-function ShoppingInfo(props) {
+function ShoppingInfo() {
     const context = useContext(UserContext);
     const [cart, setCart] = useState(0);
     const [wishlist, setWishlist] = useState(0);

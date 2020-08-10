@@ -1,46 +1,45 @@
-import React, { Component, useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import styles from './index.module.css';
 import { Link } from 'react-router-dom';
 import ProductsTemplate from '../products-template';
 
 function Products({ filter }) {
+    const [allProducts, setAllProducts] = useState([]);
     const [products, setProducts] = useState([]);
-    const [categoty, setCategoty] = useState(filter);
+    const [category, setCategoty] = useState(filter);
 
     useEffect(() => {
         getProducts();
     }, []);
-
+    
     useEffect(() => {
         setCategoty(filter);
+        // filterProducts();    
     })
+
+    const filterProducts = () => {
+            const filtered = allProducts.filter(obj => obj.category === category)
+            setProducts(filtered);
+    }
 
     const getProducts = async () => {
         const promise = await fetch('http://localhost:5000/get-products');
         const data = await promise.json();
-
-        if (categoty) {
-            const filtered = data.filter(obj => obj.category === categoty)
-            setProducts(filtered);
-        }
-        else {
-            setProducts(data);
-        }
- 
+        setProducts(data);
     }
 
     const renderProducts = (product) => {
-            const path = `/${product.category}/${product._id}`
+        const path = `/${product.category}/${product._id}`
 
-            return (
-                <div key={product._id} className={styles.product}>
-                    <Link className={styles.link} to={path}>
+        return (
+            <div key={product._id} className={styles.product}>
+                <Link className={styles.link} to={path}>
 
-                        <ProductsTemplate  {...product}  />
+                    <ProductsTemplate  {...product} />
 
-                    </Link>
-                </div>
-            )
+                </Link>
+            </div>
+        )
     }
 
     return (
@@ -97,7 +96,7 @@ export default Products;
 //                     </div>
 
 //                     <div className={styles.image}>
-//                         <img src={product.firstImage} alt="NoImage" />
+//                         <img src={product} alt="NoImage" />
 //                     </div>
 
 //                     <div className={styles.title}>

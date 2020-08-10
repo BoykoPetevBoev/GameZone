@@ -6,6 +6,7 @@ import FormHolder from '../../components/user-form-holder';
 import SubmitButton from '../../components/user-submit-button';
 import Input from '../../components/user-input';
 import UserContext from '../../Context';
+import { userLogin } from '../../utils/requester';
 
 
 function LoginPage() {
@@ -22,57 +23,43 @@ function LoginPage() {
             setErr('Invalid email or password!');
             return;
         }
+        const user = await userLogin({email, password});
 
-        const promise = await fetch('http://localhost:5000/login', {
-            method: 'POST',
-            body: JSON.stringify({
-                email, password
-            }),
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        })
-        const user = await promise.json();
-
-        if (promise.ok) {
-            const token = promise.headers.get('Authorization');
-            document.cookie = `GameZoneToken=${token}`;
+        if (user) {
+            context.login(user);
+            history.push('/');
         }
         else {
             setErr('Invalid email or password!');
-            return;
         }
+    }
 
-        context.login(user);
-        history.push('/');
-}
-
-return (
-    <div className={styles.background}>
-        <Header />
-        <FormHolder className='login' title="Welcome Back!">
-            <form onSubmit={onSubmit}>
-                <Input
-                    name='email'
-                    err={err}
-                    type='text'
-                    placeholder='Email'
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                />
-                <Input
-                    name='password'
-                    err={err ? true : false}
-                    type='password'
-                    placeholder='Password'
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                />
-                <SubmitButton value='LOGIN' />
-            </form>
-        </FormHolder>
-    </div>
-)
+    return (
+        <div className={styles.background}>
+            <Header />
+            <FormHolder className='login' title="Welcome Back!">
+                <form onSubmit={onSubmit}>
+                    <Input
+                        name='email'
+                        err={err}
+                        type='text'
+                        placeholder='Email'
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                    />
+                    <Input
+                        name='password'
+                        err={err ? true : false}
+                        type='password'
+                        placeholder='Password'
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                    />
+                    <SubmitButton value='LOGIN' />
+                </form>
+            </FormHolder>
+        </div>
+    )
 }
 
 export default LoginPage;

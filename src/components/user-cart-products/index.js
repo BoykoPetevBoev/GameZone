@@ -1,12 +1,12 @@
 import React from 'react';
 import styles from './index.module.css';
 
-function CartProducts({ item, index, onClick }) {
+function CartProducts({ item, onClick }) {
     return (
-        <div key={index} className={styles.product}>
+        <div className={styles.product}>
 
             <div className={styles['image-holder']}>
-                <img className={styles.img} src={item.firstImage} />
+                <img className={styles.img} src={item.images[0]} />
             </div>
 
             <div className={styles['name-holder']}>

@@ -1,7 +1,8 @@
-import React, { Component, useState, useContext } from 'react';
+import React, { useState } from 'react';
 import styles from './index.module.css';
 import AdminInput from '../../components/admin-input';
 import AdminFormWrapper from '../../components/admin-from-wrapper';
+import { addProduct } from '../../utils/requester';
 
 function Product(props) {
     const [category, setCategory] = useState('');
@@ -68,12 +69,7 @@ function Product(props) {
             images,
             characteristics
         }
-        const url = 'http://localhost:5000/add-product';
-        await fetch(url, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(product)
-        });
+        addProduct(product)
         props.history.push('/');
     }
 
@@ -177,6 +173,11 @@ function Product(props) {
     )
 }
 
+export default Product
+
+
+
+
 // class ProductForm extends Component {
 //     constructor(props) {
 //         super(props)
@@ -189,8 +190,8 @@ function Product(props) {
 //             modelError: null,
 //             price: '',
 //             priceError: null,
-//             firstImage: '',
-//             firstImageError: null,
+//             : '',
+//             : null,
 //             secondImage: '',
 //             secondImageError: null,
 //             details: '',
@@ -209,11 +210,11 @@ function Product(props) {
 //             brandError: null,
 //             modelError: null,
 //             priceError: null,
-//             firstImageError: null,
+//             : null,
 //             secondImageError: null,
 //             detailsError: null
 //         })
-//         const { category, brand, model, price, firstImage, secondImage, details } = this.state;
+//         const { category, brand, model, price, , secondImage, details } = this.state;
 //         let result = true;
 //         if (category === '') {
 //             console.log(category);
@@ -240,9 +241,9 @@ function Product(props) {
 //             });
 //             result = false;
 //         }
-//         if (firstImage === '' || !firstImage.startsWith('https://')) {
+//         if ( === '' || !.startsWith('https://')) {
 //             this.setState({
-//                 firstImageError: 'First Image must start with "https://"'
+//                 : 'First Image must start with "https://"'
 //             });
 //             result = false;
 //         }
@@ -288,8 +289,8 @@ function Product(props) {
 //             modelError,
 //             price,
 //             priceError,
-//             firstImage,
-//             firstImageError,
+//             ,
+//             ,
 //             secondImage,
 //             secondImageError,
 //             details,
@@ -356,11 +357,11 @@ function Product(props) {
 //                     <div className={styles.line}>
 //                         <label>First Image</label>
 //                         <Input
-//                             name="firstImage"
-//                             err={firstImageError}
+//                             name=""
+//                             err={}
 //                             type="text"
 //                             placeholder=""
-//                             value={firstImage}
+//                             value={}
 //                             onChange={this.onChange}
 //                         />
 //                     </div>
@@ -396,5 +397,3 @@ function Product(props) {
 // }
 
 
-
-export default Product
