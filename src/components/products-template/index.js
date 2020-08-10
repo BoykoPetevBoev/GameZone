@@ -1,8 +1,8 @@
 import React from 'react';
 import styles from './index.module.css'
 //{ category, images, brand, model, price }
-function ProductsTemplate({ category, images, brand, model, price, firstImage }) {
-
+function ProductsTemplate({ category, images, brand, model, price }) {
+    // console.log(images);
     return (
         <div>
 
@@ -11,7 +11,7 @@ function ProductsTemplate({ category, images, brand, model, price, firstImage })
             </div>
 
             <div className={styles.image}>
-                <img src={images ? images[0] : firstImage} alt="NoImage" />
+                <img src={images[0]} alt="NoImage" />
             </div>
 
             <div className={styles.title}>

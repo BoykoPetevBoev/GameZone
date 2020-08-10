@@ -1,5 +1,4 @@
-import React, { Component, useState, useEffect, useContext } from 'react';
-import { Redirect } from 'react-router'
+import React, { useState, useEffect, useContext } from 'react';
 import styles from './index.module.css';
 
 import Header from '../../components/header';
@@ -10,24 +9,21 @@ import UserContext from '../../Context';
 import ShoppingCart from '@material-ui/icons/ShoppingCart';
 import Favorite from '@material-ui/icons/Favorite';
 import ProductButton from '../../components/product-button';
-
-
+import { updateShoppingCart, updateWishlist, getProduct } from '../../utils/requester';
 
 function Product(props) {
-
     const [product, setProduct] = useState({});
-    const [id, setId] = useState(props.match.params.id);
+    const [user, setUser] = useState({});
     const context = useContext(UserContext)
 
     useEffect(() => {
         getData();
+        setUser(context.user);
     }, []);
 
     const getData = async () => {
-        const promise = await fetch('http://localhost:5000/get-products');
-        const data = await promise.json();
-        const [productInfo] = data.filter(obj => obj._id === id);
-        setProduct(productInfo);
+        const data = await getProduct(props.match.params.id);
+        setProduct(data);
     }
 
     const addToCart = () => {
@@ -35,13 +31,7 @@ function Product(props) {
             return props.history.push('/login');
         }
         context.user.shoppingCart.push(product);
-        fetch('http://localhost:5000/update-shopping-cart', {
-            method: 'PUT',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(context.user)
-        })
+        updateShoppingCart(context.user);
         props.history.push('/');
     }
 
@@ -49,23 +39,17 @@ function Product(props) {
         if (!context.loggedIn) {
             return props.history.push('/login');
         }
+
         context.user.wishlist.push(product);
-        fetch('http://localhost:5000/update-wishlist', {
-            method: 'PUT',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(context.user)
-        })
+        updateWishlist(context.user)
         props.history.push('/');
     }
-
     return (
         <div className={styles.container}>
             <Header />
             <Menu />
             <div className={styles['product-wraper']}>
-                <ProductImages images={product.images ? product.images : [product.firstImage, product.secondImage]} />
+                <ProductImages images={product.images} />
                 <ProductInfo
                     brand={product.brand}
                     model={product.model}
@@ -74,13 +58,13 @@ function Product(props) {
                     characteristics={product.characteristics}
                 />
                 <div className={styles['button-wrapper']}>
-                    
+
                     <ProductButton
                         onClick={addToCart}
                         name='ADD TO CART'
                     > <ShoppingCart /> </ProductButton>
 
-                    <ProductButton 
+                    <ProductButton
                         onClick={addToWishlist}
                     > <Favorite /> </ProductButton>
 
@@ -118,10 +102,10 @@ export default Product;
 //                 <Header />
 //                 <Menu />
 //                 <div className={styles.container}>
-//                     {/* <ImageHolder images={[product.firstImage, product.secondImage]} /> */}
+//                     {/* <ImageHolder images={[product., product.secondImage]} /> */}
 //                     <div className={styles['pic-holder']}>
 //                         <div className={styles['image-holder']}>
-//                             <img src={product.firstImage} alt='' />
+//                             <img src={product.} alt='' />
 //                         </div>
 //                         <div className={styles['image-holder']}>
 //                             <img src={product.secondImage} alt='' />

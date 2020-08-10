@@ -6,6 +6,7 @@ import Header from '../../components/header';
 import FormHolder from '../../components/user-form-holder';
 import SubmitButton from '../../components/user-submit-button';
 import Input from '../../components/user-input';
+import { userRegister } from '../../utils/requester';
 
 function RegisterPage() {
     const [firstName, setFirstName] = useState('');
@@ -51,32 +52,22 @@ function RegisterPage() {
         }
         return result;
     }
-    const registerHandler = () => {
-        const user = {
+    const registerHandler = async () => {
+        const body = {
             firstName,
             lastName,
             email,
             password
         };
-        const url = 'http://localhost:5000/register';
-        fetch(url, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(user)
-        })
-            .then(promise => {
-                console.log(promise.headers)
-                if (promise.ok) {
-                    const token = promise.headers.get('Authorization');
-                    document.cookie = `GameZoneToken=${token}`;
-                }
-                return promise.json();
-            })
-            .then(user => {
-                context.login(user);
-                history.push('/');
-            })
-            .catch(err => console.error(err))
+
+        const user = await userRegister(body);
+        if (user) {
+            context.login(user);
+            history.push('/');
+        }
+        else {
+            setErrEmail('Email is already registered!');
+        }
     }
 
     const onSubmit = (e) => {

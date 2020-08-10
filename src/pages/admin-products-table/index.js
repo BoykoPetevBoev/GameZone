@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 // import styles from './index.module.css';
 import Table from '../../components/admin-table';
 import AdminNavigation from '../../components/admin-navigation';
+import { getAllProducts } from '../../utils/requester';
 
 class Products extends Component {
     constructor(props) {
@@ -12,8 +13,8 @@ class Products extends Component {
         }
     }
     componentDidMount = async () => {
-        const promise = await fetch('http://localhost:5000/get-products');
-        const products = await promise.json();
+        const products = await getAllProducts()
+        console.log(products);
         this.setState({
             products
         });

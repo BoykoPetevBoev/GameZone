@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 // import styles from './index.module.css';
 import Table from '../../components/admin-table';
 import AdminNavigation from '../../components/admin-navigation';
-
+import { getAllUsers } from '../../utils/requester';
 
 class Users extends Component {
     constructor(props) {
@@ -13,8 +13,7 @@ class Users extends Component {
         }
     }
     componentDidMount = async () => {
-        const promise = await fetch('http://localhost:5000/get-users');
-        const users = await promise.json();
+        const users = await getAllUsers();
         console.log(users);
         this.setState({
             users
@@ -35,7 +34,7 @@ class Users extends Component {
                 <Table data={users} />
             </div>
         );
-    }
+    }   
 }
 
 export default Users;

@@ -17,17 +17,20 @@
 .welcome {
     width: 60%;
     height: 35px;
+    margin: auto;
+    margin-bottom: 40px;
 }
 
 .welcome p {
-    font-size: x-large;
+    margin: 0;
+    font-size: xx-large;
 }
 
 .table {
     margin: auto;
 }
 
-.account, .welcome, .shopping-cart, .favourite, .history {
+.account, .shopping-cart, .favourite, .history {
     background-color: white;
     box-shadow: inset 0 0 5px black;
     margin: auto;

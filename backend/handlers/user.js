@@ -5,18 +5,18 @@ const authHandler = require('../utils/authHandler');
 async function userLogin(req, res, next) {
     const { email, password } = req.body;
 
-    const user = await User.findOne({ email }).populate('shoppingCart').lean();
+    const user = await User.findOne({ email }).populate('shoppingCart').populate('wishlist').lean();
     if (!user) {
-        res.status(401).send('Invalid email');
-        return;
+        return res.status(401);
     }
+
     const match = await hashHandler.checkPassword(password, user.password);
     if (!match) {
-        res.status(401).send('Invalid password');
-        return;
+        return res.status(401);
     }
+
     const token = authHandler.setToken(user);
-    return res.header('Authorization', token).send(user);
+    return res.status(200).header('Authorization', token).send(user);
 }
 
 async function userRegister(req, res, next) {
@@ -32,7 +32,7 @@ async function userRegister(req, res, next) {
         await user.save();
 
         const token = authHandler.setToken(user);
-        return res.header('Authorization', token).send(user);
+        return res.status(201).header('Authorization', token).send(user);
     }
 }
 
@@ -40,33 +40,31 @@ async function verifyLogin(req, res, next) {
     const token = req.headers.authorization || '';
     const tokenStatus = await authHandler.verifyToken(token);
     if (tokenStatus) {
-        const user = await User.findById(tokenStatus.id).populate('shoppingCart')
+        const user = await User.findById(tokenStatus.id).populate('shoppingCart').populate('wishlist')
         return res.send({
             status: true,
             user
         });
     }
     else {
-        return res.send(false);
+        return res.send({ status: false });
     }
 }
 
 async function getUsers(req, res, next) {
-    const data = await User.find().populate('shoppingCart').lean();
+    const data = await User.find().populate('shoppingCart').populate('wishlist').lean();
     res.send(data)
 }
 
 async function updateShoppingCart(req, res, next) {
     const user = req.body;
-    await User.findByIdAndUpdate(user._id, { shoppingCart: user.shoppingCart });
-    res.status(200);
-    res.end();
+    const data = await User.findByIdAndUpdate(user._id, { shoppingCart: user.shoppingCart });
+    res.status(201).send(data);
 }
 async function updateWishlist(req, res, next) {
     const user = req.body;
-    await User.findByIdAndUpdate(user._id, { wishlist: user.wishlist });
-    res.status(200);
-    res.end();
+    const data = await User.findByIdAndUpdate(user._id, { wishlist: user.wishlist });
+    res.status(201).send(data);
 }
 
 

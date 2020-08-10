@@ -11,6 +11,14 @@ function ImageHolder({ images }) {
         )
     }
 
+    if(!images) {
+        return (
+            <div>
+                
+            </div>
+        )
+    }
+
     return (
         <div className={styles.container}>
             {
