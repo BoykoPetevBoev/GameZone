@@ -14,7 +14,7 @@ function ShoppingInfo() {
 
     useEffect(() => {
         const user = context.user
-        if (user) {
+        if (user.shoppingCart && user.wishlist) {
             setCart(user.shoppingCart.length);
             setWishlist(user.wishlist.length);
             const price = user.shoppingCart.reduce((acc, cur) => {

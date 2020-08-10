@@ -4,7 +4,7 @@ import styles from './index.module.css'
 function ProductsTemplate({ category, images, brand, model, price }) {
     // console.log(images);
     return (
-        <div>
+        <div className={styles.wrapper}>
 
             <div className={styles.category}>
                 <p>{category}</p>

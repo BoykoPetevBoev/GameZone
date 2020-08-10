@@ -22,8 +22,16 @@
 }
 
 .welcome p {
-    margin: 0;
-    font-size: xx-large;
+    display: inline-block;
+    margin: auto;
+    margin-top: 6px;
+    font: bold 30px arial, sans-serif;
+    background-color: rgba(0, 0, 0, 0.664);
+    color: transparent;
+    text-shadow: 2px 2px 3px var(--special-first);
+    -webkit-background-clip: text;
+       -moz-background-clip: text;
+            background-clip: text;
 }
 
 .table {

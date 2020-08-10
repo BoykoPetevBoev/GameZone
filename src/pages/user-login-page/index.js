@@ -24,7 +24,6 @@ function LoginPage() {
             return;
         }
         const user = await userLogin({email, password});
-
         if (user) {
             context.login(user);
             history.push('/');
