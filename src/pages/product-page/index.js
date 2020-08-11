@@ -1,20 +1,20 @@
 import React, { useState, useEffect, useContext } from 'react';
 import styles from './index.module.css';
+import UserContext from '../../Context';
 
-import Header from '../../components/header';
-import Menu from '../../components/navigation';
+import Wrapper from '../../components/wrapper';
 import ProductImages from '../../components/product-images';
 import ProductInfo from '../../components/product-info';
-import UserContext from '../../Context';
-import ShoppingCart from '@material-ui/icons/ShoppingCart';
-import Favorite from '@material-ui/icons/Favorite';
 import ProductButton from '../../components/product-button';
 import { updateShoppingCart, updateWishlist, getProduct } from '../../utils/requester';
+
+import ShoppingCart from '@material-ui/icons/ShoppingCart';
+import Favorite from '@material-ui/icons/Favorite';
 
 function Product(props) {
     const [product, setProduct] = useState({});
     const [user, setUser] = useState({});
-    const context = useContext(UserContext)
+    const context = useContext(UserContext);
 
     useEffect(() => {
         getData();
@@ -30,7 +30,7 @@ function Product(props) {
         if (!context.loggedIn) {
             return props.history.push('/login');
         }
-        
+
         context.user.shoppingCart.push(product);
         updateShoppingCart(context.user);
         props.history.push('/');
@@ -41,17 +41,16 @@ function Product(props) {
             return props.history.push('/login');
         }
         const found = user.wishlist.find(element => element._id === product._id);
-        if(!found){
+        if (!found) {
             context.user.wishlist.push(product);
             updateWishlist(context.user);
         }
         props.history.push('/');
 
     }
+
     return (
-        <div className={styles.container}>
-            <Header />
-            <Menu />
+        <Wrapper>
             <div className={styles['product-wraper']}>
                 <ProductImages images={product.images} />
                 <ProductInfo
@@ -73,7 +72,7 @@ function Product(props) {
 
                 </div>
             </div>
-        </div>
+        </Wrapper>
     );
 }
 export default Product;

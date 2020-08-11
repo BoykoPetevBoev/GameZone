@@ -1,17 +1,18 @@
 import React from 'react';
-import Header from '../../components/header';
-import Menu from '../../components/navigation';
 import Footer from '../../components/footer';
 import Products from '../../components/products';
 import Banner from '../../components/banner';
+import Wrapper from '../../components/wrapper';
+
 
 function HomePage({ filter }) {
+    
     return (
         <div>
-            <Header />
-            <Menu />
-            <Banner />
-            <Products filter={filter} />
+            <Wrapper>
+                <Banner />
+                <Products filter={filter} />
+            </Wrapper>
             <Footer />
         </div>
     )

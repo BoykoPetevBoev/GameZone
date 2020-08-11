@@ -3,12 +3,13 @@
     padding-bottom: 50px;
     background-color: white;
     text-align: center;
-    width: 85%;
+    width: 100%;
     display: inline-block;
     height: 100%;
     margin: 0;
 }
 .form {
+    text-align: center;
     margin-bottom: 10px;
     height: 100px;
 }

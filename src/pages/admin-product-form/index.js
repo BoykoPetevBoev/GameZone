@@ -3,6 +3,7 @@ import styles from './index.module.css';
 import AdminInput from '../../components/admin-input';
 import AdminFormWrapper from '../../components/admin-from-wrapper';
 import { addProduct } from '../../utils/requester';
+import AdminWrapper from '../../components/admin-wrapper';
 
 function Product(props) {
     const [category, setCategory] = useState('');
@@ -82,6 +83,7 @@ function Product(props) {
     }
 
     return (
+        <AdminWrapper>
         <AdminFormWrapper
             error={error}
             images={images}
@@ -170,6 +172,8 @@ function Product(props) {
                 </div>
             </form>
         </AdminFormWrapper>
+        </AdminWrapper>
+
     )
 }
 
