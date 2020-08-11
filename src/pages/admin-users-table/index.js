@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 // import styles from './index.module.css';
 import Table from '../../components/admin-table';
-import AdminNavigation from '../../components/admin-navigation';
+import AdminWrapper from '../../components/admin-wrapper';
 import { getAllUsers } from '../../utils/requester';
 
 class Users extends Component {
@@ -14,25 +14,16 @@ class Users extends Component {
     }
     componentDidMount = async () => {
         const users = await getAllUsers();
-        console.log(users);
         this.setState({
             users
         });
     }
     render() {
         const { users } = this.state
-        if (users.length === 0) {
-            return (
-                <div>
-                    <AdminNavigation />
-                </div>
-            )
-        }
         return (
-            <div>
-                <AdminNavigation />
+            <AdminWrapper>
                 <Table data={users} />
-            </div>
+            </AdminWrapper>
         );
     }   
 }

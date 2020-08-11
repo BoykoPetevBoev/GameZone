@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 // import styles from './index.module.css';
 import Table from '../../components/admin-table';
-import AdminNavigation from '../../components/admin-navigation';
+import AdminWrapper from '../../components/admin-wrapper';
 import { getAllProducts } from '../../utils/requester';
 
 class Products extends Component {
@@ -13,27 +13,18 @@ class Products extends Component {
         }
     }
     componentDidMount = async () => {
-        const products = await getAllProducts()
-        console.log(products);
+        const products = await getAllProducts();
         this.setState({
             products
         });
     }
     render() {
         const { products } = this.state
-        if (products.length === 0) {
-            return (
-                <div>
-                    <AdminNavigation />
-                </div>
-            )
-        }
         return (
-            <div>
-                <AdminNavigation />
+            <AdminWrapper>
                 <Table data={products} />
-            </div>
-        );
+            </AdminWrapper>
+        )
     }
 }
 
