@@ -4,7 +4,6 @@ import styles from './index.module.css';
 function Table({ data }) {
 
     const renderUser = (line) => {
-
         return (
             <div className={styles.user}>
                 <div key={line._id}>
@@ -16,13 +15,12 @@ function Table({ data }) {
 
     const renderUserInfo = (line) => {
         const keys = Object.keys(line);
-
         return (
             keys.map(key => {
                 return (
                     <div className={styles.line}>
                         <p> {key} :</p>
-                        <p> {line[`${key}`]} </p>
+                        <p> {Array.isArray(line[`${key}`]) ? (line[`${key}`]).length : line[`${key}`]} </p>
                     </div>
                 )
             })
@@ -31,9 +29,8 @@ function Table({ data }) {
 
     return (
         <div className={styles.table}>
-
-            {data.map(line => renderUser(line))}
-
+             <p>PRODUCTS ({data.length})</p>
+                {data.map(line => renderUser(line))}
         </div>
     );
 }

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, Children } from 'react';
 import styles from './index.module.css';
 import AdminInput from '../../components/admin-input';
 import AdminFormWrapper from '../../components/admin-from-wrapper';
@@ -70,13 +70,15 @@ function Product(props) {
             images,
             characteristics
         }
-        addProduct(product)
-        props.history.push('/');
+        console.log(product);
+        // addProduct(product)
+        // props.history.push('/');
     }
 
     const onSubmit = (e) => {
         e.preventDefault();
         validateForm();
+        console.log(error);
         if (!error) {
             formHandler();
         }
@@ -84,94 +86,99 @@ function Product(props) {
 
     return (
         <AdminWrapper>
-        <AdminFormWrapper
-            error={error}
-            images={images}
-            brand={brand}
-            model={model}
-            description={description}
-            characteristics={characteristics}
-            price={price}
-        >
-            <form className={styles.form} onSubmit={onSubmit}>
+            <AdminFormWrapper
+                error={error}
+                images={images}
+                brand={brand}
+                model={model}
+                description={description}
+                characteristics={characteristics}
+                price={price}
+            >
+                <form className={styles.form} onSubmit={onSubmit}>
 
-                <div className={styles['form-elements']}>
+                    <div className={styles['form-elements']}>
 
-                    <div>
-                        <select name="category" onChange={(e) => setCategory(e.target.value)} value={category}>
-                            <option value=''>Choose a category</option>
-                            <option value="mouse">Mouse</option>
-                            <option value="keyboard">Keyboard</option>
-                            <option value="headset">Headset</option>
-                            <option value="mousepad">Mousepad</option>
-                            <option value="accessoaries">Accessoaries</option>
-                        </select>
+                        <div>
+                            <select name="category" onChange={(e) => setCategory(e.target.value)} value={category}>
+                                <option value=''>Choose a category</option>
+                                <option value="mouse">Mouse</option>
+                                <option value="keyboard">Keyboard</option>
+                                <option value="headset">Headset</option>
+                                <option value="mousepad">Mousepad</option>
+                                <option value="accessoaries">Accessoaries</option>
+                            </select>
+                        </div>
+
+                        <AdminInput
+                            name='brand'
+                            type='text'
+                            placeholder='Brand...'
+                            value={brand}
+                            onChange={(e) => setBrand(e.target.value)}
+                        />
+                        <AdminInput
+                            name='model'
+                            className={styles['product-name']}
+                            type='text'
+                            placeholder='Model...'
+                            value={model}
+                            onChange={(e) => setModel(e.target.value)}
+                        />
+                        <AdminInput
+                            name='price'
+                            className={styles['product-name']}
+                            type='text'
+                            placeholder='Price...'
+                            value={price}
+                            onChange={(e) => setPrice(e.target.value)}
+                        />
                     </div>
 
-                    <AdminInput
-                        name='brand'
-                        type='text'
-                        placeholder='Brand...'
-                        value={brand}
-                        onChange={(e) => setBrand(e.target.value)}
-                    />
-                    <AdminInput
-                        name='model'
-                        className={styles['product-name']}
-                        type='text'
-                        placeholder='Model...'
-                        value={model}
-                        onChange={(e) => setModel(e.target.value)}
-                    />
-                    <AdminInput
-                        name='price'
-                        className={styles['product-name']}
-                        type='text'
-                        placeholder='Price...'
-                        value={price}
-                        onChange={(e) => setPrice(e.target.value)}
-                    />
-                </div>
+                    <div className={styles['form-elements']}>
+                        <div>
 
-                <div className={styles['form-elements']}>
+                            <input
+                                name='image'
+                                className={styles['product-input']}
+                                type='text'
+                                placeholder='Image URL...'
+                                value={image}
+                                onChange={(e) => setImage(e.target.value)}
+                            ></input>
+                            <button type='button' onClick={addNewImage} className={styles['input-button']}>ADD</button>
+                        </div>
 
-                    <AdminInput
-                        name='image'
-                        className={styles['product-img-input']}
-                        type='text'
-                        placeholder='Image URL...'
-                        value={image}
-                        onChange={(e) => setImage(e.target.value)}
-                    />
-                    <button onClick={addNewImage} className={styles['product-img-button']}>ADD</button>
+                        <div>
 
-                    <AdminInput
-                        name='characteristic'
-                        className={styles['product-img-input']}
-                        type='text'
-                        placeholder='Characteristic...'
-                        value={characteristic}
-                        onChange={(e) => setCharacteristic(e.target.value)}
-                    />
-                    <button onClick={addNewCharacteristic} className={styles['product-img-button']}>ADD</button>
+                            <input
+                                name='characteristic'
+                                className={styles['product-input']}
+                                type='text'
+                                placeholder='Characteristic...'
+                                value={characteristic}
+                                onChange={(e) => setCharacteristic(e.target.value)}
+                            ></input>
+                            <button type='button' onClick={addNewCharacteristic} className={styles['input-button']}>ADD</button>
+                        </div>
 
-                    <div className={styles['submit-btn-holder']}>
-                        <button type='submit'>Submit</button>
+                        <div className={styles['submit-btn-holder']}>
+                            <button type='submit'>Submit</button>
+                        </div>
                     </div>
-                </div>
 
-                <div className={styles['form-elements']}>
+                    <div className={styles['form-elements']}>
 
-                    <textarea
-                        placeholder="Description..."
-                        name="description"
-                        onChange={(e) => setDescription(e.target.value)}
-                        value={description}
-                        className={styles.textarea}
-                    ></textarea>
-                </div>
-            </form>
-        </AdminFormWrapper>
+                        <textarea
+                            placeholder="Description..."
+                            name="description"
+                            onChange={(e) => setDescription(e.target.value)}
+                            value={description}
+                            className={styles.textarea}
+                        ></textarea>
+                    </div>
+                </form>
+            </AdminFormWrapper>
         </AdminWrapper>
 
     )

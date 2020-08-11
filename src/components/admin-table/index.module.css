@@ -2,15 +2,17 @@
     text-align: center;
     width: 100%;
     color: white;
-    padding: 1%;
+    height: 100%;
+    overflow-y: auto;
+    height: 900px;
 }
 
 .user {
-    margin: 10px;
     width: 80%;
     background-color: var(--primary-bright);
     color: black;
     border: solid 1px black;
+    margin: 10px auto;
 }
 
 .line {
