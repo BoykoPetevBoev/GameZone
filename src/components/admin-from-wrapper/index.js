@@ -7,25 +7,23 @@ import ProductInfo from '../../components/product-info';
 function AdminFormWrepper(props) {
 
     return (
-        <div>
-            <Navigation />
-            <div className={styles.container}></div>
+            <div className={styles.container}>
 
-            {props.children}
+                {props.children}
 
-            <div>
-                {props.error ? <p>{props.error}</p> : null}
+                <div>
+                    {props.error ? <p>{props.error}</p> : null}
+                </div>
+
+                <ProductImages images={props.images} />
+                <ProductInfo
+                    brand={props.brand}
+                    model={props.model}
+                    description={props.description}
+                    characteristics={props.characteristics}
+                    price={props.price}
+                />
             </div>
-
-            <ProductImages images={props.images} />
-            <ProductInfo
-                brand={props.brand}
-                model={props.model}
-                description={props.description}
-                characteristics={props.characteristics}
-                price={props.price}
-            />
-        </div>
     )
 }
 

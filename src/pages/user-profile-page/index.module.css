@@ -10,7 +10,7 @@
     margin: auto;
     box-shadow: 0 0 10px black;
     padding: 2%;
-    margin: 2% 0;
+    margin: 6% 0;
     display: inline-block;
 }
 
@@ -38,42 +38,41 @@
     margin: auto;
 }
 
-.account, .shopping-cart, .favourite, .history {
+.account, .shopping-cart, .wishlist, .ico {
     background-color: white;
     box-shadow: inset 0 0 5px black;
     margin: auto;
     width: 70%;
 }
+.shopping-cart, .wishlist {
+    display: inline-block;
+    height: 500px;
+    width: 46%;
+    margin: 1%;
+    overflow-y: auto;
+}
+.ico {
+    display: inline-block;
+    width: 46%;
+    margin: 1%;
+    background-color: var(--special-second);
+    color: black;
+}
+.name {
+    background-color: black;
+    color: var(--special-second);
+    height: 28px;
+    margin: 0;
+    box-shadow: inset 0 0 5px black;
+}
+
 
 .account {
-    /* padding: 1%; */
-    margin-top: 3%;
-    padding-bottom: 50px;
+    padding-bottom: 1%;
+    margin-bottom: 1%
 }
 
-.shopping-cart {
-    margin-top: 1%;
-    height: 200px;
-}
 
-.more-info-holder {
-    margin: auto;
-}
-
-.favourite, .history {
-    display: inline-block;
-    margin-top: 2%;
-    width: 49%;
-    height: 200px;
-}
-
-.favourite {
-    margin-right: 1%;
-}
-
-.history {
-    margin-left: 1%;
-}
 .tr th {
     text-align: right;
     padding: 0 10px;

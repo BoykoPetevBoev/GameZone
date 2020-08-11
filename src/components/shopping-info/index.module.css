@@ -6,7 +6,7 @@
     background-color: black;
     background: var(--special-first);
     background: linear-gradient(90deg, var(--primary-dark) 0%, var(--special-first) 50%, var(--primary-dark) 100%);
-    box-shadow: 0 10px 20px black;
+    box-shadow: 0 5px 15px black;
 }
 
 .skew {

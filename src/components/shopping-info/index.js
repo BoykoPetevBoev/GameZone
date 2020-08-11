@@ -14,6 +14,7 @@ function ShoppingInfo() {
 
     useEffect(() => {
         const user = context.user
+        console.log(user);
         if (user.shoppingCart && user.wishlist) {
             setCart(user.shoppingCart.length);
             setWishlist(user.wishlist.length);

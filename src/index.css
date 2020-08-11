@@ -9,6 +9,7 @@ body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  vertical-align: top;
 }
 
 .error-div {
@@ -18,7 +19,7 @@ body {
 
 #root {
   height: 100%;
-  /* background-color: black; */
+  background-color: black;
 }
 
 code {
@@ -33,8 +34,6 @@ code {
   --special-first: #3ac6ea;
   --special-second: #D1285D;
   --special-third: #aed103;
-
-
   --primary-color: #ced8e1;
   --secondary-color: #102b3e;
   /* --special-color:  #3ac6ea; */

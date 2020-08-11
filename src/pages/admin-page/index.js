@@ -1,17 +1,14 @@
 import React from 'react';
 import styles from './index.module.css';
-import Navigation from '../../components/admin-navigation';
-import Header from '../../components/header';
+import AdminNavigation from '../../components/admin-navigation';
 
 function AdminPage() {
     return (
-        <div className={styles.container}>
-            <Header />
-            <Navigation />
+        <AdminNavigation>
             <div className={styles.main}>
 
             </div>
-        </div>
+        </AdminNavigation>
     )
 }
 

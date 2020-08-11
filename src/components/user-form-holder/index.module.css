@@ -12,13 +12,15 @@
 }
 
 .form-holder {
+    box-sizing: content-box;
     margin: auto;
-    margin-top: 3%;
     text-align: center;
     color: var(--special-second);
     background-color: var(--secondary-color);
-    padding: 3%;
+    padding:  0 3% ;
+
     width: 70%;
+    height: 100%;
     max-width: 600px;
     opacity: 0.9;
     animation: fadeInDown;
@@ -31,6 +33,7 @@
 .form-holder h1 {
     text-align: center;
     color: var(--primary-color);
+    padding-top: 30%;
     font-weight: 300;
     margin: 0 0 40px;
 }
