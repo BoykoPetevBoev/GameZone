@@ -31,6 +31,10 @@ function Authorization(props) {
             : logout()
     }
 
+    const updateUser = (user) => {
+        setUser(user);
+    }
+
     const login = (user) => {
         setUser(user);
         setLoggedIn(true);
@@ -57,6 +61,7 @@ function Authorization(props) {
             loggedIn,
             isAdmin,
             user,
+            updateUser,
             login,
             logout
         }}>

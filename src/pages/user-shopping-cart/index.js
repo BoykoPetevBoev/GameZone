@@ -5,7 +5,7 @@ import Footer from '../../components/footer';
 import UserContext from '../../Context';
 import CartProducts from '../../components/user-cart-products';
 import CartCheckout from '../../components/user-cart-checkout';
-import { updateShoppingCart } from '../../utils/requester';
+import { removeFromCart } from '../../utils/user';
 
 function ShoppingCart() {
     const [cart, setCart] = useState([]);
@@ -17,13 +17,9 @@ function ShoppingCart() {
 
     const removeItem = async (e) => {
         const id = e.target.value;
-        const index = cart.findIndex(el => el._id === id);
-        const arr = cart.slice(0);
-        arr.splice(index, 1);
-
-        setCart(arr);
-        context.user.shoppingCart = arr;
-        updateShoppingCart(context.user);
+        const user = await removeFromCart(id, context.user);
+        context.updateUser(user);
+        setCart(user.shoppingCart);
     }
 
     const showItems = () => {

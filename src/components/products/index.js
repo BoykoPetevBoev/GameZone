@@ -1,33 +1,46 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import styles from './index.module.css';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import ProductsTemplate from '../products-template';
 import { getAllProducts } from '../../utils/requester';
 import ShoppingCart from '@material-ui/icons/ShoppingCart';
 import Favorite from '@material-ui/icons/Favorite';
+import UserContext from '../../Context';
+import { addToCart, addToWishlist } from '../../utils/user';
 
-function Products({ filter }) {
-    const [allProducts, setAllProducts] = useState([]);
+function Products(props) {
     const [products, setProducts] = useState([]);
-    const [category, setCategoty] = useState(filter);
+    const context = useContext(UserContext);
+    const history = useHistory();
 
     useEffect(() => {
         getProducts();
     }, []);
 
-    useEffect(() => {
-        setCategoty(filter);
-        // filterProducts();    
-    })
 
-    const filterProducts = () => {
-        const filtered = allProducts.filter(obj => obj.category === category)
-        setProducts(filtered);
-    }
 
     const getProducts = async () => {
         const data = await getAllProducts();
         setProducts(data);
+    }
+
+    const addToCartHandler = async (e) => {
+        if (!context.loggedIn) {
+            return props.history.push('/login');
+        }
+        const id = e.target.value;
+        const user = await addToCart(id, context.user);
+        context.updateUser(user);
+
+    }
+
+    const addToWishlistHandler = async (e) => {
+        if (!context.loggedIn) {
+            return props.history.push('/login');
+        }
+        const id = e.target.value;
+        const user = await addToWishlist(id, context.user);
+        context.updateUser(user);
     }
 
     const renderProducts = (product) => {
@@ -38,11 +51,11 @@ function Products({ filter }) {
                 <Link className={styles.link} to={path}>
                     <ProductsTemplate  {...product} />
                 </Link>
-                <button value={product._id} className={styles.add} >
+                <button onClick={addToCartHandler} value={product._id} className={styles.add} >
                     <ShoppingCart className={styles.ico} />
                 </button>
-                <button value={product._id} className={styles.wishlist}>
-                    <Favorite className={styles.ico} />
+                <button onClick={addToWishlistHandler} value={product._id} className={styles.wishlist}>
+                    <Favorite className={styles.ico}/>
                 </button>
             </div>
         )

@@ -1,42 +1,37 @@
 import React, { useContext, useEffect, useState } from 'react';
 import UserContext from '../../Context';
 import styles from './index.module.css';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import Header from '../../components/header';
 import ProductsTemplate from '../../components/products-template';
 import { updateWishlist, updateShoppingCart } from '../../utils/requester';
 import ShoppingCart from '@material-ui/icons/ShoppingCart';
 import DeleteIcon from '@material-ui/icons/Delete';
 import Footer from '../../components/footer';
+import { addToCart, removeFromWishlist } from '../../utils/user';
 
 
 
 function Wishlist(props) {
     const [wishlist, setWishlist] = useState([]);
     const context = useContext(UserContext);
+    const history = useHistory();
 
     useEffect(() => {
         setWishlist(context.user.wishlist);
     }, []);
 
-    const removeItem = (e) => {
+    const removeProduct = async (e) => {
         const id = e.target.value;
-        const index = wishlist.findIndex(el => el._id === id);
-        const arr = wishlist.slice(0);
-        arr.splice(index, 1);
-
-        setWishlist(arr);
-        context.user.wishlist = arr;
-        updateWishlist(context.user);
+        const user = await removeFromWishlist(id, context.user);
+        context.updateUser(user);
+        setWishlist(user.wishlist);
     }
 
-    const addToCart = (e) => {
+    const addProduct = async (e) => {
         const id = e.target.value;
-        const product = wishlist.find(element => element._id === id);
-
-        context.user.shoppingCart.push(product);
-        updateShoppingCart(context.user);
-        props.history.push('/wishlist')
+        const user = await addToCart(id, context.user);
+        context.updateUser(user);
     }
 
     const renderProducts = (product) => {
@@ -47,10 +42,10 @@ function Wishlist(props) {
                     <ProductsTemplate  {...product} />
                 </Link>
                 <div>
-                    <button value={product._id} className={styles.add} onClick={addToCart} >
+                    <button value={product._id} className={styles.add} onClick={addProduct} >
                         <ShoppingCart className={styles.ico} />
                     </button>
-                    <button value={product._id} className={styles.remove} onClick={removeItem} >
+                    <button value={product._id} className={styles.remove} onClick={removeProduct} >
                         <DeleteIcon className={styles.ico} />
                     </button>
                 </div>
@@ -61,8 +56,6 @@ function Wishlist(props) {
     return (
         <div className={styles.container}>
             <Header />
-
-
             <div className={styles['wishlist-wrapper']}>
 
                 <div className={styles.wishlist}>

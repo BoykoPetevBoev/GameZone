@@ -6,19 +6,18 @@ import Wrapper from '../../components/wrapper';
 import ProductImages from '../../components/product-images';
 import ProductInfo from '../../components/product-info';
 import ProductButton from '../../components/product-button';
-import { updateShoppingCart, updateWishlist, getProduct } from '../../utils/requester';
+import { getProduct } from '../../utils/requester';
+import { addToCart, addToWishlist } from '../../utils/user';
 
 import ShoppingCart from '@material-ui/icons/ShoppingCart';
 import Favorite from '@material-ui/icons/Favorite';
 
 function Product(props) {
     const [product, setProduct] = useState({});
-    const [user, setUser] = useState({});
     const context = useContext(UserContext);
 
     useEffect(() => {
         getData();
-        setUser(context.user);
     }, []);
 
     const getData = async () => {
@@ -26,27 +25,21 @@ function Product(props) {
         setProduct(data);
     }
 
-    const addToCart = () => {
+    const addToCartHandler = async () => {
         if (!context.loggedIn) {
             return props.history.push('/login');
         }
+        const user = await addToCart(product._id, context.user);
+        context.updateUser(user);
 
-        context.user.shoppingCart.push(product);
-        updateShoppingCart(context.user);
-        props.history.push('/');
     }
 
-    const addToWishlist = () => {
+    const addToWishlistHandler = async () => {
         if (!context.loggedIn) {
             return props.history.push('/login');
         }
-        const found = user.wishlist.find(element => element._id === product._id);
-        if (!found) {
-            context.user.wishlist.push(product);
-            updateWishlist(context.user);
-        }
-        props.history.push('/');
-
+        const user = await addToWishlist(product._id, context.user);
+        context.updateUser(user);
     }
 
     return (
@@ -63,11 +56,11 @@ function Product(props) {
                 <div className={styles['button-wrapper']}>
 
                     <ProductButton
-                        onClick={addToCart}
+                        onClick={addToCartHandler}
                     > <ShoppingCart /> </ProductButton>
 
                     <ProductButton
-                        onClick={addToWishlist}
+                        onClick={addToWishlistHandler}
                     > <Favorite /> </ProductButton>
 
                 </div>
