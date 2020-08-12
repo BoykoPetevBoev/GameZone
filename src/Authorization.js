@@ -11,6 +11,7 @@ function getCookie(name) {
 function Authorization(props) {
     const [user, setUser] = useState(null);
     const [loggedIn, setLoggedIn] = useState(false);
+    const [isAdmin, setIsAdmin] = useState(false);
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
@@ -34,11 +35,15 @@ function Authorization(props) {
         setUser(user);
         setLoggedIn(true);
         setLoading(false);
+        if(user._id === '5f32a1136431e10fd0cce82f'){
+            setIsAdmin(true);
+        }
     }
 
     const logout = () => {
         document.cookie = 'GameZoneToken=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
         setLoggedIn(false);
+        setIsAdmin(false)
         setUser(null);
         setLoading(false);
     }
@@ -50,6 +55,7 @@ function Authorization(props) {
     return (
         <UserContext.Provider value={{
             loggedIn,
+            isAdmin,
             user,
             login,
             logout
