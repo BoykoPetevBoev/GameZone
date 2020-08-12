@@ -17,7 +17,7 @@ import Wishlist from './pages/user-wishlist-page';
 import UserContext from './Context';
 
 function App() {
-  const { loggedIn } = useContext(UserContext)
+  const { loggedIn, isAdmin } = useContext(UserContext)
   return (
 
     <Router>
@@ -25,14 +25,6 @@ function App() {
 
         <Route exact path='/'>
           <HomePage />
-        </Route>
-
-        <Route exact path='/login'>
-          {loggedIn ? <ErrorPage /> : <LoginPage />}
-        </Route>
-
-        <Route exact path='/register'>
-          {loggedIn ? <ErrorPage /> : <RegisterPage />}
         </Route>
 
         <Route exact path='/mouse'>
@@ -55,13 +47,35 @@ function App() {
           <HomePage filter='accessory' />
         </Route>
 
-        <Route exact path='/admin' component={AdminPage} />
-        <Route exact path='/admin/form' component={ProductFormPage} />
-        <Route exact path='/admin/users' component={UsersTable} />
-        <Route exact path='/admin/products' component={ProductTable} />
-        <Route exact path='/profile' component={UserPage} />
-        <Route exact path='/shopping-cart' component={ShoppingCart} />
-        <Route exact path='/wishlist' component={Wishlist} />
+        <Route exact path='/login'>
+          {loggedIn ? <ErrorPage /> : <LoginPage />}
+        </Route>
+        <Route exact path='/register'>
+          {loggedIn ? <ErrorPage /> : <RegisterPage />}
+        </Route>
+
+        <Route exact path='/admin'>
+          {isAdmin ? <AdminPage /> : <ErrorPage />}
+        </Route >
+        <Route exact path='/admin/form'>
+          {isAdmin ? <ProductFormPage /> : <ErrorPage />}
+        </Route>
+        <Route exact path='/admin/users' >
+          {isAdmin ? <UsersTable /> : <ErrorPage />}
+        </Route>
+        <Route exact path='/admin/products' >
+          {isAdmin ? <ProductTable /> : <ErrorPage />}
+        </Route>
+
+        <Route exact path='/profile' >
+          {loggedIn ? <UserPage /> : <ErrorPage />}
+        </Route>
+        <Route exact path='/shopping-cart' >
+          {loggedIn ? <ShoppingCart /> : <ErrorPage />}
+        </Route>
+        <Route exact path='/wishlist' >
+          {loggedIn ? <Wishlist /> : <ErrorPage />}
+        </Route>
 
         <Route exact path='/mouse/:id' component={ProductPage} />
         <Route exact path='/keyboard/:id' component={ProductPage} />
