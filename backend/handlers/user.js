@@ -58,12 +58,12 @@ async function getUsers(req, res, next) {
 
 async function updateShoppingCart(req, res, next) {
     const user = req.body;
-    const data = await User.findByIdAndUpdate(user._id, { shoppingCart: user.shoppingCart });
+    const data = await User.findByIdAndUpdate(user._id, { shoppingCart: user.shoppingCart }, {new: true}).populate('shoppingCart').populate('wishlist');
     res.status(201).send(data);
 }
 async function updateWishlist(req, res, next) {
     const user = req.body;
-    const data = await User.findByIdAndUpdate(user._id, { wishlist: user.wishlist });
+    const data = await User.findByIdAndUpdate(user._id, { wishlist: user.wishlist }, {new: true}).populate('shoppingCart').populate('wishlist');
     res.status(201).send(data);
 }
 

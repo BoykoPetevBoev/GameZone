@@ -14,7 +14,7 @@ function ShoppingInfo() {
 
     useEffect(() => {
         const user = context.user
-        if (user.shoppingCart && user.wishlist) {
+        if (user) {
             setCart(user.shoppingCart.length);
             setWishlist(user.wishlist.length);
             const price = user.shoppingCart.reduce((acc, cur) => {
@@ -38,7 +38,7 @@ function ShoppingInfo() {
 
             <div className={styles.links}>
                 <Link className={styles.ico} to='/shopping-cart'>
-                    <Badge color="secondary" badgeContent={cart}>
+                    <Badge color="secondary" badgeContent={context.user.shoppingCart.length}>
                         <ShoppingCart />
                     </Badge>
                 </Link>
