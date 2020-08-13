@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import styles from './index.module.css';
-import { useHistory, Link } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import UserContext from '../../Context';
 
 import HeaderButtons from '../header-button';

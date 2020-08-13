@@ -4,7 +4,6 @@ import styles from './index.module.css';
 import { Link, useHistory } from 'react-router-dom';
 import Header from '../../components/header';
 import ProductsTemplate from '../../components/products-template';
-import { updateWishlist, updateShoppingCart } from '../../utils/requester';
 import ShoppingCart from '@material-ui/icons/ShoppingCart';
 import DeleteIcon from '@material-ui/icons/Delete';
 import Footer from '../../components/footer';
@@ -12,13 +11,14 @@ import { addToCart, removeFromWishlist } from '../../utils/user';
 
 
 
-function Wishlist(props) {
+function Wishlist() {
     const [wishlist, setWishlist] = useState([]);
     const context = useContext(UserContext);
     const history = useHistory();
 
     useEffect(() => {
         setWishlist(context.user.wishlist);
+
     }, []);
 
     const removeProduct = async (e) => {
@@ -32,6 +32,7 @@ function Wishlist(props) {
         const id = e.target.value;
         const user = await addToCart(id, context.user);
         context.updateUser(user);
+        history.push('/shopping-cart');
     }
 
     const renderProducts = (product) => {
@@ -62,9 +63,10 @@ function Wishlist(props) {
                     <p>YOUR WISHLIST ({context.user.wishlist.length})</p>
                 </div>
 
-                <div>
+                <div className={styles.category}>
                     {wishlist.map(product => renderProducts(product))}
                 </div>
+
 
             </div>
             <Footer />

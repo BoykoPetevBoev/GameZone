@@ -32,6 +32,9 @@
     margin: 6% 0;
     padding: 0 2%;
 }
+.category {
+    text-align: left;
+}
 
 .product {
     display: inline-block;

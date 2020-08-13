@@ -1,8 +1,8 @@
 import React from 'react';
 import styles from './index.module.css'
-//{ category, images, brand, model, price }
+
 function ProductsTemplate({ category, images, brand, model, price }) {
-    // console.log(images);
+
     return (
         <div className={styles.wrapper}>
 

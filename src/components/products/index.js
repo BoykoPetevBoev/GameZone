@@ -9,7 +9,9 @@ import UserContext from '../../Context';
 import { addToCart, addToWishlist } from '../../utils/user';
 
 function Products(props) {
+    const [allProducts, setAllProducts] = useState([]);
     const [products, setProducts] = useState([]);
+    const [path, setPath] = useState(props.filter)
     const context = useContext(UserContext);
     const history = useHistory();
 
@@ -17,30 +19,47 @@ function Products(props) {
         getProducts();
     }, []);
 
+    useEffect(() => {
+        if (!props.filter) {
+            setProducts(allProducts);
+        }
+        if (path === props.filter) {
+            return;
+        }
 
+        console.log(path);
+        console.log(props.filter)
+        if (path != props.filter) {
+            setPath(props.filter);
+            const arr = allProducts.filter(el => el.category === props.filter);
+            setProducts(arr);
+        }
+    })
 
     const getProducts = async () => {
         const data = await getAllProducts();
+        setAllProducts(data);
         setProducts(data);
     }
 
     const addToCartHandler = async (e) => {
         if (!context.loggedIn) {
-            return props.history.push('/login');
+            return history.push('/login');
         }
         const id = e.target.value;
         const user = await addToCart(id, context.user);
         context.updateUser(user);
-
+        history.push('/shopping-cart');
     }
 
     const addToWishlistHandler = async (e) => {
         if (!context.loggedIn) {
-            return props.history.push('/login');
+            return history.push('/login');
         }
         const id = e.target.value;
         const user = await addToWishlist(id, context.user);
         context.updateUser(user);
+        history.push('/wishlist')
     }
 
     const renderProducts = (product) => {
@@ -55,7 +74,7 @@ function Products(props) {
                     <ShoppingCart className={styles.ico} />
                 </button>
                 <button onClick={addToWishlistHandler} value={product._id} className={styles.wishlist}>
-                    <Favorite className={styles.ico}/>
+                    <Favorite className={styles.ico} />
                 </button>
             </div>
         )

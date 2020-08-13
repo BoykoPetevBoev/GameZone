@@ -38,7 +38,7 @@ function ShoppingInfo() {
 
             <div className={styles.links}>
                 <Link className={styles.ico} to='/shopping-cart'>
-                    <Badge color="secondary" badgeContent={context.user.shoppingCart.length}>
+                    <Badge color="secondary" badgeContent={cart}>
                         <ShoppingCart />
                     </Badge>
                 </Link>

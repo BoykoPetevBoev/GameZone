@@ -1,7 +1,6 @@
 import React from 'react';
 import styles from './index.module.css';
 import { Link } from 'react-router-dom';
-import ShoppingCart from '@material-ui/icons/ShoppingCart';
 
 function HeaderButtons({ name, path, onClick }) {
     return (
