@@ -10,30 +10,30 @@ function Navigation() {
 
                 <li className={styles['special-effects']} >
                     <Link className={styles.link} to="/mouse">
-                            MOUSE
+                        MOUSE
                     </Link>
                 </li>
                 <li className={styles['special-effects']}>
                     <Link className={styles.link} to="/keyboard">
-                            KEYBOARDS
+                        KEYBOARDS
                     </Link>
                 </li>
                 <li className={styles['special-effects']}>
                     <Link className={styles.link} to="/headset">
-                            HEADSETS
+                        HEADSETS
                     </Link>
                 </li>
                 <li className={styles['special-effects']}>
                     <Link className={styles.link} to="/mousepad">
-                            MOUSEPADS
+                        MOUSEPADS
                     </Link>
                 </li>
                 <li className={styles['special-effects']}>
                     <Link className={styles.link} to="/accessory">
-                            ACCESSORIES
+                        ACCESSORIES
                     </Link>
                 </li>
-                
+
             </ul>
         </div>
     );

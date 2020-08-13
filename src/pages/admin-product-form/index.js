@@ -2,7 +2,7 @@ import React, { useState, Children } from 'react';
 import styles from './index.module.css';
 import AdminInput from '../../components/admin-input';
 import AdminFormWrapper from '../../components/admin-from-wrapper';
-import { addProduct } from '../../utils/requester';
+// import { addProduct } from '../../utils/requester';
 import AdminWrapper from '../../components/admin-wrapper';
 
 function Product(props) {

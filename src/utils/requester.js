@@ -108,7 +108,7 @@ async function updateWishlist(user) {
     }
 }
 
-async function changeProduct() {
+// async function changeProduct() {
     // const data = await getAllProducts();
     // data.map(async (product) => {
     //     // console.log(product.images);
@@ -124,7 +124,7 @@ async function changeProduct() {
     //         console.log(res);
     //     }
     // })
-}
+// }
 // changeProduct();
 
 

@@ -9,7 +9,7 @@ function CartProducts({ item: product, onClick }) {
             <Link to={path}>
 
                 <div className={styles['image-holder']}>
-                    <img className={styles.img} src={product.images[0]} />
+                    <img className={styles.img} src={product.images[0]} alt={product.brand} />
                 </div>
 
                 <div className={styles['name-holder']}>

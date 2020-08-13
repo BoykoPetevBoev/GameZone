@@ -139,3 +139,4 @@
 [0811/131629.057:ERROR:crash_report_database_win.cc(469)] failed to stat report
 [0811/131629.057:ERROR:crash_report_database_win.cc(469)] failed to stat report
 [0811/171924.568:ERROR:crash_report_database_win.cc(428)] unexpected header
+[0813/104258.724:ERROR:crash_report_database_win.cc(428)] unexpected header

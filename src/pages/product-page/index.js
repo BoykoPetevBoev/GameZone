@@ -11,10 +11,12 @@ import { addToCart, addToWishlist } from '../../utils/user';
 
 import ShoppingCart from '@material-ui/icons/ShoppingCart';
 import Favorite from '@material-ui/icons/Favorite';
+import { useHistory } from 'react-router-dom';
 
 function Product(props) {
     const [product, setProduct] = useState({});
     const context = useContext(UserContext);
+    const history = useHistory();
 
     useEffect(() => {
         getData();
@@ -31,7 +33,7 @@ function Product(props) {
         }
         const user = await addToCart(product._id, context.user);
         context.updateUser(user);
-
+        history.push('/shopping-cart')
     }
 
     const addToWishlistHandler = async () => {
@@ -40,6 +42,7 @@ function Product(props) {
         }
         const user = await addToWishlist(product._id, context.user);
         context.updateUser(user);
+        history.push('/wishlist')
     }
 
     return (
