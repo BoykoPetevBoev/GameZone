@@ -2,10 +2,11 @@ import React, { useState, Children } from 'react';
 import styles from './index.module.css';
 import AdminInput from '../../components/admin-input';
 import AdminFormWrapper from '../../components/admin-from-wrapper';
-// import { addProduct } from '../../utils/requester';
+import { addProduct } from '../../utils/requester';
 import AdminWrapper from '../../components/admin-wrapper';
+import { useHistory } from 'react-router-dom';
 
-function Product(props) {
+function Product() {
     const [category, setCategory] = useState('');
     const [brand, setBrand] = useState('');
     const [model, setModel] = useState('');
@@ -16,6 +17,7 @@ function Product(props) {
     const [characteristic, setCharacteristic] = useState('');
     const [characteristics, setCharacteristics] = useState([]);
     const [error, setError] = useState(null);
+    const history = useHistory();
 
     const addNewImage = () => {
         if (!image) {
@@ -71,8 +73,8 @@ function Product(props) {
             characteristics
         }
         console.log(product);
-        // addProduct(product)
-        // props.history.push('/');
+        addProduct(product);
+        history.push('/');
     }
 
     const onSubmit = (e) => {

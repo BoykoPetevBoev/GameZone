@@ -11,7 +11,7 @@ function AdminFormWrepper(props) {
 
                 {props.children}
 
-                <div>
+                <div className={styles.warning}>
                     {props.error ? <p>{props.error}</p> : null}
                 </div>
 

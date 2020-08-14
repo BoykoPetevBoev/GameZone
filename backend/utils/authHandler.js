@@ -1,10 +1,10 @@
 const jwt = require('jsonwebtoken');
 const privateKey = require('../config/config')['tokenKey']
 
-function setToken(user) {
+async function setToken(user) {
     const id = user._id;
     const email = user.email;
-    const token = jwt.sign({ id, email }, privateKey);
+    const token = await jwt.sign({ id, email }, privateKey);
     return token;
 }
 
