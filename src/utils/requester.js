@@ -47,7 +47,7 @@ async function userAuthorization(token) {
     return response;
 }
 
-async function getProduct(id){
+async function getProduct(id) {
     const promise = await fetch(`http://localhost:5000/get-product?id=${id}`, {
         method: 'GET',
         headers: {
@@ -110,21 +110,21 @@ async function updateWishlist(user) {
 }
 
 // async function changeProduct() {
-    // const data = await getAllProducts();
-    // data.map(async (product) => {
-    //     // console.log(product.images);
-    //     if (!product.images) {
-    //         // console.log(product);
-    //         const newProduct = product
-    //         const images = [product.firstImage, product.secondImage]
-    //         newProduct.firstImage = null;
-    //         newProduct.secondImage = null;
-    //         newProduct.images = images;
-    //         console.log(newProduct);
-    //         const res = await fetchRequest('PUT', newProduct, 'http://localhost:5000/update-product')
-    //         console.log(res);
-    //     }
-    // })
+// const data = await getAllProducts();
+// data.map(async (product) => {
+//     // console.log(product.images);
+//     if (!product.images) {
+//         // console.log(product);
+//         const newProduct = product
+//         const images = [product.firstImage, product.secondImage]
+//         newProduct.firstImage = null;
+//         newProduct.secondImage = null;
+//         newProduct.images = images;
+//         console.log(newProduct);
+//         const res = await fetchRequest('PUT', newProduct, 'http://localhost:5000/update-product')
+//         console.log(res);
+//     }
+// })
 // }
 // changeProduct();
 
