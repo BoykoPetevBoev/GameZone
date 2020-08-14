@@ -13,10 +13,9 @@ async function addProduct(req, res, next) {
         description,
         characteristics
     })
-    await product.save();
+    const status = await product.save();
 
-    res.writeHead(201, { 'Content-Type': 'text/plain' });
-    res.end();
+    res.writeHead(201, { 'Content-Type': 'text/plain' }).send(status);
 }
 async function getProducts(req, res, next) {
     const data = await Product.find().lean();

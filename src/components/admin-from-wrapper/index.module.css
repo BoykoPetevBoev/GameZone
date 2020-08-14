@@ -7,3 +7,6 @@
     display: inline-block;
     height: 100%;
 }
+.warning {
+    color: var(--special-second);
+}

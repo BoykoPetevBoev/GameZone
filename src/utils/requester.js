@@ -21,6 +21,7 @@ async function handleUserRequest(promise) {
 
 function setToken(promise) {
     const token = promise.headers.get('Authorization');
+    console.log(token);
     document.cookie = `GameZoneToken=${token}`;
 }
 
@@ -87,8 +88,8 @@ async function getAllUsers() {
 async function addProduct(body) {
     const promise = await fetchRequest('POST', body, 'http://localhost:5000/add-product');
     if (promise.status === 201) {
-        const response = await promise.json();
-        return response;
+        // const response = await promise.json();
+        // return response;
     }
 }
 

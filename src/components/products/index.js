@@ -7,11 +7,10 @@ import ShoppingCart from '@material-ui/icons/ShoppingCart';
 import Favorite from '@material-ui/icons/Favorite';
 import UserContext from '../../Context';
 import { addToCart, addToWishlist } from '../../utils/user';
+import { findByLabelText } from '@testing-library/react';
 
-function Products(props) {
-    const [allProducts, setAllProducts] = useState([]);
+function Products({ filter }) {
     const [products, setProducts] = useState([]);
-    const [path, setPath] = useState(props.filter)
     const context = useContext(UserContext);
     const history = useHistory();
 
@@ -19,26 +18,9 @@ function Products(props) {
         getProducts();
     }, []);
 
-    useEffect(() => {
-        if (!props.filter) {
-            setProducts(allProducts);
-        }
-        if (path === props.filter) {
-            return;
-        }
-
-        console.log(path);
-        console.log(props.filter)
-        if (path != props.filter) {
-            setPath(props.filter);
-            const arr = allProducts.filter(el => el.category === props.filter);
-            setProducts(arr);
-        }
-    })
-
     const getProducts = async () => {
         const data = await getAllProducts();
-        setAllProducts(data);
+        data.reverse();
         setProducts(data);
     }
 
@@ -64,6 +46,10 @@ function Products(props) {
 
     const renderProducts = (product) => {
         const path = `/${product.category}/${product._id}`
+        
+        if (filter && product.category !== filter) {
+            return null;
+        }
 
         return (
             <div key={product._id} className={styles.product}>

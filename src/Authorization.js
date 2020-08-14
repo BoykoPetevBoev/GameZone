@@ -21,17 +21,20 @@ function Authorization(props) {
             return
         }
         sendRequest(token);
-
     }, []);
 
     const sendRequest = async (token) => {
         const response = await userAuthorization(token);
+
         response.status
             ? login(response.user)
             : logout()
     }
 
     const updateUser = (user) => {
+        if (!loggedIn) {
+            return;
+        }
         setUser(user);
     }
 
@@ -39,16 +42,16 @@ function Authorization(props) {
         setUser(user);
         setLoggedIn(true);
         setLoading(false);
-        if(user && user._id === '5f32a1136431e10fd0cce82f'){
+        if (user && user._id === '5f32a1136431e10fd0cce82f') {
             setIsAdmin(true);
         }
     }
 
     const logout = () => {
         document.cookie = 'GameZoneToken=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
-        setLoggedIn(false);
-        setIsAdmin(false)
         setUser(null);
+        setLoggedIn(false);
+        setIsAdmin(false);
         setLoading(false);
     }
 
