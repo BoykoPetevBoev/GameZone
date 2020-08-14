@@ -15,7 +15,7 @@ async function userLogin(req, res, next) {
         return res.status(401).send('Invalid password').end();
     }
 
-    const token = authHandler.setToken(user);
+    const token = await authHandler.setToken(user);
     return res.status(200).header('Authorization', token).send(user);
 }
 

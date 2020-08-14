@@ -25,6 +25,7 @@ function Authorization(props) {
 
     const sendRequest = async (token) => {
         const response = await userAuthorization(token);
+        console.log(response);
 
         response.status
             ? login(response.user)
