@@ -53,10 +53,9 @@ async function updateProduct(req, res) {
     }
 }
 async function deleteProduct(req, res) {
-    const id = req.body;
-    const response = Product.deleteOne({ _id: id });;
-    console.log(response);
-
+    const { id } = req.query;
+     await Product.deleteOne({ _id: id });;
+    res.status(200).send('product deleted');
 }
 
 

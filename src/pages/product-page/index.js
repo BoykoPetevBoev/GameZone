@@ -62,6 +62,7 @@ function Product(props) {
                         <div>
                             <Link
                                 to={`/admin/form/${product._id}`}
+                                className={styles['admin-button']}
                             > Change </Link>
                         </div>
                         :

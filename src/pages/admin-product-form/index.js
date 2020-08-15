@@ -55,6 +55,10 @@ function Product(props) {
         setCharacteristics(array);
         setCharacteristic('');
     }
+    const removeProduct = async () => {
+        const response = await deleteProduct(match.params.id);
+        history.push('/');
+    }
 
     const validateForm = () => {
         if (category === '') {
@@ -204,6 +208,13 @@ function Product(props) {
                     <div className={styles['submit-btn-holder']}>
                         <button type='submit'>Submit</button>
                     </div>
+                    {match.params.id
+                        ?
+                        <div className={styles['submit-btn-holder']}>
+                            <button type='button' onClick={removeProduct} value={match.params.id} >Delete Product</button>
+                        </div>
+                        : null
+                    }
                 </form>
             </AdminFormWrapper>
         </AdminWrapper>

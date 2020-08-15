@@ -11,6 +11,11 @@
     text-align: center;
     height: 100%;
 }
-/* .button-wrapper {
-    border: solid 1px red;
-} */
+.admin-button{
+    display: block;
+    margin: auto;
+    width: 200px;
+    height: 30px;
+    background-color: var(--special-third);
+    border: solid 1px black;
+} 

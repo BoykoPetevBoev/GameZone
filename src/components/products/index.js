@@ -65,7 +65,7 @@ function Products({ filter }) {
     const adminButtons = (product) => {
         return (
             <div>
-                <button className={styles['admin-button']} value={product._id}>Chnage</button>
+                <Link to={`/admin/form/${product._id}`} className={styles['admin-button']}>Chnage</Link>
             </div>
         )
     }
