@@ -111,7 +111,10 @@ async function updateProduct(body) {
     return promise;
 }
 async function deleteProduct(id) {
-    const promise = await fetchRequest('DELETE', id, 'http://localhost:5000/delete-product');
+    const promise = await fetch(`http://localhost:5000/delete-product?id=${id}`, {
+        method: 'DELETE'
+    });
+    return promise;
 }
 
 

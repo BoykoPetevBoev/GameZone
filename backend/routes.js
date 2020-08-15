@@ -29,5 +29,5 @@ module.exports = (app) => {
     app.put('/update-wishlist', updateWishlist);
     app.put('/update-product', updateProduct);
 
-    app.delete('/delete-product', deleteProduct)
+    app.delete('/delete-product', deleteProduct);
 };

@@ -29,7 +29,7 @@ function Table({ data }) {
 
     return (
         <div className={styles.table}>
-             <p>PRODUCTS ({data.length})</p>
+             <p> RESULTS {data.length}</p>
                 {data.map(line => renderUser(line))}
         </div>
     );

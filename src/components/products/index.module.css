@@ -82,6 +82,8 @@
     pointer-events: none;
 }
 .admin-button {
+    display: block;
     width: 100%;
+    height: 30px;
     background-color: var(--special-third);
 }
