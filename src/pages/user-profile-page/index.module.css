@@ -1,17 +1,43 @@
 .container {
     text-align: center;
-    background: rgb(255,255,255);
-    background: radial-gradient(circle, rgba(255,255,255,1) 0%, rgba(58,198,234,1) 50%, rgba(0,0,0,1) 100%);
+    background: rgb(255, 255, 255);
+    background: radial-gradient(circle, rgba(58, 198, 234, 1) 0%, rgba(0, 0, 0, 1) 100%);
+}
+
+.profile {
+    border-bottom: solid 1px black;
+    border-top: solid 1px black;
+    margin-bottom: 15%;
+    padding: 50px;
 }
 
 .user {
     padding-bottom: 3%;
     width: 50%;
     margin: auto;
-    box-shadow: 0 0 10px black;
     padding: 2%;
     margin: 6% 0;
     display: inline-block;
+}
+
+.account {
+    display: inline-block;
+    margin-left: 10%;
+    vertical-align: middle;
+}
+
+.img-holder {
+    border: solid 1px black;
+    height: 150px;
+    width: 150px;
+    display: inline-block;
+    border-radius: 100%;
+    vertical-align: middle;
+}
+
+.img-holder p {
+    font-size: 100px;
+    margin: 0;
 }
 
 .welcome {
@@ -24,61 +50,77 @@
 .welcome p {
     display: inline-block;
     margin: auto;
-    margin-top: 6px;
     font: bold 30px arial, sans-serif;
     background-color: rgba(0, 0, 0, 0.664);
     color: transparent;
-    text-shadow: 2px 2px 3px var(--special-first);
+    padding-bottom: 20px;
+    width: 300px;
     -webkit-background-clip: text;
-       -moz-background-clip: text;
-            background-clip: text;
+    -moz-background-clip: text;
+    background-clip: text;
 }
 
 .table {
     margin: auto;
 }
 
-.account, .shopping-cart, .wishlist, .ico {
-    background-color: white;
-    box-shadow: inset 0 0 5px black;
+.shopping-cart, .wishlist, .ico {
     margin: auto;
-    width: 70%;
+    width: 100%;
+    color: white;
 }
+
 .shopping-cart, .wishlist {
     display: inline-block;
-    height: 500px;
-    width: 46%;
-    margin: 1%;
+    max-height: 500px;
+    width: 100%;
     overflow-y: auto;
 }
+
 .ico {
     display: inline-block;
-    width: 46%;
-    margin: 1%;
-    background-color: var(--special-second);
-    color: black;
-}
-.name {
+    width: 100%;
     background-color: black;
     color: var(--special-second);
+    margin-top: -10px;
+    margin-bottom: 50px;
+    /* border-top: solid 1px var(--special-second); */
+    /* border-bottom: solid 1px var(--special-second); */
+}
+
+.name {
+    background-color: black;
+    color: white;
     height: 28px;
     margin: 0;
     box-shadow: inset 0 0 5px black;
 }
-
-
-.account {
-    padding-bottom: 1%;
-    margin-bottom: 1%
-}
-
 
 .tr th {
     text-align: right;
     padding: 0 10px;
     font-weight: 500;
 }
+
 .tr td {
     text-align: left;
     padding: 0 10px;
+}
+.logo {
+    font-size: 300px;
+    position: absolute;
+    /* display: flex; */
+    float: left;
+    /* transform: rotate(-90deg); */
+    margin: auto;
+    margin-top: -100px;
+    /* margin-left: -350px; */
+    width: 100%;
+    text-align: center;
+    opacity: .1;
+    background-color: rgba(0, 0, 0, 0.664);
+    color: transparent;
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    background-clip: text;
 }

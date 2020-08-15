@@ -34,54 +34,59 @@ function UserPage(props) {
     return (
         <div className={styles.container}>
             <Header />
+            <p className={styles.logo}>GAME ZONE</p>
             <div className={styles.user}>
                 <div className={styles.welcome}>
-                    <p>Welcome {context.user.firstName} {context.user.lastName}</p>
+                    <p>PROFILE</p>
                 </div>
-                <div className={styles.account}>
-                    <p>Account</p>
-                    <table className={styles.table}>
-                        <tbody>
-                            <tr className={styles.tr}>
-                                <th>FIRST NAME:</th>
-                                <td>{context.user.firstName}</td>
-                            </tr>
-                            <tr className={styles.tr}>
-                                <th>LAST NAME:</th>
-                                <td>{context.user.lastName}</td>
-                            </tr>
-                            <tr className={styles.tr}>
-                                <th>EMAIL:</th>
-                                <td>{context.user.email}</td>
-                            </tr>
-                            <tr className={styles.tr}>
-                                <th>PHONE:</th>
-                                <td>{context.user.phone}</td>
-                            </tr>
-                            <tr className={styles.tr}>
-                                <th>ADDRESS:</th>
-                                <td>{context.user.address}</td>
-                            </tr>
-                        </tbody>
-                    </table>
+                <div className={styles.profile}>
+                    <div className={styles['img-holder']}>
+                        <p>{context.user.firstName[0]}</p>
+                    </div>
+                    <div className={styles.account}>
+                        <table className={styles.table}>
+                            <tbody>
+                                <tr className={styles.tr}>
+                                    <th>FIRST NAME:</th>
+                                    <td>{context.user.firstName}</td>
+                                </tr>
+                                <tr className={styles.tr}>
+                                    <th>LAST NAME:</th>
+                                    <td>{context.user.lastName}</td>
+                                </tr>
+                                <tr className={styles.tr}>
+                                    <th>ADDRESS:</th>
+                                    <td>{context.user.address}</td>
+                                </tr>
+                                <tr className={styles.tr}>
+                                    <th>PHONE:</th>
+                                    <td>{context.user.phone}</td>
+                                </tr>
+                                <tr className={styles.tr}>
+                                    <th>EMAIL:</th>
+                                    <td>{context.user.email}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <p className={styles.name}>Shopping Cart</p>
+                <div className={styles['shopping-cart']}>
+                    {showTable(cart)}
                 </div>
                 <Link className={styles.ico} to='/shopping-cart'>
                     <ShoppingCart />
                 </Link>
+
+                <p className={styles.name}>Wishlist</p>
+                <div className={styles.wishlist}>
+                    {showTable(wishlist)}
+                </div>
                 <Link className={styles.ico} to='/wishlist'>
                     <Favorite />
                 </Link>
 
-                <div className={styles['shopping-cart']}>
-                    <p className={styles.name}>Shopping Cart</p>
-                    {showTable(cart)}
-                </div>
-
-                <div className={styles.wishlist}>
-                    <p className={styles.name}>Wishlist</p>
-                    {showTable(wishlist)}
-                </div>
-                
             </div>
             <Footer />
         </div>
