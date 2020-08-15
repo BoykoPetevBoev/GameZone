@@ -30,7 +30,7 @@ async function removeFromWishlist(id, user) {
 
 export {
     addToCart,
-    removeFromCart,
     addToWishlist,
+    removeFromCart,
     removeFromWishlist
 }

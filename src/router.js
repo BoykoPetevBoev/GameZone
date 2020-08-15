@@ -43,8 +43,8 @@ function App() {
           <HomePage filter='mousepad' />
         </Route>
 
-        <Route exact path='/accessory' >
-          <HomePage filter='accessory' />
+        <Route exact path='/accessories' >
+          <HomePage filter='accessories' />
         </Route>
 
         <Route exact path='/login'>
@@ -58,6 +58,9 @@ function App() {
           {isAdmin ? <AdminPage /> : <ErrorPage />}
         </Route >
         <Route exact path='/admin/form'>
+          {isAdmin ? <ProductFormPage /> : <ErrorPage />}
+        </Route>
+        <Route exact path='/admin/form/:id'>
           {isAdmin ? <ProductFormPage /> : <ErrorPage />}
         </Route>
         <Route exact path='/admin/users' >
@@ -81,7 +84,7 @@ function App() {
         <Route exact path='/keyboard/:id' component={ProductPage} />
         <Route exact path='/headset/:id' component={ProductPage} />
         <Route exact path='/mousepad/:id' component={ProductPage} />
-        <Route exact path='/accessory/:id' component={ProductPage} />
+        <Route exact path='/accessories/:id' component={ProductPage} />
 
         <Route component={ErrorPage} />
       </Switch>

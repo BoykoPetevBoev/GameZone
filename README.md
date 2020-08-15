@@ -1,10 +1,14 @@
 ## Table of Contents
 
+* [Download](#download)
 * [Installation](#installation)
 * [Application Structure](#application-structure)
 * [General Requirements](#general-requirements)
 * [About the Project](#about-the-project)
 * [Website](#website)
+
+## Download
+You can dowload *.rar* file from [here](https://drive.google.com/file/d/1p0tklY9zysjH4U8IgkjrxvqyjJci88He/view?usp=sharing)
 
 ## Installation
 

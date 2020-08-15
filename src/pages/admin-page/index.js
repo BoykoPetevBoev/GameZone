@@ -1,14 +1,15 @@
 import React from 'react';
 import styles from './index.module.css';
 import AdminNavigation from '../../components/admin-navigation';
+import AdminWrapper from '../../components/admin-wrapper';
 
 function AdminPage() {
     return (
-        <AdminNavigation>
+        <AdminWrapper>
             <div className={styles.main}>
 
             </div>
-        </AdminNavigation>
+        </AdminWrapper>
     )
 }
 

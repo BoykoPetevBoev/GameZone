@@ -11,7 +11,7 @@ import { addToCart, addToWishlist } from '../../utils/user';
 
 import ShoppingCart from '@material-ui/icons/ShoppingCart';
 import Favorite from '@material-ui/icons/Favorite';
-import { useHistory } from 'react-router-dom';
+import { useHistory, Link } from 'react-router-dom';
 
 function Product(props) {
     const [product, setProduct] = useState({});
@@ -57,14 +57,24 @@ function Product(props) {
                     characteristics={product.characteristics}
                 />
                 <div className={styles['button-wrapper']}>
+                    {context.isAdmin
+                        ?
+                        <div>
+                            <Link
+                                to={`/admin/form/${product._id}`}
+                            > Change </Link>
+                        </div>
+                        :
+                        <div>
+                            <ProductButton
+                                onClick={addToCartHandler}
+                            > <ShoppingCart /> </ProductButton>
 
-                    <ProductButton
-                        onClick={addToCartHandler}
-                    > <ShoppingCart /> </ProductButton>
-
-                    <ProductButton
-                        onClick={addToWishlistHandler}
-                    > <Favorite /> </ProductButton>
+                            <ProductButton
+                                onClick={addToWishlistHandler}
+                            > <Favorite /> </ProductButton>
+                        </div>
+                    }
 
                 </div>
             </div>

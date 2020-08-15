@@ -15,7 +15,7 @@ async function addProduct(req, res, next) {
     })
     const status = await product.save();
 
-    res.writeHead(201, { 'Content-Type': 'text/plain' }).send(status);
+    res.status(201).send(status);
 }
 async function getProducts(req, res, next) {
     const data = await Product.find().lean();
@@ -24,10 +24,38 @@ async function getProducts(req, res, next) {
 async function getProduct(req, res, next) {
     const { id } = req.query;
     const product = await Product.findById(id).lean();
-    res.send(product);
+    res.status(201).send(product);
 }
 async function updateProduct(req, res) {
-    const product = req.body
+    console.log(req.body);
+    const { id,
+        category,
+        brand,
+        model,
+        price,
+        description,
+        images,
+        characteristics } = req.body;
+    try {
+        const status = await Product.findByIdAndUpdate(id, {
+            category,
+            brand,
+            model,
+            price,
+            description,
+            images,
+            characteristics
+        }, { new: true });
+        res.status(201).send(status);
+
+    } catch (error) {
+        res.status(401);
+    }
+}
+async function deleteProduct(req, res) {
+    const id = req.body;
+    const response = Product.deleteOne({ _id: id });;
+    console.log(response);
 
 }
 
@@ -36,5 +64,6 @@ module.exports = {
     getProducts,
     addProduct,
     getProduct,
-    updateProduct
+    updateProduct,
+    deleteProduct
 }

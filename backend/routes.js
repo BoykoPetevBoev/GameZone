@@ -1,8 +1,19 @@
-const handlers = require('./handlers/user');
-// const utils = require('../utils/authHandler');
-// const user = handlers.user;
-const { userLogin, userRegister, getUsers, verifyLogin, updateShoppingCart, updateWishlist } = require('./handlers/user');
-const { addProduct, getProducts, getProduct, updateProduct } = require('./handlers/product');
+const {
+    userLogin,
+    userRegister,
+    getUsers,
+    verifyLogin,
+    updateShoppingCart,
+    updateWishlist
+} = require('./handlers/user');
+
+const {
+    addProduct,
+    getProducts,
+    getProduct,
+    updateProduct,
+    deleteProduct
+} = require('./handlers/product');
 
 module.exports = (app) => {
     app.get('/verify', verifyLogin);
@@ -17,5 +28,6 @@ module.exports = (app) => {
     app.put('/update-shopping-cart', updateShoppingCart);
     app.put('/update-wishlist', updateWishlist);
     app.put('/update-product', updateProduct);
-    
+
+    app.delete('/delete-product', deleteProduct)
 };

@@ -9,8 +9,7 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "run": "nodemon",
-    "start": "node index.js",
+    "start": "nodemon",
     "heroku-postbuild": "..cd && npm install && npm install --only=dev --no-shrinkwrap && npm run build"
   },
   "repository": {
