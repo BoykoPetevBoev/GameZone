@@ -1,4 +1,11 @@
 .children {
     display: inline-block;
-    width: 85%;
+    width: 100%;
+}
+.admin p {
+    text-align: center;
+    height: 50px;
+    margin: 0;
+    font-size: x-large;
+    color: var(--special-first);
 }

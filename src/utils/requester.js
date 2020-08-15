@@ -21,7 +21,6 @@ async function handleUserRequest(promise) {
 
 function setToken(promise) {
     const token = promise.headers.get('Authorization');
-    console.log(token);
     document.cookie = `GameZoneToken=${token}`;
 }
 
@@ -85,14 +84,6 @@ async function getAllUsers() {
     }
 }
 
-async function addProduct(body) {
-    const promise = await fetchRequest('POST', body, 'http://localhost:5000/add-product');
-    if (promise.status === 201) {
-        // const response = await promise.json();
-        // return response;
-    }
-}
-
 async function updateShoppingCart(user) {
     const promise = await fetchRequest('PUT', user, 'http://localhost:5000/update-shopping-cart');
     if (promise.status === 201) {
@@ -109,24 +100,20 @@ async function updateWishlist(user) {
     }
 }
 
-// async function changeProduct() {
-// const data = await getAllProducts();
-// data.map(async (product) => {
-//     // console.log(product.images);
-//     if (!product.images) {
-//         // console.log(product);
-//         const newProduct = product
-//         const images = [product.firstImage, product.secondImage]
-//         newProduct.firstImage = null;
-//         newProduct.secondImage = null;
-//         newProduct.images = images;
-//         console.log(newProduct);
-//         const res = await fetchRequest('PUT', newProduct, 'http://localhost:5000/update-product')
-//         console.log(res);
-//     }
-// })
-// }
-// changeProduct();
+async function addProduct(body) {
+    const promise = await fetchRequest('POST', body, 'http://localhost:5000/add-product');
+    console.log(promise);
+    return promise
+}
+async function updateProduct(body) {
+    const promise = await fetchRequest('PUT', body, 'http://localhost:5000/update-product');
+    console.log(promise);
+    return promise;
+}
+async function deleteProduct(id) {
+    const promise = await fetchRequest('DELETE', id, 'http://localhost:5000/delete-product');
+}
+
 
 
 
@@ -137,7 +124,9 @@ module.exports = {
     addProduct,
     updateShoppingCart,
     updateWishlist,
+    updateProduct,
     getAllProducts,
     getAllUsers,
-    getProduct
+    getProduct,
+    deleteProduct
 }

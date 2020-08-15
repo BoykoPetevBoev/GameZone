@@ -4,7 +4,8 @@ const privateKey = require('../config/config')['tokenKey']
 async function setToken(user) {
     const id = user._id;
     const email = user.email;
-    const token = await jwt.sign({ id, email }, privateKey);
+    const token = jwt.sign({ id, email }, privateKey);
+    console.log(token);
     return token;
 }
 
@@ -13,6 +14,10 @@ async function verifyToken(token) {
         return status;
 }
 
+module.exports = {
+    setToken,
+    verifyToken
+}
 
 // function userAutorization(req, res, next) {
 //     const token = req.cookies.token;
@@ -54,7 +59,3 @@ async function verifyToken(token) {
 //     next();
 // }
 
-module.exports = {
-    setToken,
-    verifyToken
-}

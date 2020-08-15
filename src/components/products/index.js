@@ -7,7 +7,6 @@ import ShoppingCart from '@material-ui/icons/ShoppingCart';
 import Favorite from '@material-ui/icons/Favorite';
 import UserContext from '../../Context';
 import { addToCart, addToWishlist } from '../../utils/user';
-import { findByLabelText } from '@testing-library/react';
 
 function Products({ filter }) {
     const [products, setProducts] = useState([]);
@@ -46,7 +45,7 @@ function Products({ filter }) {
 
     const renderProducts = (product) => {
         const path = `/${product.category}/${product._id}`
-        
+
         if (filter && product.category !== filter) {
             return null;
         }
@@ -56,6 +55,23 @@ function Products({ filter }) {
                 <Link className={styles.link} to={path}>
                     <ProductsTemplate  {...product} />
                 </Link>
+                {context.isAdmin
+                    ? adminButtons(product)
+                    : userButtons(product)
+                }
+            </div>
+        )
+    }
+    const adminButtons = (product) => {
+        return (
+            <div>
+                <button className={styles['admin-button']} value={product._id}>Chnage</button>
+            </div>
+        )
+    }
+    const userButtons = (product) => {
+        return (
+            <div>
                 <button onClick={addToCartHandler} value={product._id} className={styles.add} >
                     <ShoppingCart className={styles.ico} />
                 </button>

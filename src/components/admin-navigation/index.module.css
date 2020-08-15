@@ -1,4 +1,4 @@
-.conteiner {
+/* .conteiner {
     width: 15%;
     background-color: var(--primary-dark);
     display: inline-block;
@@ -28,4 +28,18 @@
     height: 100%;
     color: black;
     padding: 20px 0;
+} */
+
+.menu-list {
+    width: 100%;
+    height: 40px;
+    background-color: var(--primary-dark);
+    text-align: center;
+    border-bottom: 1px solid var(--special-first);
+    margin-bottom: 20px;
+}
+.menu-list ul {
+    margin: 0px;
+    padding: 0px;
+    height: 100%;
 }

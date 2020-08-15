@@ -1,12 +1,13 @@
-import React, { useState, Children } from 'react';
+import React, { useState, Children, useEffect } from 'react';
 import styles from './index.module.css';
 import AdminInput from '../../components/admin-input';
 import AdminFormWrapper from '../../components/admin-from-wrapper';
-import { addProduct } from '../../utils/requester';
+import { addProduct, updateProduct, deleteProduct } from '../../utils/requester';
 import AdminWrapper from '../../components/admin-wrapper';
-import { useHistory } from 'react-router-dom';
+import { useHistory, useRouteMatch } from 'react-router-dom';
+import { getProduct } from '../../utils/requester';
 
-function Product() {
+function Product(props) {
     const [category, setCategory] = useState('');
     const [brand, setBrand] = useState('');
     const [model, setModel] = useState('');
@@ -16,8 +17,26 @@ function Product() {
     const [images, setImages] = useState([]);
     const [characteristic, setCharacteristic] = useState('');
     const [characteristics, setCharacteristics] = useState([]);
-    const [error, setError] = useState(null);
+    const [error, setError] = useState(true);
     const history = useHistory();
+    const match = useRouteMatch();
+
+    useEffect(() => {
+        if (match.params.id) {
+            loadData();
+        }
+    }, []);
+
+    const loadData = async () => {
+        const data = await getProduct(match.params.id);
+        setCategory(data.category);
+        setBrand(data.brand);
+        setModel(data.model);
+        setPrice(data.price);
+        setDescription(data.description);
+        setImages(data.images);
+        setCharacteristics(data.characteristics);
+    }
 
     const addNewImage = () => {
         if (!image) {
@@ -38,7 +57,6 @@ function Product() {
     }
 
     const validateForm = () => {
-        setError(null);
         if (category === '') {
             setError('Invalid category!');
         }
@@ -60,6 +78,9 @@ function Product() {
         else if (characteristics.length === 0) {
             setError('There is no characteristics!');
         }
+        else {
+            setError(false);
+        }
     }
 
     const formHandler = async () => {
@@ -72,15 +93,20 @@ function Product() {
             images,
             characteristics
         }
-        console.log(product);
-        addProduct(product);
+        if (match.params.id) {
+            product.id = match.params.id
+            const res = await updateProduct(product);
+        }
+        else {
+            const res = addProduct(product);
+        }
+
         history.push('/');
     }
 
     const onSubmit = (e) => {
         e.preventDefault();
         validateForm();
-        console.log(error);
         if (!error) {
             formHandler();
         }
@@ -100,18 +126,6 @@ function Product() {
                 <form className={styles.form} onSubmit={onSubmit}>
 
                     <div className={styles['form-elements']}>
-
-                        <div>
-                            <select name="category" onChange={(e) => setCategory(e.target.value)} value={category}>
-                                <option value=''>Choose a category</option>
-                                <option value="mouse">Mouse</option>
-                                <option value="keyboard">Keyboard</option>
-                                <option value="headset">Headset</option>
-                                <option value="mousepad">Mousepad</option>
-                                <option value="accessoaries">Accessoaries</option>
-                            </select>
-                        </div>
-
                         <AdminInput
                             name='brand'
                             type='text'
@@ -139,6 +153,16 @@ function Product() {
 
                     <div className={styles['form-elements']}>
                         <div>
+                            <select name="category" onChange={(e) => setCategory(e.target.value)} value={category}>
+                                <option value=''>Choose a category</option>
+                                <option value="mouse">Mouse</option>
+                                <option value="keyboard">Keyboard</option>
+                                <option value="headset">Headset</option>
+                                <option value="mousepad">Mousepad</option>
+                                <option value="accessories">Accessoaries</option>
+                            </select>
+                        </div>
+                        <div>
 
                             <input
                                 name='image'
@@ -164,13 +188,10 @@ function Product() {
                             <button type='button' onClick={addNewCharacteristic} className={styles['input-button']}>ADD</button>
                         </div>
 
-                        <div className={styles['submit-btn-holder']}>
-                            <button type='submit'>Submit</button>
-                        </div>
+
                     </div>
 
                     <div className={styles['form-elements']}>
-
                         <textarea
                             placeholder="Description..."
                             name="description"
@@ -178,6 +199,10 @@ function Product() {
                             value={description}
                             className={styles.textarea}
                         ></textarea>
+                    </div>
+
+                    <div className={styles['submit-btn-holder']}>
+                        <button type='submit'>Submit</button>
                     </div>
                 </form>
             </AdminFormWrapper>

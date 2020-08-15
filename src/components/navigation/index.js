@@ -1,39 +1,18 @@
 import React from 'react';
 import styles from './index.module.css';
 import { Link } from 'react-router-dom';
+import NavigationButton from '../navigation-button';
 
 function Navigation() {
 
     return (
         <div className={styles['menu-list']}>
             <ul>
-
-                <li className={styles['special-effects']} >
-                    <Link className={styles.link} to="/mouse">
-                        MOUSE
-                    </Link>
-                </li>
-                <li className={styles['special-effects']}>
-                    <Link className={styles.link} to="/keyboard">
-                        KEYBOARDS
-                    </Link>
-                </li>
-                <li className={styles['special-effects']}>
-                    <Link className={styles.link} to="/headset">
-                        HEADSETS
-                    </Link>
-                </li>
-                <li className={styles['special-effects']}>
-                    <Link className={styles.link} to="/mousepad">
-                        MOUSEPADS
-                    </Link>
-                </li>
-                <li className={styles['special-effects']}>
-                    <Link className={styles.link} to="/accessory">
-                        ACCESSORIES
-                    </Link>
-                </li>
-
+                <NavigationButton value='MOUSE' path='/mouse' />
+                <NavigationButton value='KEYBOARDS' path='/keyboard' />
+                <NavigationButton value='HEADSETS' path='/headset' />
+                <NavigationButton value='MOUSEPADS' path='/mousepad' />
+                <NavigationButton value='ACCESSORIES' path='/accessories' />
             </ul>
         </div>
     );
