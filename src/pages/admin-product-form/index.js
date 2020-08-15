@@ -35,7 +35,9 @@ function Product(props) {
         setPrice(data.price);
         setDescription(data.description);
         setImages(data.images);
-        setCharacteristics(data.characteristics);
+        if (data.characteristic) {
+            setCharacteristics(data.characteristics);
+        }
     }
 
     const addNewImage = () => {

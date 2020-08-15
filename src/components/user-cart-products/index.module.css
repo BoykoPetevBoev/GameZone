@@ -1,12 +1,21 @@
 .product {
     border-bottom: solid 1px rgb(212, 212, 212);
     height: 100px;
+    background-color: white;
+    margin-bottom: 10px;
+
+}
+.product:last-child {
+    margin-bottom: 0;
 }
 
 .image-holder, .price-holder, .button-holder, .name-holder {
     display: inline-block;
     width: 25%;
     vertical-align: middle;
+}
+.image-holder {
+    background-color: white;
 }
 
 .price {
