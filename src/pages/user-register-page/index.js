@@ -131,6 +131,8 @@ function RegisterPage() {
     )
 }
 
+export default RegisterPage;
+
 
 // class RegisterPage extends Component {
 //     constructor(props) {
@@ -268,4 +270,3 @@ function RegisterPage() {
 //         );
 //     };
 // };
-export default RegisterPage;
