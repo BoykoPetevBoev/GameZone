@@ -25,7 +25,6 @@ async function removeFromWishlist(id, user) {
     user.wishlist.splice(index, 1);
     const userUpdate = await updateWishlist(user);
     return userUpdate;
-
 }
 
 export {
