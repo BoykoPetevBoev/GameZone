@@ -3,12 +3,12 @@ const env = process.env.NODE_ENV || 'development';
 
 const config = {
     development: {
-        port: process.env.PORT,
-        dbUser: process.env.DB_USER,
-        dbPassword: process.env.DB_PASS,
-        dbName: process.env.DB_NAME,
+        port: process.env.PORT || 5000,
+        dbUser: process.env.DB_USER || 'user',
+        dbPassword: process.env.DB_PASS || 123,
+        dbName: process.env.DB_NAME || 'GameZone',
         dbAddress: 'softuni-dx3ut.mongodb.net',
-        tokenKey: process.env.SECRET
+        tokenKey: process.env.SECRET || 'SuperSecretKey'
     },
     production: {}
 }
