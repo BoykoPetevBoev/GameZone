@@ -8,16 +8,18 @@ import CartCheckout from '../../components/user-cart-checkout';
 import { removeFromCart } from '../../utils/user';
 
 function ShoppingCart() {
-    const [cart, setCart] = useState([]);
     const context = useContext(UserContext);
+    const [user, setUser] = useState(context.user);
+    const [cart, setCart] = useState([]);
 
     useEffect(() => {
-        setCart(context.user.shoppingCart)
-    }, []);
+        setCart(user.shoppingCart)
+    }, [user]);
 
     const removeItem = async (e) => {
         const id = e.target.value;
-        const user = await removeFromCart(id, context.user);
+        const updatedUserData = await removeFromCart(id, context.user);
+        setUser(updatedUserData);
         context.updateUser(user);
         setCart(user.shoppingCart);
     }
@@ -27,10 +29,7 @@ function ShoppingCart() {
             cart.map((item, index) => {
                 return (
                     <div key={index}>
-                        <CartProducts
-                            item={item}
-                            onClick={removeItem}
-                        />
+                        <CartProducts item={item} onClick={removeItem} />
                     </div>
                 )
             })
@@ -45,15 +44,12 @@ function ShoppingCart() {
                 <div className={styles['your-cart']}>
                     <p>YOUR CART ({cart.length})</p>
                 </div>
-
                 <div className={styles.cart}>
                     {showItems()}
                 </div>
-
                 <CartCheckout cart={cart} />
 
             </div>
-
             <Footer />
         </div>
     );

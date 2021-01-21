@@ -19,13 +19,12 @@ function Product(props) {
     const history = useHistory();
 
     useEffect(() => {
+        const getData = async () => {
+            const data = await getProduct(props.match.params.id);
+            setProduct(data);
+        }
         getData();
-    }, []);
-
-    const getData = async () => {
-        const data = await getProduct(props.match.params.id);
-        setProduct(data);
-    }
+    }, [props]);
 
     const addToCartHandler = async () => {
         if (!context.loggedIn) {

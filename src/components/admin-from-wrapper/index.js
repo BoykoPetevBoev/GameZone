@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './index.module.css';
-import Navigation from '../../components/admin-navigation';
+// import Navigation from '../../components/admin-navigation';
 import ProductImages from '../../components/product-images';
 import ProductInfo from '../../components/product-info';
 

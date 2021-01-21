@@ -12,16 +12,17 @@ import Favorite from '@material-ui/icons/Favorite';
 
 
 function UserPage(props) {
+    const context = useContext(UserContext);
+    const [user] = useState(context.user);
     const [cart, setCart] = useState([]);
     const [wishlist, setWishlist] = useState([]);
-    const context = useContext(UserContext);
 
     useEffect(() => {
-        if (context.user) {
-            setCart(context.user.shoppingCart);
-            setWishlist(context.user.wishlist);
+        if (user) {
+            setCart(user.shoppingCart);
+            setWishlist(user.wishlist);
         }
-    }, [])
+    }, [user])
 
     const showTable = (products) => {
         return products.map(product => {

@@ -20,16 +20,17 @@ function Authorization(props) {
             logout();
             return
         }
+        const sendRequest = async (token) => {
+            const response = await userAuthorization(token);
+    
+            response.status
+                ? login(response.user)
+                : logout()
+        }
         sendRequest(token);
     }, []);
 
-    const sendRequest = async (token) => {
-        const response = await userAuthorization(token);
 
-        response.status
-            ? login(response.user)
-            : logout()
-    }
 
     const updateUser = (user) => {
         if (!loggedIn) {
@@ -74,3 +75,5 @@ function Authorization(props) {
 }
 
 export default Authorization;
+
+

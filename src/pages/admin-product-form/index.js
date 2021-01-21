@@ -1,4 +1,4 @@
-import React, { useState, Children, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import styles from './index.module.css';
 import AdminInput from '../../components/admin-input';
 import AdminFormWrapper from '../../components/admin-from-wrapper';
@@ -23,22 +23,21 @@ function Product(props) {
 
     useEffect(() => {
         if (match.params.id) {
+            const loadData = async () => {
+                const data = await getProduct(match.params.id);
+                setCategory(data.category);
+                setBrand(data.brand);
+                setModel(data.model);
+                setPrice(data.price);
+                setDescription(data.description);
+                setImages(data.images);
+                if (data.characteristic) {
+                    setCharacteristics(data.characteristics);
+                }
+            }
             loadData();
         }
-    }, []);
-
-    const loadData = async () => {
-        const data = await getProduct(match.params.id);
-        setCategory(data.category);
-        setBrand(data.brand);
-        setModel(data.model);
-        setPrice(data.price);
-        setDescription(data.description);
-        setImages(data.images);
-        if (data.characteristic) {
-            setCharacteristics(data.characteristics);
-        }
-    }
+    }, [match]);
 
     const addNewImage = () => {
         if (!image) {
@@ -58,7 +57,7 @@ function Product(props) {
         setCharacteristic('');
     }
     const removeProduct = async () => {
-        const response = await deleteProduct(match.params.id);
+        await deleteProduct(match.params.id);
         history.push('/');
     }
 
@@ -101,10 +100,10 @@ function Product(props) {
         }
         if (match.params.id) {
             product.id = match.params.id
-            const res = await updateProduct(product);
+            await updateProduct(product);
         }
         else {
-            const res = addProduct(product);
+            addProduct(product);
         }
 
         history.push('/');

@@ -1,6 +1,6 @@
 const Product = require('../models/Product');
 
-async function addProduct(req, res, next) {
+async function addProduct(req, res) {
     const { category, brand, model, images, description, characteristics } = req.body;
     const price = Number(req.body.price).toFixed(2);
 
@@ -17,11 +17,11 @@ async function addProduct(req, res, next) {
 
     res.status(201).send(status);
 }
-async function getProducts(req, res, next) {
+async function getProducts(req, res) {
     const data = await Product.find().lean();
     res.send(data);
 }
-async function getProduct(req, res, next) {
+async function getProduct(req, res) {
     const { id } = req.query;
     const product = await Product.findById(id).lean();
     res.status(201).send(product);

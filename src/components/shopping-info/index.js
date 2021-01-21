@@ -8,12 +8,13 @@ import { Link } from 'react-router-dom';
 
 function ShoppingInfo() {
     const context = useContext(UserContext);
+    const [user] = useState(context.user);
     const [cart, setCart] = useState(0);
     const [wishlist, setWishlist] = useState(0);
-    const [totalPrice, setTotalParice] = useState('0.00')
+    const [totalPrice, setTotalParice] = useState('0.00');
 
     useEffect(() => {
-        const user = context.user
+        // setUser([context.user, user]);
         if (user) {
             setCart(user.shoppingCart.length);
             setWishlist(user.wishlist.length);
@@ -27,7 +28,7 @@ function ShoppingInfo() {
             setWishlist(0);
             setTotalParice('0.00');
         }
-    });
+    }, [user]);
 
     return (
         <div className={styles.container} >

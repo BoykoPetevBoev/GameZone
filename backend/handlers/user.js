@@ -2,8 +2,9 @@ const User = require('../models/User');
 const hashHandler = require('../utils/hashHandler');
 const authHandler = require('../utils/authHandler');
 
-async function userLogin(req, res, next) {
+async function userLogin(req, res) {
     const { email, password } = req.body;
+    console.log(req);
 
     const user = await User.findOne({ email }).populate('shoppingCart').populate('wishlist').lean();
     if (!user) {
@@ -19,7 +20,7 @@ async function userLogin(req, res, next) {
     return res.status(200).header('Authorization', token).send(user);
 }
 
-async function userRegister(req, res, next) {
+async function userRegister(req, res) {
     const { firstName, lastName, email, password } = req.body;
     const hashedPassword = hashHandler.hashPassword(password);
 
@@ -36,7 +37,7 @@ async function userRegister(req, res, next) {
     }
 }
 
-async function verifyLogin(req, res, next) {
+async function verifyLogin(req, res) {
     const token = req.headers.authorization || '';
     const tokenStatus = await authHandler.verifyToken(token);
     if (tokenStatus) {
@@ -51,17 +52,17 @@ async function verifyLogin(req, res, next) {
     }
 }
 
-async function getUsers(req, res, next) {
+async function getUsers(req, res) {
     const data = await User.find().populate('shoppingCart').populate('wishlist').lean();
     res.send(data)
 }
 
-async function updateShoppingCart(req, res, next) {
+async function updateShoppingCart(req, res) {
     const user = req.body;
     const data = await User.findByIdAndUpdate(user._id, { shoppingCart: user.shoppingCart }, {new: true}).populate('shoppingCart').populate('wishlist');
     res.status(201).send(data);
 }
-async function updateWishlist(req, res, next) {
+async function updateWishlist(req, res) {
     const user = req.body;
     const data = await User.findByIdAndUpdate(user._id, { wishlist: user.wishlist }, {new: true}).populate('shoppingCart').populate('wishlist');
     res.status(201).send(data);

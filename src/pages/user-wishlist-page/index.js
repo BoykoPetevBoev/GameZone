@@ -14,16 +14,17 @@ import { addToCart, removeFromWishlist } from '../../utils/user';
 function Wishlist() {
     const [wishlist, setWishlist] = useState([]);
     const context = useContext(UserContext);
+    const [user, setUser] = useState(context.user);
     const history = useHistory();
 
     useEffect(() => {
-        setWishlist(context.user.wishlist);
-
-    }, []);
+        setWishlist(user.wishlist);
+    }, [user]);
 
     const removeProduct = async (e) => {
         const id = e.target.value;
-        const user = await removeFromWishlist(id, context.user);
+        const update = await removeFromWishlist(id, user);
+        setUser(update);
         context.updateUser(user);
         setWishlist(user.wishlist);
     }

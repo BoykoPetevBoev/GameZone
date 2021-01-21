@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './index.module.css';
-import AdminNavigation from '../../components/admin-navigation';
+// import AdminNavigation from '../../components/admin-navigation';
 import AdminWrapper from '../../components/admin-wrapper';
 
 function AdminPage() {
