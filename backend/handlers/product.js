@@ -17,15 +17,18 @@ async function addProduct(req, res) {
 
     res.status(201).send(status);
 }
+
 async function getProducts(req, res) {
     const data = await Product.find().lean();
     res.send(data);
 }
+
 async function getProduct(req, res) {
     const { id } = req.query;
     const product = await Product.findById(id).lean();
     res.status(201).send(product);
 }
+
 async function updateProduct(req, res) {
     console.log(req.body);
     const { id,
@@ -52,12 +55,12 @@ async function updateProduct(req, res) {
         res.status(401);
     }
 }
+
 async function deleteProduct(req, res) {
     const { id } = req.query;
-     await Product.deleteOne({ _id: id });;
+    await Product.deleteOne({ _id: id });;
     res.status(200).send('product deleted');
 }
-
 
 module.exports = {
     getProducts,
