@@ -4,17 +4,12 @@ const authHandler = require('../utils/authHandler');
 
 async function userLogin(req, res) {
     const { email, password } = req.body;
-    console.log(req);
 
     const user = await User.findOne({ email }).populate('shoppingCart').populate('wishlist').lean();
-    if (!user) {
-        return res.status(401).send('Invalid email').end();
-    }
+    if (!user) return res.status(401).send('Invalid email').end();
 
     const match = await hashHandler.checkPassword(password, user.password);
-    if (!match) {
-        return res.status(401).send('Invalid password').end();
-    }
+    if (!match) return res.status(401).send('Invalid password').end();
 
     const token = await authHandler.setToken(user);
     return res.status(200).header('Authorization', token).send(user);
@@ -59,12 +54,12 @@ async function getUsers(req, res) {
 
 async function updateShoppingCart(req, res) {
     const user = req.body;
-    const data = await User.findByIdAndUpdate(user._id, { shoppingCart: user.shoppingCart }, {new: true}).populate('shoppingCart').populate('wishlist');
+    const data = await User.findByIdAndUpdate(user._id, { shoppingCart: user.shoppingCart }, { new: true }).populate('shoppingCart').populate('wishlist');
     res.status(201).send(data);
 }
 async function updateWishlist(req, res) {
     const user = req.body;
-    const data = await User.findByIdAndUpdate(user._id, { wishlist: user.wishlist }, {new: true}).populate('shoppingCart').populate('wishlist');
+    const data = await User.findByIdAndUpdate(user._id, { wishlist: user.wishlist }, { new: true }).populate('shoppingCart').populate('wishlist');
     res.status(201).send(data);
 }
 
