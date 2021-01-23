@@ -1,124 +1,86 @@
+const fetch = require("node-fetch");
+const baseUrl = 'http://localhost:5000';
 
-async function fetchRequest(method, body, url) {
-    const promise = await fetch(url, {
-        method: method,
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(body)
-    });
-    return promise;
+async function fetchRequest(method, body, url, headers) {
+    if (!headers) headers = { 'Content-Type': 'application/json' }
+    if (body) body = JSON.stringify(body)
+
+    return fetch(url, { method, headers, body })
+        .then(res => {
+            if (res.status < 300) return res.json();
+            else return undefined;
+        })
+        .catch(e => {
+            throw new Error(e);
+        })
 }
 
-async function handleUserRequest(promise) {
-    if (promise.ok) {
-        setToken(promise);
-        const user = await promise.json();
-        return user;
-    }
-    else {
-        return null;
-    }
-}
-
-function setToken(promise) {
-    const token = promise.headers.get('Authorization');
-    document.cookie = `GameZoneToken=${token}`;
-}
+// function setToken(promise) {
+//     const token = promise.headers.get('Authorization');
+//     document.cookie = `GameZoneToken=${token}`;
+// }
 
 async function userLogin(body) {
-    const promise = await fetchRequest('POST', body, 'http://localhost:5000/login');
-    return await handleUserRequest(promise);
+    if (!body) return undefined;
+    const data = await fetchRequest('POST', body, `${baseUrl}/login`);
+    return data;
 }
 
 async function userRegister(body) {
-    const promise = await fetchRequest('POST', body, 'http://localhost:5000/register');
-    return await handleUserRequest(promise);
-}
-
-async function userAuthorization(token) {
-    const promise = await fetch('http://localhost:5000/verify', {
-        method: 'GET',
-        headers: {
-            'Content-Type': 'application/json',
-            'Authorization': token
-        }
-    });
-    const response = await promise.json();
-    return response;
-}
-
-async function getProduct(id) {
-    const promise = await fetch(`http://localhost:5000/get-product?id=${id}`, {
-        method: 'GET',
-        headers: {
-            'Content-Type': 'application/json',
-        }
-    });
-    if (promise.ok) {
-        const data = await promise.json();
-        return data;
-    }
-    else {
-        return {};
-    }
-}
-
-async function getAllProducts() {
-    const promise = await fetch('http://localhost:5000/get-products');
-    if (promise.ok) {
-        const data = await promise.json();
-        return data;
-    }
-    else {
-        return [];
-    }
-}
-
-async function getAllUsers() {
-    const promise = await fetch('http://localhost:5000/get-users');
-    if (promise.ok) {
-        const data = await promise.json();
-        return data;
-    }
-    else {
-        return [];
-    }
+    if (!body) return undefined;
+    const data = await fetchRequest('POST', body, `${baseUrl}/register`);
+    return data;
 }
 
 async function updateShoppingCart(user) {
-    const promise = await fetchRequest('PUT', user, 'http://localhost:5000/update-shopping-cart');
-    if (promise.status === 201) {
-        const response = await promise.json();
-        return response;
-    }
+    const response = await fetchRequest('PUT', user, `${baseUrl}/update-shopping-cart`);
+    return response;
 }
 
 async function updateWishlist(user) {
-    const promise = await fetchRequest('PUT', user, 'http://localhost:5000/update-wishlist');
-    if (promise.status === 201) {
-        const response = await promise.json();
-        return response;
+    const response = await fetchRequest('PUT', user, `${baseUrl}/update-wishlist`);
+    return response;
+}
+
+async function userAuthorization(token) {
+    const headers = {
+        'Content-Type': 'application/json',
+        'Authorization': token
     }
+    const data = await fetchRequest('GET', undefined, `${baseUrl}/verify`, headers);
+    return data;
+}
+
+async function getProduct(id) {
+    const data = await fetchRequest('GET', undefined, `${baseUrl}/get-product?id=${id}`);
+    return data ? data : {};
+}
+
+async function getAllProducts() {
+    const data = await fetchRequest('GET', undefined, `${baseUrl}/get-products`);
+    return data ? data : [];
+}
+
+async function getAllUsers() {
+    const data = await fetchRequest('GET', undefined, `${baseUrl}/get-users`);
+    return data ? data : [];
 }
 
 async function addProduct(body) {
-    const promise = await fetchRequest('POST', body, 'http://localhost:5000/add-product');
+    const promise = await fetchRequest('POST', body, `${baseUrl}/add-product`);
     console.log(promise);
     return promise
 }
 async function updateProduct(body) {
-    const promise = await fetchRequest('PUT', body, 'http://localhost:5000/update-product');
-    console.log(promise);
+    const promise = await fetchRequest('PUT', body, `${baseUrl}/update-product`);
     return promise;
 }
 async function deleteProduct(id) {
-    const promise = await fetch(`http://localhost:5000/delete-product?id=${id}`, {
+    const promise = await fetch(`${baseUrl}/delete-product?id=${id}`, {
         method: 'DELETE'
     });
     return promise;
 }
-
-
-
 
 module.exports = {
     userLogin,

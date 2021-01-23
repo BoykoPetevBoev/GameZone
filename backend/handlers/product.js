@@ -13,8 +13,9 @@ async function addProduct(req, res) {
         description,
         characteristics
     })
+    console.log(product);
     const status = await product.save();
-
+    console.log(status);
     res.status(201).send(status);
 }
 
